@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>教材・記事｜LEVEREX</title>
+<meta name="description" content="LEVEREXの教材・記事の一覧です。">
+<style>
+  :root {
+    --teal: #0f766e; --mint-soft: #f0faf8; --ink: #17273c; --sub: #64748b;
+    --line: #e2e8f0; --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: linear-gradient(170deg, #f4fbf9 0%, #eef6f4 60%, #f6fbfa 100%);
+    color: var(--ink); line-height: 1.75;
+    display: flex; justify-content: center; min-height: 100dvh;
+  }
+  .app { width: 100%; max-width: 480px; padding: 24px 20px 40px; }
+  .back { display: inline-block; font-size: 13px; color: var(--sub); text-decoration: none; margin-bottom: 16px; }
+  .eyebrow { font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 2px; }
+  h1 { font-size: 22px; margin-bottom: 6px; }
+  .lead { font-size: 13.5px; color: var(--sub); margin-bottom: 22px; }
+
+  .cards { display: flex; flex-direction: column; gap: 14px; }
+  .card {
+    display: block; text-decoration: none; color: var(--ink);
+    background: var(--white); border: 1.5px solid var(--line); border-radius: 18px;
+    padding: 18px; box-shadow: 0 8px 24px rgba(23,39,60,.06);
+  }
+  .card:active { transform: scale(.985); }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; color: var(--teal);
+    background: var(--mint-soft); border-radius: 999px; padding: 2px 10px; margin-bottom: 8px; }
+  .card h2 { font-size: 16.5px; line-height: 1.5; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--sub); }
+  .card .cta { display: inline-block; margin-top: 10px; font-size: 13.5px; font-weight: 700; color: var(--teal); }
+
+  .soon { border-style: dashed; opacity: .75; }
+  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 30px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <a class="back" href="index.html">‹ LEVEREXトップへ</a>
+  <div class="eyebrow">LIBRARY</div>
+  <h1>教材・記事📚</h1>
+  <p class="lead">スキマ時間に読めて、そのまま仕事で使えるものだけを置いています。</p>
+
+  <div class="cards">
+    <a class="card" href="https://brain-market.com/u/morio08/a/byATO3UjMgoTZsNWa0JXY">
+      <span class="tag">Brain・有料教材</span>
+      <h2>スマホAI入門 — スマホだけで「業務整理メモ」を作る</h2>
+      <p>通勤や休憩のスキマ時間に、スマホで業務整理・境界メモ・社内確認メモを作れるようになる実践教材です。</p>
+      <span class="cta">Brainで読む ›</span>
+    </a>
+
+    <div class="card soon">
+      <span class="tag">準備中</span>
+      <h2>note・無料記事</h2>
+      <p>仕組み化・業務改善の実務メモを順次公開予定です。公開したらLINEでお知らせします。</p>
+    </div>
+  </div>
+
+  <p class="footer">最新情報は<a href="https://line.me/R/ti/p/@558bnxlh">LINE</a>でお届けしています</p>
+</div>
+</body>
+</html>

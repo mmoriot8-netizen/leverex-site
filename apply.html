@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LEVEREX｜初回整理・診断のお申し込み</title>
+<style>
+  :root {
+    --teal: #0f766e; --teal-deep: #115e59; --mint: #d7ece8; --mint-soft: #f0faf8;
+    --ink: #17273c; --sub: #64748b; --line: #e2e8f0; --white: #ffffff;
+    --accent: #f59e0b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: linear-gradient(170deg, #f4fbf9 0%, #eef6f4 60%, #f6fbfa 100%);
+    color: var(--ink); line-height: 1.7;
+    display: flex; justify-content: center; min-height: 100dvh;
+  }
+  .app { width: 100%; max-width: 480px; padding: 20px 18px 32px; display: flex; flex-direction: column; }
+
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .brand-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--teal);
+    color: #fff; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; }
+  .brand-name { font-weight: 700; font-size: 15px; letter-spacing: 1px; }
+  .brand-sub { font-size: 11px; color: var(--sub); letter-spacing: .5px; }
+
+  .progress { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-bottom: 20px; }
+  .progress > div { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), #2db7ab); border-radius: 999px; transition: width .35s ease; }
+
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 18px;
+    padding: 26px 22px; box-shadow: 0 10px 30px rgba(23, 39, 60, .07); flex: 0 0 auto; }
+
+  .step { display: none; animation: fadein .3s ease; }
+  .step.active { display: block; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .q-eyebrow { font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 2px; margin-bottom: 8px; }
+  h1 { font-size: 20px; line-height: 1.5; margin-bottom: 8px; }
+  h2 { font-size: 18px; line-height: 1.55; margin-bottom: 6px; }
+  .hint { font-size: 13px; color: var(--sub); margin-bottom: 18px; }
+
+  input[type="text"], textarea {
+    width: 100%; font-size: 16px; padding: 13px 14px; border: 1.5px solid var(--line);
+    border-radius: 12px; background: #fbfdfd; font-family: inherit; color: var(--ink);
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--teal); background: #fff; }
+  textarea { min-height: 110px; resize: vertical; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { border: 1.5px solid var(--line); background: #fbfdfd; color: var(--ink);
+    border-radius: 999px; padding: 10px 16px; font-size: 14px; cursor: pointer; transition: all .15s; }
+  .chip.on { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 600; }
+
+  .radios { display: flex; flex-direction: column; gap: 10px; }
+  .radio { border: 1.5px solid var(--line); background: #fbfdfd; border-radius: 14px;
+    padding: 13px 15px; font-size: 14.5px; cursor: pointer; display: flex; gap: 10px; align-items: flex-start; transition: all .15s; }
+  .radio.on { border-color: var(--teal); background: var(--mint-soft); }
+  .radio .dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #cbd5e1; flex: 0 0 auto; margin-top: 3px; position: relative; }
+  .radio.on .dot { border-color: var(--teal); }
+  .radio.on .dot::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--teal); }
+  .radio small { display: block; color: var(--sub); font-size: 12px; }
+
+  .nav { display: flex; gap: 10px; margin-top: 22px; }
+  button { font-family: inherit; cursor: pointer; }
+  .btn-next { flex: 1; background: var(--teal); color: #fff; border: none; border-radius: 999px;
+    padding: 15px; font-size: 16px; font-weight: 700; letter-spacing: 1px; transition: transform .1s, background .15s; }
+  .btn-next:active { transform: scale(.98); }
+  .btn-next:disabled { background: #cbd5e1; cursor: not-allowed; }
+  .btn-back { background: none; border: none; color: var(--sub); font-size: 14px; padding: 15px 10px; }
+
+  .note { font-size: 12px; color: var(--sub); margin-top: 14px; padding: 10px 12px; background: var(--mint-soft); border-radius: 10px; }
+
+  .summary { background: var(--mint-soft); border-radius: 14px; padding: 16px; font-size: 14px; margin: 14px 0 4px; }
+  .summary dt { font-size: 11.5px; font-weight: 700; color: var(--teal); letter-spacing: 1px; margin-top: 10px; }
+  .summary dt:first-child { margin-top: 0; }
+  .summary dd { margin-left: 0; }
+
+  .btn-line { width: 100%; background: #06c755; color: #fff; border: none; border-radius: 999px;
+    padding: 16px; font-size: 16px; font-weight: 800; letter-spacing: 1px; margin-top: 16px; }
+  .btn-line:active { transform: scale(.98); }
+
+  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div>
+      <div class="brand-name">LEVEREX</div>
+      <div class="brand-sub">現場の強みを、会社が伸びる仕組みに変える。</div>
+    </div>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+
+  <div class="card">
+
+    <!-- STEP 0: intro -->
+    <section class="step active" data-step="0">
+      <div class="q-eyebrow">約1分で完了します</div>
+      <h1>初回整理・診断の<br>お申し込み🌱</h1>
+      <p class="hint">6つの質問に答えるだけ。最後に「LINEで送信」を押すと、トーク画面に回答がセットされます。あとは送信ボタンを押すだけです。</p>
+      <div class="nav"><button class="btn-next" onclick="go(1)">はじめる</button></div>
+      <p class="note">🔒 顧客名・個人情報・パスワード・社内機密は書かないでください。会社名とご担当のお名前だけで大丈夫です。</p>
+    </section>
+
+    <!-- STEP 1 -->
+    <section class="step" data-step="1">
+      <div class="q-eyebrow">Q1 / 6</div>
+      <h2>会社名を教えてください🏢</h2>
+      <p class="hint">屋号・団体名でもOKです。</p>
+      <input type="text" id="company" placeholder="例: 株式会社◯◯" oninput="check(1)">
+      <div class="nav">
+        <button class="btn-back" onclick="go(0)">← 戻る</button>
+        <button class="btn-next" id="next1" disabled onclick="go(2)">次へ</button>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="step" data-step="2">
+      <div class="q-eyebrow">Q2 / 6</div>
+      <h2>お名前とお立場を教えてください🙌</h2>
+      <p class="hint">例: 山田太郎(代表)、佐藤(営業部長)など。</p>
+      <input type="text" id="name" placeholder="例: 山田太郎（代表）" oninput="check(2)">
+      <div class="nav">
+        <button class="btn-back" onclick="go(1)">← 戻る</button>
+        <button class="btn-next" id="next2" disabled onclick="go(3)">次へ</button>
+      </div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="step" data-step="3">
+      <div class="q-eyebrow">Q3 / 6</div>
+      <h2>どなたとのご縁ですか?🤝</h2>
+      <p class="hint">ご紹介者のお名前、または出会った場所(交流会など)を教えてください。</p>
+      <input type="text" id="referral" placeholder="例: ◯◯さんの紹介 / ◯◯交流会" oninput="check(3)">
+      <div class="nav">
+        <button class="btn-back" onclick="go(2)">← 戻る</button>
+        <button class="btn-next" id="next3" disabled onclick="go(4)">次へ</button>
+      </div>
+    </section>
+
+    <!-- STEP 4 -->
+    <section class="step" data-step="4">
+      <div class="q-eyebrow">Q4 / 6</div>
+      <h2>気になっている業務はどれですか?🔍</h2>
+      <p class="hint">複数選べます。ざっくりでOK。</p>
+      <div class="chips" id="chips">
+        <button type="button" class="chip">営業・顧客管理</button>
+        <button type="button" class="chip">見積・請求</button>
+        <button type="button" class="chip">現場の段取り</button>
+        <button type="button" class="chip">採用・教育</button>
+        <button type="button" class="chip">経理・事務</button>
+        <button type="button" class="chip">その他・全体</button>
+      </div>
+      <div class="nav">
+        <button class="btn-back" onclick="go(3)">← 戻る</button>
+        <button class="btn-next" id="next4" disabled onclick="go(5)">次へ</button>
+      </div>
+    </section>
+
+    <!-- STEP 5 -->
+    <section class="step" data-step="5">
+      <div class="q-eyebrow">Q5 / 6</div>
+      <h2>いま一番「止まっているな」と感じる場面は?💭</h2>
+      <p class="hint">任意です。ひとことでも助かります。(固有名詞・実数は不要です)</p>
+      <textarea id="pain" placeholder="例: 見積を私しか作れず、外出中に止まる など"></textarea>
+      <div class="nav">
+        <button class="btn-back" onclick="go(4)">← 戻る</button>
+        <button class="btn-next" onclick="go(6)">次へ</button>
+      </div>
+    </section>
+
+    <!-- STEP 6 -->
+    <section class="step" data-step="6">
+      <div class="q-eyebrow">Q6 / 6</div>
+      <h2>希望の進め方を選んでください🚀</h2>
+      <div class="radios" id="radios">
+        <button type="button" class="radio"><span class="dot"></span><span>まず初回整理(30分・無料)で話したい<small>いちばん気軽。オンラインまたは対面</small></span></button>
+        <button type="button" class="radio"><span class="dot"></span><span>業務整理診断の見積が欲しい<small>2〜4週で「最初に直す1業務」を決めます</small></span></button>
+        <button type="button" class="radio"><span class="dot"></span><span>まず資料が欲しい<small>LINEで支援内容の資料をお送りします</small></span></button>
+      </div>
+      <div class="nav">
+        <button class="btn-back" onclick="go(5)">← 戻る</button>
+        <button class="btn-next" id="next6" disabled onclick="buildSummary();go(7)">確認へ</button>
+      </div>
+    </section>
+
+    <!-- STEP 7: confirm -->
+    <section class="step" data-step="7">
+      <div class="q-eyebrow">ご確認</div>
+      <h2>この内容でLINEに送信します✅</h2>
+      <dl class="summary" id="summaryBox"></dl>
+      <button class="btn-line" onclick="sendToLine()">💬 LINEで送信する</button>
+      <p class="note">タップするとLEVEREXのLINEトークが開き、上の内容が入力済みになります。送信ボタンを押して完了です。通常1営業日以内にお返事します。</p>
+      <div class="nav"><button class="btn-back" onclick="go(6)">← 戻って直す</button></div>
+    </section>
+
+  </div>
+  <p class="footer">LEVEREX｜業務改善・仕組み化 — 送信内容は日程調整とご相談対応にのみ使用します</p>
+</div>
+
+<script>
+const LINE_ID = "@558bnxlh";
+let current = 0;
+const TOTAL = 7;
+
+function go(n) {
+  document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+  document.querySelector('[data-step="' + n + '"]').classList.add("active");
+  current = n;
+  document.getElementById("bar").style.width = Math.round(n / TOTAL * 100) + "%";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function check(step) {
+  const map = { 1: "company", 2: "name", 3: "referral" };
+  document.getElementById("next" + step).disabled =
+    document.getElementById(map[step]).value.trim().length === 0;
+}
+
+document.querySelectorAll("#chips .chip").forEach(c => {
+  c.addEventListener("click", () => {
+    c.classList.toggle("on");
+    document.getElementById("next4").disabled =
+      document.querySelectorAll("#chips .chip.on").length === 0;
+  });
+});
+
+document.querySelectorAll("#radios .radio").forEach(r => {
+  r.addEventListener("click", () => {
+    document.querySelectorAll("#radios .radio").forEach(x => x.classList.remove("on"));
+    r.classList.add("on");
+    document.getElementById("next6").disabled = false;
+  });
+});
+
+function getData() {
+  return {
+    company: document.getElementById("company").value.trim(),
+    name: document.getElementById("name").value.trim(),
+    referral: document.getElementById("referral").value.trim(),
+    topics: [...document.querySelectorAll("#chips .chip.on")].map(c => c.textContent).join("、"),
+    pain: document.getElementById("pain").value.trim(),
+    plan: (document.querySelector("#radios .radio.on span:last-child") || {}).firstChild
+      ? document.querySelector("#radios .radio.on span:last-child").firstChild.textContent.trim() : ""
+  };
+}
+
+function buildSummary() {
+  const d = getData();
+  const rows = [
+    ["会社名", d.company], ["お名前", d.name], ["ご縁", d.referral],
+    ["気になる業務", d.topics], ["困っている場面", d.pain || "(未記入)"], ["希望の進め方", d.plan]
+  ];
+  document.getElementById("summaryBox").innerHTML =
+    rows.map(r => "<dt>" + r[0] + "</dt><dd>" + escapeHtml(r[1]) + "</dd>").join("");
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+}
+
+function sendToLine() {
+  const d = getData();
+  const msg =
+    "【診断のお申し込み】\n" +
+    "会社名: " + d.company + "\n" +
+    "お名前: " + d.name + "\n" +
+    "ご縁: " + d.referral + "\n" +
+    "気になる業務: " + d.topics + "\n" +
+    "困っている場面: " + (d.pain || "未記入") + "\n" +
+    "希望: " + d.plan;
+  location.href = "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(msg);
+}
+</script>
+</body>
+</html>
