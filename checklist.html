@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>社長がいなくても回る会社チェックリスト10｜LEVEREX</title>
+<meta name="description" content="LEVEREXの登録特典。あなたの会社が「社長で止まらない会社」かどうか、10項目で今すぐ診断できます。">
+<style>
+  :root {
+    --teal: #0f766e; --teal-deep: #115e59; --mint-soft: #f0faf8; --mint: #d7ece8;
+    --ink: #17273c; --sub: #64748b; --line: #e2e8f0; --white: #ffffff; --gold: #b98a2f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: linear-gradient(170deg, #f4fbf9 0%, #eef6f4 60%, #f6fbfa 100%);
+    color: var(--ink); line-height: 1.75;
+    display: flex; justify-content: center; min-height: 100dvh;
+  }
+  .app { width: 100%; max-width: 480px; padding: 26px 20px 40px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; color: var(--gold);
+    border: 1.5px solid var(--gold); border-radius: 999px; padding: 2px 12px; letter-spacing: 2px; margin-bottom: 10px; }
+  h1 { font-size: 22px; line-height: 1.5; margin-bottom: 8px; text-wrap: balance; }
+  .lead { font-size: 13.5px; color: var(--sub); margin-bottom: 20px; }
+
+  .list { display: flex; flex-direction: column; gap: 10px; }
+  .item {
+    display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
+    background: var(--white); border: 1.5px solid var(--line); border-radius: 14px;
+    padding: 14px 15px; transition: all .15s; user-select: none;
+  }
+  .item.on { border-color: var(--teal); background: var(--mint-soft); }
+  .box { width: 22px; height: 22px; border-radius: 7px; border: 2px solid #cbd5e1;
+    flex: 0 0 auto; margin-top: 2px; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 14px; font-weight: 800; }
+  .item.on .box { background: var(--teal); border-color: var(--teal); }
+  .item .t { font-size: 14px; }
+  .item .n { font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: 1px; }
+
+  .score {
+    position: sticky; bottom: 12px; margin-top: 20px;
+    background: var(--teal-deep); color: #fff; border-radius: 16px; padding: 16px 18px;
+    box-shadow: 0 12px 30px rgba(15,118,110,.35);
+  }
+  .score .num { font-size: 24px; font-weight: 800; }
+  .score .msg { font-size: 13px; margin-top: 2px; opacity: .95; }
+  .cta { display: block; text-align: center; background: #fff; color: var(--teal-deep);
+    font-weight: 800; font-size: 15px; border-radius: 999px; padding: 13px; margin-top: 12px;
+    text-decoration: none; }
+
+  .note { font-size: 12px; color: var(--sub); margin-top: 18px; }
+  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 22px; }
+  .footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+<div class="app">
+  <span class="badge">LINE登録特典</span>
+  <h1>社長がいなくても回る会社<br>チェックリスト10 ✅</h1>
+  <p class="lead">当てはまるものをタップしてください。あなたの会社の「仕組み度」がその場でわかります。</p>
+
+  <div class="list" id="list">
+    <div class="item"><span class="box">✓</span><span><span class="n">01</span><br><span class="t">社長が3日不在でも、見積・請求が止まらない</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">02</span><br><span class="t">「あの件どうなった?」と聞かなくても進捗がわかる</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">03</span><br><span class="t">仕事の手順が、人の頭の中ではなく、紙やデータに残っている</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">04</span><br><span class="t">判断基準が決まっていて、現場が自分で決められる</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">05</span><br><span class="t">新人が入っても、教える内容が毎回同じ</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">06</span><br><span class="t">問い合わせの一次対応のやり方が決まっている</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">07</span><br><span class="t">月末・月初に、慌てて数字を集めていない</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">08</span><br><span class="t">「その人しかできない仕事」が3つ以内</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">09</span><br><span class="t">ミスが出たとき、人ではなく仕組みを直している</span></span></div>
+    <div class="item"><span class="box">✓</span><span><span class="n">10</span><br><span class="t">社長の時間の半分以上を「考える仕事」に使えている</span></span></div>
+  </div>
+
+  <div class="score">
+    <div class="num"><span id="count">0</span> / 10</div>
+    <div class="msg" id="msg">タップしてチェックしてみてください</div>
+    <a class="cta" href="https://mmoriot8-netizen.github.io/leverex-site/apply.html">📝 初回整理（30分・無料）で相談する</a>
+  </div>
+
+  <p class="note">チェックが7個未満なら、伸びしろが大きい状態です。LEVEREXは、強みを発掘して「担当者が変わっても回る形」を30日でつくる伴走支援をしています。</p>
+  <p class="footer">LEVEREX｜業務改善・仕組み化 — <a href="index.html">トップへ</a></p>
+</div>
+
+<script>
+const items = document.querySelectorAll(".item");
+const count = document.getElementById("count");
+const msg = document.getElementById("msg");
+items.forEach(i => i.addEventListener("click", () => {
+  i.classList.toggle("on");
+  const n = document.querySelectorAll(".item.on").length;
+  count.textContent = n;
+  msg.textContent =
+    n >= 8 ? "素晴らしい!すでに回る会社です👏" :
+    n >= 5 ? "あと少し!止まりやすい所を1つ直しましょう" :
+    n >= 1 ? "伸びしろ大!まず1つの業務から回る形に" :
+    "タップしてチェックしてみてください";
+}));
+</script>
+</body>
+</html>
