@@ -4,46 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>まんがでわかるLEVEREX｜「オレしかできない」を、30日で終わらせる。</title>
-<meta name="description" content="ある中小企業社長の30日。仕事が社長で止まる会社が、回る会社に変わるまでの物語。">
+<meta name="description" content="ある中小企業の社長と社員の30日。AIを“使う”から“任せる”へ。仕事が社長で止まる会社が、担当者が変わっても回る会社に変わるまでの物語。">
+<meta property="og:title" content="まんがでわかるLEVEREX｜「オレしかできない」を、30日で終わらせる。">
+<meta property="og:description" content="社長と社員、ふたりの視点で読む30日の物語。">
+<meta property="og:type" content="article">
 <style>
   :root {
     --navy: #14213d; --navy-2: #1b2c52; --gold: #b98a2f; --gold-l: #d9b45f;
-    --ivory: #f8f6ef; --paper: #ffffff; --sub: #5b647a;
+    --ivory: #f8f6ef; --paper: #ffffff; --sub: #5b647a; --line: #e6e2d6;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-    background: var(--ivory); color: var(--navy); line-height: 1.7;
-    display: flex; justify-content: center;
+    background: var(--ivory); color: var(--navy); line-height: 1.75;
+    display: flex; justify-content: center; padding-bottom: 82px;
+    -webkit-text-size-adjust: 100%;
   }
-  .comic { width: 100%; max-width: 480px; padding: 0 14px 48px; }
+  .comic { width: 100%; max-width: 480px; padding: 0 14px 40px; }
 
   /* ===== 表紙 ===== */
   .cover {
-    margin: 14px 0 20px; border: 3px solid var(--navy); border-radius: 6px;
+    margin: 14px 0 22px; border: 3px solid var(--navy); border-radius: 6px;
     background:
       repeating-conic-gradient(from 0deg at 50% 42%, rgba(217,180,95,.16) 0deg 2deg, transparent 2deg 7deg),
       linear-gradient(160deg, #1b2c52, #14213d 70%);
-    color: #fff; text-align: center; padding: 44px 22px 34px; position: relative; overflow: hidden;
+    color: #fff; text-align: center; padding: 40px 22px 30px; position: relative; overflow: hidden;
   }
   .cover .tag { display: inline-block; font-size: 11px; letter-spacing: 3px; color: var(--gold-l);
-    border: 1px solid var(--gold); border-radius: 999px; padding: 3px 14px; margin-bottom: 18px; }
+    border: 1px solid var(--gold); border-radius: 999px; padding: 3px 14px; margin-bottom: 16px; }
   .cover h1 { font-size: 27px; line-height: 1.55; font-weight: 800; text-shadow: 0 3px 14px rgba(0,0,0,.4); }
   .cover .sub { margin-top: 12px; font-size: 13px; color: #cfd6e6; letter-spacing: 1px; }
-  .cover .logo { margin-top: 22px; background: #fff; display: inline-block; border-radius: 10px; padding: 8px 16px; }
-  .cover .logo img { height: 44px; width: auto; display: block; }
+  .cover .meta { margin-top: 14px; font-size: 11px; color: #9aa6c0; letter-spacing: 1px; }
+  .cover .logo { margin-top: 20px; background: #fff; display: inline-block; border-radius: 10px; padding: 8px 16px; }
+  .cover .logo img { height: 42px; width: auto; display: block; }
+  .scroll-hint { text-align: center; font-size: 11px; color: var(--sub); letter-spacing: 2px; margin: -8px 0 18px; }
+
+  /* ===== 章見出し ===== */
+  .chapter { display: flex; align-items: center; gap: 10px; margin: 26px 0 14px; }
+  .chapter::before, .chapter::after { content: ""; flex: 1; height: 2px; background: var(--line); }
+  .chapter span { font-size: 12px; font-weight: 800; letter-spacing: 3px; color: var(--gold); white-space: nowrap; }
 
   /* ===== コマ ===== */
   .panel {
     background: var(--paper); border: 3px solid var(--navy); border-radius: 6px;
-    margin-bottom: 18px; padding: 16px 16px 18px; position: relative;
+    margin-bottom: 18px; padding: 16px 14px 18px; position: relative;
     box-shadow: 4px 4px 0 rgba(20,33,61,.12);
   }
   .panel.tilt-l { transform: rotate(-.6deg); }
   .panel.tilt-r { transform: rotate(.6deg); }
   .time { position: absolute; top: -12px; left: 14px; background: var(--navy); color: #fff;
     font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 2px 12px; border-radius: 3px; }
-  .scene { display: block; width: 100%; height: auto; margin: 8px 0 4px; }
+  .pov { position: absolute; top: -12px; right: 14px; font-size: 10.5px; font-weight: 800;
+    letter-spacing: 1px; padding: 2px 10px; border-radius: 3px; color: #fff; }
+  .pov.s { background: var(--gold); }
+  .pov.t { background: #3f7f6f; }
+  .pov.l { background: var(--navy-2); }
+
+  /* コマ画像（未配置ならプレースホルダに自動フォールバック） */
+  .scene { display: block; width: 100%; margin: 12px 0 6px; border-radius: 4px; overflow: hidden; }
+  .scene img { display: block; width: 100%; height: auto; }
+  .scene.pending {
+    aspect-ratio: 4 / 3; border: 2px dashed var(--gold);
+    background: linear-gradient(160deg, #1b2c52, #14213d 70%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 14px; gap: 6px;
+  }
+  .scene.pending::before {
+    content: "CUT " attr(data-cut); color: var(--gold-l);
+    font-size: 13px; font-weight: 800; letter-spacing: 3px;
+  }
+  .scene.pending::after {
+    content: attr(data-note); color: #cfd6e6; font-size: 11.5px; line-height: 1.6; max-width: 92%;
+  }
 
   .bubble {
     position: relative; background: #fff; border: 2.5px solid var(--navy); border-radius: 18px;
@@ -55,153 +88,353 @@
   .bubble.right::after { left: auto; right: 26px; }
   .bubble.shout { border-radius: 6px; border-width: 3px; font-size: 16px; }
   .bubble.mono { background: var(--ivory); border-style: dashed; font-weight: 500; font-size: 13.5px; }
+  .bubble.mono::after { display: none; }
   .bubble.gold { border-color: var(--gold); }
   .bubble.gold::after { border-top-color: var(--gold); }
-
-  .sfx { font-size: 22px; font-weight: 900; color: var(--gold); letter-spacing: 2px;
-    transform: rotate(-6deg); display: inline-block; text-shadow: 1px 1px 0 var(--navy); }
-  .who { font-size: 10.5px; color: var(--sub); font-weight: 700; letter-spacing: 1px; margin-top: 8px; }
+  .bubble.teal { border-color: #3f7f6f; }
+  .bubble.teal::after { border-top-color: #3f7f6f; }
+  .who { font-size: 10.5px; color: var(--sub); font-weight: 700; letter-spacing: 1px; margin-top: 10px; }
 
   .narration { background: var(--navy); color: #fff; border-radius: 4px;
-    font-size: 13.5px; letter-spacing: 1px; padding: 10px 16px; margin: 22px 0 18px; text-align: center; }
+    font-size: 13.5px; letter-spacing: 1px; padding: 11px 16px; margin: 22px 0 18px; text-align: center; }
   .narration b { color: var(--gold-l); }
+  .narration.q { background: linear-gradient(135deg, #1b2c52, #14213d); font-size: 15px; font-weight: 700; padding: 16px; }
+
+  /* ===== 文章パート ===== */
+  .prose { background: var(--paper); border-radius: 8px; border: 1px solid var(--line);
+    padding: 22px 18px 24px; margin: 26px 0 8px; }
+  .prose h2 { font-size: 18px; line-height: 1.5; margin-bottom: 6px; }
+  .prose h2 .lead { display: block; font-size: 11.5px; color: var(--gold); letter-spacing: 3px; margin-bottom: 6px; }
+  .prose h3 { font-size: 14.5px; margin: 22px 0 8px; padding-left: 10px; border-left: 4px solid var(--gold); }
+  .prose p { font-size: 13.5px; color: #2c3550; }
+  .prose p + p { margin-top: 10px; }
+  .steps { list-style: none; counter-reset: st; margin-top: 6px; }
+  .steps li { counter-increment: st; position: relative; padding: 10px 0 10px 44px; border-bottom: 1px dashed var(--line); font-size: 13.5px; }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before { content: counter(st); position: absolute; left: 4px; top: 10px;
+    width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff;
+    font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .steps li b { display: block; font-size: 14.5px; }
+  .steps li span { color: var(--sub); font-size: 12.5px; }
+  .fit { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 8px; }
+  .fit div { border-radius: 6px; padding: 12px 14px; font-size: 13px; }
+  .fit .yes { background: #f2f7f5; border: 1px solid #cfe2db; }
+  .fit .no { background: #faf7f0; border: 1px solid #e8dfc7; }
+  .fit b { display: block; margin-bottom: 4px; font-size: 13px; }
+  .fit ul { margin: 0; padding-left: 18px; }
+  .fit li { margin-top: 3px; }
+  .advisor { margin-top: 20px; background: var(--ivory); border: 1px solid var(--line);
+    border-radius: 6px; padding: 14px; font-size: 13px; }
+  .advisor b { color: var(--gold); }
+  .faq { margin-top: 20px; }
+  .faq dt { font-size: 13.5px; font-weight: 800; margin-top: 14px; }
+  .faq dt::before { content: "Q. "; color: var(--gold); }
+  .faq dd { font-size: 13px; color: #2c3550; margin-top: 4px; }
+  .faq dd::before { content: "A. "; font-weight: 800; color: var(--navy); }
 
   /* ===== CTA ===== */
   .cta-block { background: var(--paper); border: 3px solid var(--gold); border-radius: 8px;
-    padding: 24px 18px; text-align: center; margin-top: 26px; }
+    padding: 24px 18px; text-align: center; margin-top: 22px; }
+  .cta-block.mid { border-width: 2px; padding: 20px 16px; }
   .cta-block h2 { font-size: 19px; line-height: 1.5; margin-bottom: 6px; }
+  .cta-block.mid h2 { font-size: 16.5px; }
   .cta-block p { font-size: 13px; color: var(--sub); margin-bottom: 16px; }
   .btn { display: block; text-decoration: none; font-weight: 800; font-size: 15.5px;
     border-radius: 999px; padding: 15px; margin-bottom: 10px; }
+  .btn:last-child { margin-bottom: 0; }
   .btn.primary { background: var(--navy); color: #fff; box-shadow: 0 10px 24px rgba(20,33,61,.3); }
   .btn.gold { background: #fff; color: var(--gold); border: 2px solid var(--gold); }
   .btn.line { background: #06c755; color: #fff; }
-  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 22px; }
+  .btn .s { display: block; font-size: 11.5px; font-weight: 600; opacity: .85; margin-top: 2px; }
+
+  /* 固定フッターCTA */
+  .sticky {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    background: rgba(255,255,255,.96); border-top: 1px solid var(--line);
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    display: flex; justify-content: center;
+    box-shadow: 0 -6px 20px rgba(20,33,61,.08);
+  }
+  .sticky a { max-width: 452px; width: 100%; text-align: center; text-decoration: none;
+    background: var(--navy); color: #fff; font-weight: 800; font-size: 15px;
+    border-radius: 999px; padding: 13px; }
+  .sticky a span { display: block; font-size: 11px; font-weight: 600; opacity: .85; }
+
+  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 22px; line-height: 1.8; }
+  .footer a { color: var(--sub); }
 </style>
 </head>
 <body>
 <div class="comic">
 
-  <!-- 表紙 -->
+  <!-- ===== 表紙 ===== -->
   <section class="cover">
     <span class="tag">まんがでわかるLEVEREX</span>
     <h1>また、オレしか<br>できないのか——。</h1>
-    <p class="sub">ある中小企業社長の、30日の物語</p>
+    <p class="sub">ある中小企業の社長と社員、30日の物語</p>
+    <p class="meta">全15コマ／読了3分</p>
     <div class="logo"><img src="logo.jpg" alt="LEVEREX"></div>
   </section>
+  <p class="scroll-hint">▼ 下にスクロール</p>
 
-  <!-- コマ1: 朝 -->
+  <!-- ===== 第1章 ===== -->
+  <div class="chapter"><span>第1章　詰まり</span></div>
+
+  <!-- CUT 01 -->
   <section class="panel tilt-l">
-    <span class="time">AM 7:00 自宅</span>
-    <svg class="scene" viewBox="0 0 420 150" xmlns="http://www.w3.org/2000/svg">
-      <rect width="420" height="150" fill="#f3f0e6"/>
-      <circle cx="90" cy="78" r="26" fill="#f2d8bd"/>
-      <path d="M64 70 q26 -30 52 0 l0 -12 q-26 -22 -52 0 z" fill="#3a3630"/>
-      <path d="M78 74 q6 -5 12 0 M104 74 q6 -5 12 0" stroke="#14213d" stroke-width="3" fill="none"/>
-      <path d="M82 94 q8 6 16 0" stroke="#14213d" stroke-width="3" fill="none" transform="rotate(180 90 94)"/>
-      <rect x="62" y="104" width="56" height="40" rx="10" fill="#14213d"/>
-      <circle cx="118" cy="60" r="4" fill="#7fb2e5"/>
-      <rect x="240" y="34" width="70" height="112" rx="10" fill="#14213d"/>
-      <rect x="246" y="42" width="58" height="96" rx="4" fill="#fff"/>
-      <g font-size="9" fill="#14213d" font-weight="bold">
-        <rect x="250" y="48" width="50" height="14" rx="3" fill="#faf5e6"/><text x="253" y="58">見積まだ?</text>
-        <rect x="250" y="66" width="50" height="14" rx="3" fill="#faf5e6"/><text x="253" y="76">請求の件</text>
-        <rect x="250" y="84" width="50" height="14" rx="3" fill="#faf5e6"/><text x="253" y="94">至急TEL</text>
-        <rect x="250" y="102" width="50" height="14" rx="3" fill="#faf5e6"/><text x="253" y="112">承認お願い</text>
-      </g>
-      <text x="330" y="52" class="sfx" font-size="20" font-weight="900" fill="#b98a2f" transform="rotate(-8 330 52)">ピロン</text>
-      <text x="336" y="86" font-size="20" font-weight="900" fill="#b98a2f" transform="rotate(6 336 86)">ピロン</text>
-      <text x="330" y="120" font-size="20" font-weight="900" fill="#b98a2f" transform="rotate(-5 330 120)">ピロン!!</text>
-    </svg>
+    <span class="time">AM 7:00 自宅</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="01" data-note="食卓で立ったままスマホを見る社長。未読通知が積み上がる。味噌汁は手つかず">
+      <img src="manga/01.jpg" alt="朝の食卓でスマホの通知を見る社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
     <div class="bubble">朝から通知が20件……ぜんぶ、オレ宛てか。</div>
-    <p class="who">■ 製造業・従業員12名/佐藤社長(52)</p>
+    <p class="who">■ 製造業・従業員12名／佐藤社長（52）</p>
   </section>
 
-  <!-- コマ2: 現場から電話 -->
+  <!-- CUT 02 -->
   <section class="panel tilt-r">
-    <span class="time">AM 10:30 移動中</span>
+    <span class="time">AM 8:30 事務所</span><span class="pov t">社員</span>
+    <figure class="scene" data-cut="02" data-note="見積の下書きを前に受話器を持ったまま止まる社員。付箋が数枚">
+      <img src="manga/02.jpg" alt="社長の確認待ちで手が止まる社員" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble teal">これ、社長に聞かないと出せない……。</div>
+    <div class="bubble mono">(待ってる時間、私は何をしてるんだろう。)</div>
+    <p class="who">■ 入社5年・事務兼営業アシスタント／田村さん（34）</p>
+  </section>
+
+  <!-- CUT 03 -->
+  <section class="panel tilt-l">
+    <span class="time">AM 10:30 移動中</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="03" data-note="運転席でハンズフリー通話。フロントガラスの向こうは渋滞">
+      <img src="manga/03.jpg" alt="移動中に現場から電話を受ける社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
     <div class="bubble right shout">社長〜!あの件、<br>どうなってます!?📞</div>
     <div class="bubble">すまん、オレが確認しないと分からん。<br>戻ったら見る!</div>
     <div class="bubble mono">(見積もオレ。段取りもオレ。判断もオレ。<br>——いつからこうなった?)</div>
   </section>
 
-  <!-- コマ3: 夜 -->
-  <section class="panel tilt-l">
-    <span class="time">PM 10:00 事務所</span>
-    <svg class="scene" viewBox="0 0 420 130" xmlns="http://www.w3.org/2000/svg">
-      <rect width="420" height="130" fill="#101a33"/>
-      <rect x="150" y="18" width="120" height="80" rx="6" fill="#1b2c52"/>
-      <rect x="158" y="26" width="104" height="64" rx="3" fill="#e8ecf5"/>
-      <circle cx="210" cy="118" r="20" fill="#f2d8bd"/>
-      <path d="M190 112 q20 -24 40 0 l0 -9 q-20 -18 -40 0 z" fill="#3a3630"/>
-      <path d="M198 112 l10 4 M222 112 l-10 4" stroke="#14213d" stroke-width="2.5"/>
-      <path d="M236 96 q6 10 -2 14" stroke="#7fb2e5" stroke-width="3" fill="none"/>
-      <text x="300" y="60" font-size="18" font-weight="900" fill="#b98a2f" transform="rotate(4 300 60)">カタ…</text>
-      <text x="316" y="90" font-size="18" font-weight="900" fill="#b98a2f" transform="rotate(-6 316 90)">カタ…</text>
-    </svg>
-    <div class="bubble mono">なんで、オレばっかり……。<br>社員に任せたいのに、任せ方が分からない。</div>
+  <!-- CUT 04 -->
+  <section class="panel">
+    <span class="time">PM 10:00 事務所</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="04" data-note="消灯した事務所に一人。デスクライトだけが社長の横顔を照らす">
+      <img src="manga/04.jpg" alt="夜の事務所で一人残業する社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble mono">なんで、オレばっかり……。<br>社員に任せたいのに、<b>任せ方が分からない。</b></div>
   </section>
 
-  <div class="narration">そんなある日。<b>知人の紹介</b>で出会ったのが——</div>
+  <div class="narration q">「これ、<b>代わりにやってもらえたら</b>」<br>——そう思ったこと、ありませんか？</div>
 
-  <!-- コマ4: LEVEREX登場 -->
+  <!-- ===== 第2章 ===== -->
+  <div class="chapter"><span>第2章　出会い</span></div>
+
+  <!-- CUT 05 -->
   <section class="panel">
-    <span class="time">出会い</span>
-    <div style="text-align:center; padding: 8px 0 2px;">
-      <img src="logo.jpg" alt="LEVEREX" style="width: 62%; max-width: 240px;">
-    </div>
+    <span class="time">出会い</span><span class="pov l">LEVEREX</span>
+    <figure class="scene" data-cut="05" data-note="応接室。LEVEREX担当が資料を一枚だけ机に置く。背景は放射グラデ（紺→金）">
+      <img src="manga/05.jpg" alt="応接室でLEVEREX担当と向き合う社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
     <div class="bubble gold">その『詰まり』、<b>30日で回る形</b>にできますよ。</div>
     <div class="bubble right">……全部を、ですか?</div>
-    <div class="bubble gold">いえ。<b>まず1つだけ</b>。全部やろうとするから、続かないんです。</div>
-    <p class="who">■ LEVEREX(レバレックス)/業務改善・仕組み化の伴走支援</p>
+    <div class="bubble gold">いえ。<b>まず1つだけ</b>。<br>全部やろうとするから、続かないんです。</div>
+    <p class="who">■ LEVEREX（レバレックス）／業務改善・仕組み化の伴走支援</p>
   </section>
 
-  <!-- コマ5: 診断 -->
+  <!-- CUT 06 -->
   <section class="panel tilt-r">
-    <span class="time">診断 — 最初の2週間</span>
-    <div class="bubble gold">診断の結果、最初に直すのは<b>『見積』</b>。<br>ここが一番、社長で止まってます。</div>
-    <div class="bubble gold">佐藤社長の頭の中を、<b>手順と判断基準</b>に書き出します。それ、会社の宝なので。</div>
-    <div class="bubble right">オレの頭の中が……宝?</div>
-    <div class="bubble gold">はい。<b>強みを見つけて、すき間で一番になる</b>。それが私たちのやり方です。</div>
+    <span class="time">その夜</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="06" data-note="自宅で一人、腕を組んで考え込む社長。半信半疑の表情">
+      <img src="manga/06.jpg" alt="半信半疑で考え込む社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble mono">そんな都合よく、いくのか……?</div>
   </section>
 
-  <!-- コマ6: 30日後 -->
+  <!-- CUT 07 -->
   <section class="panel tilt-l">
-    <span class="time">30日後 AM 10:30 外出中</span>
-    <div class="bubble right shout">社長、例の見積の件ですが——</div>
-    <div class="bubble right" style="border-color:#b98a2f;">あ、<b>手順書どおりに作って送りました!</b><br>判断基準も書いてあったので✨</div>
-    <svg class="scene" viewBox="0 0 420 110" xmlns="http://www.w3.org/2000/svg">
-      <rect width="420" height="110" fill="#f3f0e6"/>
-      <circle cx="210" cy="58" r="30" fill="#f2d8bd"/>
-      <path d="M180 48 q30 -34 60 0 l0 -13 q-30 -25 -60 0 z" fill="#3a3630"/>
-      <circle cx="198" cy="52" r="4" fill="#14213d"/><circle cx="222" cy="52" r="4" fill="#14213d"/>
-      <path d="M196 74 q14 12 28 0" stroke="#14213d" stroke-width="3.5" fill="none"/>
-      <text x="270" y="46" font-size="24" font-weight="900" fill="#b98a2f" transform="rotate(-8 270 46)">!?</text>
-      <text x="96" y="72" font-size="18" font-weight="900" fill="#b98a2f" transform="rotate(-6 96 72)">ジーン…</text>
-    </svg>
-    <div class="bubble mono">オレがいなくても……回ってる。</div>
+    <span class="time">診断 — 最初の2週間</span><span class="pov l">LEVEREX</span>
+    <figure class="scene" data-cut="07" data-note="ホワイトボードに業務の流れを書き出す3人。「見積」に赤丸">
+      <img src="manga/07.jpg" alt="業務の流れを書き出し、最初に直す1業務を決める場面" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble gold">最初に直すのは<b>『見積』</b>。<br>ここが一番、社長で止まってます。</div>
+    <div class="bubble gold">社長の頭の中を、<b>手順と判断基準</b>に書き出します。<br>それ、会社の宝なので。</div>
+    <div class="bubble right">オレの頭の中が……宝?</div>
   </section>
 
-  <!-- コマ7: その後 -->
+  <!-- ===== 第3章 ===== -->
+  <div class="chapter"><span>第3章　実演</span></div>
+
+  <!-- CUT 08 -->
+  <section class="panel tilt-r">
+    <span class="time">実演 — その場で</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="08" data-note="PC画面。走り書きのメモを貼ると、数十秒で整った表に変わる。社長が身を乗り出す">
+      <img src="manga/08.jpg" alt="走り書きのメモが数十秒で表に整理される場面" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble gold">その走り書き、そのまま貼ってください。<br>「日付・項目・金額の表にして」と頼むだけです。</div>
+    <div class="bubble right shout">……できてる。<br>表計算ソフト、開いてもいないぞ!?</div>
+  </section>
+
+  <!-- CUT 09 -->
+  <section class="panel tilt-l">
+    <span class="time">実演</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="09" data-note="PCを前に目を輝かせる社長。頭の上に電球やキラキラ。高揚した雰囲気">
+      <img src="manga/09.jpg" alt="AIの働きにワクワクする社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble gold">頼むと、<b>ポケットから道具を出すみたいに</b>、<br>片づけてくれるんです。</div>
+    <div class="bubble right">なんだ、この……<b>ワクワクは。</b></div>
+  </section>
+
+  <!-- CUT 10 -->
   <section class="panel">
-    <span class="time">いま</span>
-    <div class="bubble">通知は20件→3件。夜は家でメシを食ってる。<br>空いた時間で、<b>次の一手</b>を考え始めた。</div>
+    <span class="time">後日 — 現場から</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="10" data-note="左＝工場の隅でスマホに話しかける社長（昼）。右＝夜の自宅PCに下書きが用意されている">
+      <img src="manga/10.jpg" alt="現場からスマホで頼み、帰宅すると下書きができている場面" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble">（スマホに）見積の下書き、作っておいてくれ。</div>
+    <div class="bubble mono">現場でも、移動中でも、<b>オレが休んでる間でも</b>——<br>"部下"は動いてる。</div>
+    <div class="bubble mono">家に帰ったら、下書きができてる。</div>
+  </section>
+
+  <!-- CUT 11 -->
+  <section class="panel tilt-r">
+    <span class="time">気づき</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="11" data-note="社長のバストアップ。ハッと腑に落ちる、静かに納得する表情。淡い光">
+      <img src="manga/11.jpg" alt="「任せている」と気づく社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble mono shout">これは"使ってる"んじゃない。<br>……<b>"任せてる"のか。</b></div>
+  </section>
+
+  <!-- CUT 12 -->
+  <section class="panel">
+    <span class="time">安心のために</span><span class="pov l">LEVEREX</span>
+    <figure class="scene" data-cut="12" data-note="LEVEREX担当が落ち着いて説明、隣で社長がうなずく。安心感のある明るい室内">
+      <img src="manga/12.jpg" alt="安全の前提を説明するLEVEREX担当" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble gold">渡すのは<b>"手順"</b>です。<br>顧客名や個人情報は入れません。</div>
+    <div class="bubble gold">最後は必ず、<b>人が確認します。</b></div>
+  </section>
+
+  <!-- ===== 文章パート ===== -->
+  <section class="prose">
+    <h2><span class="lead">この話を、事実で</span>AIを“使う”から、“任せる”へ。<br>渡すのは、あなたの「手順」です。</h2>
+    <p>「使っている」は、聞く・調べてもらうまで。「任せている」は、仕事の一部を受け持ってもらうことです。その差を生むのが<b>手順</b>。だから私たちは、まず診断で<b>詰まっている1業務</b>を特定し、社長の頭の中にある手順と判断基準を紙に出します。そのうえで、担当者が変わっても回る形に組み替えます。</p>
+
+    <h3>進め方は3ステップ</h3>
+    <ol class="steps">
+      <li><b>初回整理（30分・無料）</b><span>どの仕事が、どこで止まっているかを一緒に確認します。いきなり契約はしません。</span></li>
+      <li><b>業務整理の診断</b><span>最初に直す1業務を決め、手順・判断基準・担当を書き出します。</span></li>
+      <li><b>30日で回る形に</b><span>手順書と管理のやり方まで一緒に作り、実際に回るところまで伴走します。</span></li>
+    </ol>
+
+    <h3>AIは、主役ではありません</h3>
+    <p>第3章でお見せしたのは、手順が決まったあとの<b>作業を速くする裏側の手段</b>です。順番が逆になると続きません。まず手順、次に道具です。</p>
+    <p>また、AIに渡すのは手順であって、<b>顧客名・個人情報・契約情報・社内機密は入れません</b>。人が最終確認する前提で使います。</p>
+
+    <h3>向いている会社／そうでない会社</h3>
+    <div class="fit">
+      <div class="yes"><b>向いています</b>
+        <ul>
+          <li>社長・特定の人でないと判断できない仕事が多い</li>
+          <li>見積や請求で、漏れ・遅れが出ている</li>
+          <li>社員に任せたいが、任せ方が分からない</li>
+        </ul>
+      </div>
+      <div class="no"><b>向いていません</b>
+        <ul>
+          <li>すぐに大きなシステムを導入したい</li>
+          <li>手順を変えずにツールだけ入れたい</li>
+          <li>現場の話を聞く時間が取れない</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="advisor">
+      <b>名誉顧問｜高田稔先生（一番化戦略コンサルタント）</b><br>
+      「強みを見つけて、すき間で一番になる」——この考え方を土台に、その会社にしかない強みから仕組みを組み立てます。
+    </div>
+
+    <dl class="faq">
+      <dt>費用はいくらですか?</dt>
+      <dd>ご支援の範囲によって変わるため、初回整理のあとに内容に合わせてお見積りします。初回整理（30分）に費用はかかりません。</dd>
+      <dt>まず何から始まりますか?</dt>
+      <dd>30分の初回整理です。オンラインでも対面でも構いません。この時点で顧客名や実数をお出しいただく必要はありません。</dd>
+      <dt>社員に負担がかかりませんか?</dt>
+      <dd>手順を増やすのではなく、社長に集まっている判断を減らす作業です。第1章の田村さんのように、待ち時間が減るところから始めます。</dd>
+    </dl>
+  </section>
+
+  <section class="cta-block mid">
+    <h2>「うちのどこが詰まっているか」から、<br>一緒に確認しませんか?</h2>
+    <p>30分・無料。オンラインまたは対面。</p>
+    <a class="btn primary" href="apply.html">📝 初回整理を申し込む<span class="s">約1分のかんたん入力</span></a>
+  </section>
+
+  <!-- ===== 第4章 ===== -->
+  <div class="chapter"><span>第4章　30日後</span></div>
+
+  <!-- CUT 13 -->
+  <section class="panel tilt-r">
+    <span class="time">30日後 AM 10:30</span><span class="pov t">社員</span>
+    <figure class="scene" data-cut="13" data-note="電話を受けながら、すでに送信済みの画面を見せる社員">
+      <img src="manga/13.jpg" alt="自分の判断で見積を送り終えた社員" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble right shout">社長、例の見積の件ですが——</div>
+    <div class="bubble teal"><b>手順書どおりに作って送りました!</b><br>判断基準も書いてあったので✨</div>
+  </section>
+
+  <!-- CUT 14 -->
+  <section class="panel tilt-l">
+    <span class="time">同時刻 外出先</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="14" data-note="車を停めて、鳴らないスマホを見つめる社長。少し笑っている。窓の外は明るい">
+      <img src="manga/14.jpg" alt="鳴らないスマホを見つめ、余裕の出た社長" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
+    <div class="bubble mono">オレがいなくても……<b>回ってる。</b></div>
+    <div class="bubble">空いた時間で、ずっと後回しにしてた<br><b>"攻めの仕事"</b>を始めた。</div>
+  </section>
+
+  <!-- CUT 15 -->
+  <section class="panel">
+    <span class="time">いま</span><span class="pov s">社長</span>
+    <figure class="scene" data-cut="15" data-note="定時の事務所。社長が帰り支度をし、社員が次の資料を渡す。二人とも穏やかな笑顔">
+      <img src="manga/15.jpg" alt="定時に帰る社長と、次の資料を渡す社員" loading="lazy"
+           onerror="this.parentElement.classList.add('pending');this.remove();">
+    </figure>
     <div class="bubble gold">次は『請求』、いきましょうか。</div>
     <div class="bubble right">ああ。<b>次もまず、1つだけな。</b>😏</div>
   </section>
 
   <div class="narration"><b>現場の強みを、会社が伸びる仕組みに変える。</b></div>
 
-  <!-- CTA -->
+  <!-- ===== 最終CTA ===== -->
   <section class="cta-block">
     <h2>「オレしかできない」を、<br>30日で終わらせませんか?</h2>
-    <p>いきなり契約はしません。まず30分の初回整理(無料)で、<br>どの仕事がどこで止まっているかを一緒に確認します。</p>
-    <a class="btn primary" href="apply.html">📝 初回整理(30分・無料)を申し込む</a>
+    <p>いきなり契約はしません。まず30分の初回整理（無料）で、<br>どの仕事がどこで止まっているかを一緒に確認します。</p>
+    <a class="btn primary" href="apply.html">📝 初回整理（30分・無料）を申し込む<span class="s">約1分のかんたん入力</span></a>
     <a class="btn gold" href="checklist.html">🎁 まず「回る会社チェックリスト10」をやってみる</a>
     <a class="btn line" href="https://line.me/R/ti/p/@558bnxlh">💬 LINEで気軽に相談する</a>
   </section>
 
-  <p class="footer">LEVEREX（レバレックス）｜業務改善・仕組み化の伴走支援<br>名誉顧問: 高田稔先生(一番化戦略コンサルタント)<br>※本編は典型的なご相談を元にした物語で、特定の企業・実在の人物ではありません。</p>
+  <p class="footer">
+    LEVEREX（レバレックス）｜業務改善・仕組み化の伴走支援<br>
+    名誉顧問: 高田稔先生（一番化戦略コンサルタント）<br>
+    ※本編は典型的なご相談をもとにした物語です。特定の企業・実在の人物ではありません。<br>
+    <a href="index.html">LEVEREXについて</a>
+  </p>
 </div>
+
+<nav class="sticky">
+  <a href="apply.html">初回整理を申し込む<span>30分・無料／約1分の入力</span></a>
+</nav>
 </body>
 </html>
