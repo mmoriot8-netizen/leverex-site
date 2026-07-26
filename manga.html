@@ -63,9 +63,9 @@
   .pov.s{background:var(--gold)} .pov.t{background:#3f7f6f} .pov.l{background:var(--navy2)}
 
   /* 吹き出し（絵の上） */
-  .bb{position:absolute;z-index:2;max-width:74%;line-height:1.55}
+  .bb{position:absolute;z-index:2;max-width:46%;line-height:1.55}
   .bb>span{display:block;background:#fff;border:2.5px solid var(--ink);border-radius:16px;
-    padding:8px 12px;font-size:13.5px;font-weight:700;position:relative;
+    padding:7px 11px;font-size:13px;font-weight:700;position:relative;
     word-break:keep-all;overflow-wrap:anywhere;line-break:strict}
   .bb>span::after{content:"";position:absolute;bottom:-11px;left:22px;
     border:7px solid transparent;border-top-color:var(--ink)}
@@ -75,8 +75,10 @@
   .bb.bl{bottom:10px;left:8px}
   .bb.br{bottom:10px;right:8px}
   .cut:has(.cap) .bb.bl,.cut:has(.cap) .bb.br{bottom:66px}
+  .cut:has(.cap) .bb.ml,.cut:has(.cap) .bb.mr{top:auto;bottom:70px}
   .bb.br>span::after{left:auto;right:22px}
-  .bb.ml{top:46%;left:8px}
+  .bb.tc{top:34px;left:50%;transform:translateX(-50%);max-width:40%}
+  .bb.ml{top:40%;left:8px}
   .bb.mr{top:46%;right:8px}
   .bb.mr>span::after{left:auto;right:22px}
   .bb.c{top:50%;left:50%;transform:translate(-50%,-50%);max-width:80%;text-align:center}
@@ -95,6 +97,8 @@
 
   .post{border:2.5px solid var(--ink);border-top:none;background:#fff;
     font-size:12.5px;line-height:1.65;font-weight:600;padding:8px 12px;margin-top:-9px;margin-bottom:9px}
+  .post+.post{border-top:none}
+  .post.g{border-color:var(--gold)}
   .note{font-size:10.5px;color:var(--sub);font-weight:700;letter-spacing:.5px;
     line-height:1.5;margin:5px 0 9px}
 
@@ -178,14 +182,14 @@
       <img src="manga/01.jpg" alt="朝の食卓でスマホの通知を見る社長" loading="lazy">
       <span class="tag">AM 7:00　自宅</span>
       <span class="pov s">社長</span>
-      <div class="bb bl"><span>朝から通知が20件……<br>ぜんぶ、オレ宛てか。</span></div>
       </figure>
+      <p class="post">「朝から通知が20件……ぜんぶ、オレ宛てか」</p>
       <p class="note">■ 製造業・従業員12名／佐藤社長（52）</p>
       <figure class="cut">
       <img src="manga/02.jpg" alt="社長の確認待ちで手が止まる社員" loading="lazy">
       <span class="tag">AM 8:30　事務所</span>
       <span class="pov t">社員</span>
-      <div class="bb tl teal"><span>これ、社長に聞かないと<br>出せない……。</span></div>
+      <div class="bb tl teal"><span>これ、社長に<br>聞かないと<br>出せない……。</span></div>
       <div class="cap">（待っている時間、私は何をしているんだろう。）</div>
       </figure>
       <p class="note">■ 入社5年・事務兼営業アシスタント／田村さん（34）</p>
@@ -197,15 +201,15 @@
       <img src="manga/03.jpg" alt="移動中に現場から電話を受ける社長" loading="lazy">
       <span class="tag">AM 10:30　移動中</span>
       <span class="pov s">社長</span>
-      <div class="bb tl shout"><span>社長〜！あの件、<br>どうなってます!?</span></div>
-      <div class="bb br"><span>すまん、オレが確認しないと<br>分からん。戻ったら見る！</span></div>
+      <div class="bb ml shout"><span>社長〜！<br>あの件、<br>どうなってます!?</span></div>
       </figure>
+      <p class="post">「すまん、オレが確認しないと分からん。戻ったら見る！」</p>
       <p class="post">（見積もオレ。段取りもオレ。判断もオレ。——いつからこうなった？）</p>
       <figure class="cut">
       <img src="manga/04.jpg" alt="夜の事務所で一人残業する社長" loading="lazy">
       <span class="tag">PM 10:00　事務所</span>
       <span class="pov s">社長</span>
-      <div class="bb tl"><span>なんで、オレばっかり……。</span></div>
+      <div class="bb ml"><span>なんで、<br>オレばっかり……。</span></div>
       <div class="cap">社員に任せたいのに、<b>任せ方が分からない。</b></div>
       </figure>
       <div class="narr">「これ、<b>代わりにやってもらえたら</b>」——そう思ったこと、ありませんか。</div>
@@ -218,9 +222,9 @@
       <img src="manga/05.jpg" alt="応接室でLEVEREX担当と向き合う社長" loading="lazy">
       <span class="tag">出会い</span>
       <span class="pov l">LEVEREX</span>
-      <div class="bb bl gold"><span>その『詰まり』、<br><b>30日で回る形</b>にできますよ。</span></div>
-      <div class="cap">「……全部を、ですか？」「いえ。<b>まず1つだけ</b>。全部やろうとするから、続かないんです」</div>
       </figure>
+      <p class="post">「その『詰まり』、<b>30日で回る形</b>にできますよ」</p>
+      <p class="post">「……全部を、ですか？」「いえ。<b>まず1つだけ</b>。全部やろうとするから、続かないんです」</p>
       <p class="note">■ LEVEREX（レバレックス）／業務改善・仕組み化の伴走支援</p>
       <figure class="cut">
       <img src="manga/06.jpg" alt="半信半疑で考え込む社長" loading="lazy">
@@ -237,18 +241,16 @@
       <img src="manga/07.jpg" alt="業務の流れを書き出し、最初に直す1業務を決める場面" loading="lazy">
       <span class="tag">診断 — 最初の2週間</span>
       <span class="pov l">LEVEREX</span>
-      <div class="bb tl gold"><span>最初に直すのは<b>『見積』</b>。<br>ここが一番、社長で止まってます。</span></div>
-      <div class="bb br"><span>オレの頭の中が……宝？</span></div>
-      <div class="cap">「社長の頭の中を、<b>手順と判断基準</b>に書き出します。それ、会社の宝なので」</div>
+      <div class="bb tl gold"><span>最初に直すのは<br><b>『見積』</b>。</span></div>
       </figure>
+      <p class="post">「ここが一番、社長で止まってます。社長の頭の中を、<b>手順と判断基準</b>に書き出します。それ、会社の宝なので」</p>
       <figure class="cut">
       <img src="manga/08.jpg" alt="走り書きのメモが数十秒で表に整理される場面" loading="lazy">
       <span class="tag">実演 — その場で</span>
       <span class="pov s">社長</span>
-      <div class="bb tl gold"><span>その走り書き、そのまま貼ってください。</span></div>
-      <div class="bb br shout"><span>……できてる。<br>表計算ソフト、開いてもいないぞ!?</span></div>
-      <div class="cap">「『日付・項目・金額の表にして』と頼むだけです」</div>
+      <div class="bb tl gold"><span>その走り書き、<br>そのまま<br>貼ってください。</span></div>
       </figure>
+      <p class="post">「『日付・項目・金額の表にして』と頼むだけです」　——「……できてる。表計算ソフト、開いてもいないぞ!?」</p>
       <span class="pno">4</span>
     </section>
     <section class="page">
@@ -257,14 +259,14 @@
       <img src="manga/09.jpg" alt="AIの働きにワクワクする社長" loading="lazy">
       <span class="tag">実演</span>
       <span class="pov s">社長</span>
-      <div class="bb tl gold"><span>頼むと、<b>ポケットから道具を出すみたいに</b>片づけてくれるんです。</span></div>
-      <div class="bb br"><span>なんだ、この……<b>ワクワクは。</b></span></div>
+      <div class="bb ml gold"><span>頼むと、道具を<br>出すみたいに<br>片づけて<br>くれるんです。</span></div>
       </figure>
+      <p class="post">「なんだ、この……<b>ワクワクは。</b>」</p>
       <figure class="cut">
       <img src="manga/10.jpg" alt="現場からスマホで頼み、帰宅すると下書きができている場面" loading="lazy">
       <span class="tag">後日 — 現場から</span>
       <span class="pov s">社長</span>
-      <div class="bb tl"><span>（スマホに）見積の下書き、<br>作っておいてくれ。</span></div>
+      <div class="bb ml"><span>（スマホに）<br>見積の下書き、<br>作っておいてくれ。</span></div>
       <div class="cap">現場でも、移動中でも、<b>オレが休んでいる間でも</b>——“部下”は動いている。家に帰ると、下書きができている。</div>
       </figure>
       <span class="pno">5</span>
@@ -275,15 +277,15 @@
       <img src="manga/11.jpg" alt="「任せている」と気づく社長" loading="lazy">
       <span class="tag">気づき</span>
       <span class="pov s">社長</span>
-      <div class="bb bl shout"><span>これは“使ってる”んじゃない。<br>……<b>“任せてる”のか。</b></span></div>
       </figure>
+      <p class="post">「これは“使ってる”んじゃない。……<b>“任せてる”のか</b>」</p>
       <figure class="cut">
       <img src="manga/12.jpg" alt="安全の前提を説明するLEVEREX担当" loading="lazy">
       <span class="tag">安心のために</span>
       <span class="pov l">LEVEREX</span>
-      <div class="bb tl gold"><span>渡すのは<b>“手順”</b>です。<br>顧客名や個人情報は入れません。</span></div>
-      <div class="bb bl gold"><span>最後は必ず、<b>人が確認します。</b></span></div>
+      <div class="bb tc gold"><span>渡すのは<b>“手順”</b>です。</span></div>
       </figure>
+      <p class="post">「顧客名や個人情報は入れません。<b>最後は必ず、人が確認します</b>」</p>
       <span class="pno">6</span>
     </section>
 
@@ -348,14 +350,14 @@
       <img src="manga/13.jpg" alt="自分の判断で見積を送り終えた社員" loading="lazy">
       <span class="tag">30日後　AM 10:30</span>
       <span class="pov t">社員</span>
-      <div class="bb tr"><span>社長、例の見積の件ですが——</span></div>
-      <div class="bb br teal"><span><b>手順書どおりに作って送りました！</b><br>判断基準も書いてあったので。</span></div>
+      <div class="bb tl"><span>社長、<br>例の見積の件<br>ですが——</span></div>
       </figure>
+      <p class="post">「<b>手順書どおりに作って送りました！</b>　判断基準も書いてあったので」</p>
       <figure class="cut">
       <img src="manga/14.jpg" alt="鳴らないスマホを見つめ、余裕の出た社長" loading="lazy">
       <span class="tag">同時刻　外出先</span>
       <span class="pov s">社長</span>
-      <div class="bb tl"><span>オレがいなくても……<b>回ってる。</b></span></div>
+      <div class="bb ml"><span>オレがいなくても<br>……<b>回ってる。</b></span></div>
       <div class="cap">空いた時間で、ずっと後回しにしていた<b>“攻めの仕事”</b>を始めた。</div>
       </figure>
       <span class="pno">7</span>
@@ -366,9 +368,9 @@
       <img src="manga/15.jpg" alt="定時に帰る社長と、次の資料を渡す社員" loading="lazy">
       <span class="tag">いま</span>
       <span class="pov s">社長</span>
-      <div class="bb ml gold"><span>次は『請求』、いきましょうか。</span></div>
-      <div class="bb br"><span>ああ。<b>次もまず、1つだけな。</b></span></div>
       </figure>
+      <p class="post">「次は『請求』、いきましょうか」</p>
+      <p class="post">「ああ。<b>次もまず、1つだけな。</b>」</p>
       <div class="narr"><b>現場の強みを、会社が伸びる仕組みに変える。</b></div>
       <span class="pno">8</span>
     </section>
