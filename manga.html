@@ -63,9 +63,10 @@
   .pov.s{background:var(--gold)} .pov.t{background:#3f7f6f} .pov.l{background:var(--navy2)}
 
   /* 吹き出し（絵の上） */
-  .bb{position:absolute;z-index:2;max-width:64%;line-height:1.5}
+  .bb{position:absolute;z-index:2;max-width:74%;line-height:1.55}
   .bb>span{display:block;background:#fff;border:2.5px solid var(--ink);border-radius:16px;
-    padding:8px 12px;font-size:13.5px;font-weight:700;position:relative}
+    padding:8px 12px;font-size:13.5px;font-weight:700;position:relative;
+    word-break:keep-all;overflow-wrap:anywhere;line-break:strict}
   .bb>span::after{content:"";position:absolute;bottom:-11px;left:22px;
     border:7px solid transparent;border-top-color:var(--ink)}
   .bb.tl{top:34px;left:8px}
@@ -256,7 +257,7 @@
       <img src="manga/09.jpg" alt="AIの働きにワクワクする社長" loading="lazy">
       <span class="tag">実演</span>
       <span class="pov s">社長</span>
-      <div class="bb tl gold"><span>頼むと、<b>ポケットから道具を出すみたいに</b>、<br>片づけてくれるんです。</span></div>
+      <div class="bb tl gold"><span>頼むと、<b>ポケットから道具を出すみたいに</b>片づけてくれるんです。</span></div>
       <div class="bb br"><span>なんだ、この……<b>ワクワクは。</b></span></div>
       </figure>
       <figure class="cut">
@@ -281,7 +282,7 @@
       <span class="tag">安心のために</span>
       <span class="pov l">LEVEREX</span>
       <div class="bb tl gold"><span>渡すのは<b>“手順”</b>です。<br>顧客名や個人情報は入れません。</span></div>
-      <div class="bb br gold"><span>最後は必ず、<b>人が確認します。</b></span></div>
+      <div class="bb bl gold"><span>最後は必ず、<b>人が確認します。</b></span></div>
       </figure>
       <span class="pno">6</span>
     </section>
@@ -347,7 +348,7 @@
       <img src="manga/13.jpg" alt="自分の判断で見積を送り終えた社員" loading="lazy">
       <span class="tag">30日後　AM 10:30</span>
       <span class="pov t">社員</span>
-      <div class="bb tl"><span>社長、例の見積の件ですが——</span></div>
+      <div class="bb tr"><span>社長、例の見積の件ですが——</span></div>
       <div class="bb br teal"><span><b>手順書どおりに作って送りました！</b><br>判断基準も書いてあったので。</span></div>
       </figure>
       <figure class="cut">
