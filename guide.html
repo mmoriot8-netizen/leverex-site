@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AIを「使う」から「任せる」へ｜LEVEREX 登録特典</title>
+<meta name="description" content="質問して答えを読むのが「使う」。目的と形式を伝えて下書きとファイルが出てくるのが「任せる」。その差を生むのは手順です。属人化した業務を手放す最初の一歩を、今日のうちに踏むための読み物です。">
+<meta property="og:title" content="AIを「使う」から「任せる」へ｜LEVEREX 登録特典">
+<meta property="og:description" content="属人化した業務を手放す最初の一歩。読了8分。">
+<meta property="og:type" content="article">
+<style>
+  :root {
+    --navy:#14213d; --navy2:#1b2c52; --gold:#b98a2f; --goldl:#d9b45f;
+    --ivory:#f8f6ef; --paper:#fff; --sub:#5b647a; --line:#e6e2d6; --ink:#111820;
+    --red:#c0392b; --mint:#faf5e6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    background:var(--ivory);color:var(--navy);line-height:1.85;
+    display:flex;justify-content:center;padding-bottom:86px;-webkit-text-size-adjust:100%}
+  .app{width:100%;max-width:560px;padding:0 18px 40px}
+
+  .back{display:inline-block;font-size:12.5px;color:var(--sub);text-decoration:none;margin-top:20px}
+
+  /* 見出し */
+  .cover{margin:16px 0 22px;background:linear-gradient(160deg,#1b2c52,#14213d 70%);
+    color:#fff;padding:32px 22px 28px;position:relative;overflow:hidden}
+  .cover .badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:2.5px;
+    color:var(--goldl);border:1px solid var(--gold);border-radius:999px;padding:3px 13px;margin-bottom:14px}
+  .cover h1{font-size:25px;line-height:1.5;font-weight:800;text-wrap:balance}
+  .cover h1 em{font-style:normal;color:var(--goldl)}
+  .cover .lead{margin-top:12px;font-size:13.5px;color:#cfd6e6;line-height:1.8}
+  .cover .meta{margin-top:14px;font-size:11.5px;color:#93a0bb;letter-spacing:1px}
+
+  /* 目次 */
+  .toc{background:var(--paper);border:1px solid var(--line);padding:16px 18px;margin-bottom:26px}
+  .toc h2{font-size:12px;letter-spacing:2.5px;color:var(--gold);margin-bottom:8px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;font-size:13.5px;padding:4px 0 4px 26px;position:relative}
+  .toc li::before{content:counter(t);position:absolute;left:0;top:6px;width:18px;height:18px;
+    border-radius:50%;background:var(--navy);color:#fff;font-size:10.5px;font-weight:800;
+    display:flex;align-items:center;justify-content:center}
+  .toc a{color:var(--navy);text-decoration:none}
+
+  /* 本文 */
+  h2.sec{font-size:20px;line-height:1.5;margin:38px 0 6px;padding-left:12px;
+    border-left:5px solid var(--gold);text-wrap:balance}
+  h3{font-size:15.5px;margin:26px 0 6px}
+  p{font-size:14.5px;margin-top:12px}
+  p.first{margin-top:14px}
+  strong{color:var(--ink)}
+  em.hl{font-style:normal;background:linear-gradient(transparent 62%, #f4e3ae 62%);font-weight:700}
+
+  figure{margin:20px 0 6px}
+  figure img{display:block;width:100%;border:1px solid var(--line)}
+  figcaption{font-size:11.5px;color:var(--sub);margin-top:6px;line-height:1.6}
+
+  ul.list{margin:12px 0 0 20px;font-size:14.5px}
+  ul.list li{margin-top:5px}
+
+  .box{background:var(--paper);border:1px solid var(--line);padding:16px 18px;margin-top:18px}
+  .box .t{font-size:13px;font-weight:800;color:var(--gold);letter-spacing:1.5px;margin-bottom:6px}
+  .box p{font-size:13.5px;margin-top:6px}
+  .box.warn{background:#fff5f4;border-color:#f0cdc8}
+  .box.warn .t{color:var(--red)}
+
+  .cmp{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+  .cmp div{padding:14px 16px;font-size:13.5px}
+  .cmp .a{background:#eef1f5;border-left:5px solid #8d99ae}
+  .cmp .b{background:var(--mint);border-left:5px solid var(--gold)}
+  .cmp b{display:block;margin-bottom:3px;font-size:14px}
+
+  pre{background:var(--ink);color:#e9edf3;font-size:12.5px;line-height:1.75;
+    padding:14px 16px;margin-top:14px;overflow-x:auto;
+    font-family:ui-monospace,"SF Mono",Menlo,monospace}
+  pre b{color:var(--goldl);font-weight:700}
+
+  .steps{list-style:none;counter-reset:s;margin-top:14px}
+  .steps li{counter-increment:s;position:relative;padding:12px 0 12px 42px;
+    border-top:1px solid var(--line);font-size:14px}
+  .steps li:first-child{border-top:none}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:13px;width:27px;height:27px;
+    border-radius:50%;background:var(--navy);color:#fff;font-size:12.5px;font-weight:800;
+    display:flex;align-items:center;justify-content:center}
+  .steps li b{display:block;font-size:14.5px;margin-bottom:2px}
+  .steps li span{color:var(--sub);font-size:13px}
+
+  .pull{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+    padding:16px 4px;margin:26px 0 6px;font-size:16.5px;font-weight:800;line-height:1.65;text-align:center}
+
+  /* CTA */
+  .cta{background:var(--paper);border:3px solid var(--gold);padding:24px 18px;text-align:center;margin-top:34px}
+  .cta h2{font-size:18.5px;line-height:1.5;margin-bottom:6px}
+  .cta p{font-size:13px;color:var(--sub);margin-bottom:16px}
+  .btn{display:block;text-decoration:none;font-weight:800;font-size:15.5px;
+    border-radius:999px;padding:15px;margin-bottom:10px}
+  .btn:last-child{margin-bottom:0}
+  .btn.primary{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(20,33,61,.3)}
+  .btn.sub{background:#fff;color:var(--navy);border:2px solid var(--line)}
+  .btn .s{display:block;font-size:11.5px;font-weight:600;opacity:.85;margin-top:2px}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(255,255,255,.96);
+    border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    display:flex;justify-content:center;box-shadow:0 -6px 20px rgba(20,33,61,.08)}
+  .sticky a{max-width:524px;width:100%;text-align:center;text-decoration:none;background:var(--navy);
+    color:#fff;font-weight:800;font-size:15px;border-radius:999px;padding:13px}
+  .sticky a span{display:block;font-size:11px;font-weight:600;opacity:.85}
+
+  .footer{text-align:center;font-size:11px;color:var(--sub);margin-top:26px;line-height:1.9}
+  .footer a{color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="app">
+  <a class="back" href="index.html">‹ LEVEREXトップへ</a>
+
+  <section class="cover">
+    <span class="badge">LINE登録特典</span>
+    <h1>AIを「使う」から、<br><em>「任せる」</em>へ。</h1>
+    <p class="lead">「あの人しかできない」を手放す最初の一歩は、道具を増やすことではありません。<strong style="color:#fff">手順を、渡せる形にすること</strong>です。</p>
+    <p class="meta">読了8分／実際に手を動かす場合は約40分</p>
+  </section>
+
+  <nav class="toc">
+    <h2>この記事の内容</h2>
+    <ol>
+      <li><a href="#s1">収入より先に、時間を取り戻す</a></li>
+      <li><a href="#s2">「使う」と「任せる」は、まったく別の話</a></li>
+      <li><a href="#s3">任せられるかどうかは、AIの性能では決まらない</a></li>
+      <li><a href="#s4">日本はまだ「試したことがある」が26.7%</a></li>
+      <li><a href="#s5">今日の到達点を1つに絞る</a></li>
+      <li><a href="#s6">実際にやってみる（40分）</a></li>
+      <li><a href="#s7">ここで必ずつまずきます</a></li>
+      <li><a href="#s8">この先に起きること</a></li>
+    </ol>
+  </nav>
+
+  <h2 class="sec" id="s1">1. 収入より先に、時間を取り戻す</h2>
+  <p class="first">「売上を増やしたい」。当然の目標です。ただ、その前に詰まっているものがあります。</p>
+  <ul class="list">
+    <li>時間がないから、学べない</li>
+    <li>学べないから、任される仕事が変わらない</li>
+    <li>仕事が変わらないから、売上も変わらない</li>
+  </ul>
+  <p>この循環の入口は、いつも<strong>時間</strong>です。順番はこうなります。</p>
+  <div class="pull">手作業を1つ減らす → 余白が生まれる →<br>考える時間と、選ぶ時間が戻ってくる</div>
+  <p>逆から入ると続きません。新しい道具を先に増やしても、それを覚える時間がないからです。<em class="hl">減らすのが先、増やすのが後</em>です。</p>
+
+  <h2 class="sec" id="s2">2. 「使う」と「任せる」は、まったく別の話</h2>
+  <p class="first">生成AIを「もう使っている」という方は多いと思います。ただ、そのほとんどは<strong>「使う」</strong>で止まっています。</p>
+
+  <figure>
+    <img src="guide/use-to-delegate.png" alt="「使う」と「任せる」の違いを比較した図">
+    <figcaption>どちらの場合も、数字・日付・宛名・事実は人が確認します。AIの出力は完成品ではなく、下書きです。</figcaption>
+  </figure>
+
+  <div class="cmp">
+    <div class="a"><b>使う</b>質問して、答えを読んで、<strong>手を動かすのは自分</strong>。聞けば返ってくるが、作業そのものは減らない。</div>
+    <div class="b"><b>任せる</b>目的と形式を伝えると、<strong>下書きとファイルが出てくる</strong>。自分の作業は「確認して直させる」に変わる。</div>
+  </div>
+
+  <p>この差は、AIの賢さの差ではありません。<em class="hl">渡し方の差</em>です。</p>
+
+  <h2 class="sec" id="s3">3. 任せられるかどうかは、AIの性能では決まらない</h2>
+  <p class="first">ここがいちばん大事なところです。</p>
+  <p>「見積を作っておいて」と頼んで、まともなものが返ってこないのは、AIの能力が足りないからではありません。<strong>その見積を作る手順が、誰の頭の中にもない形で存在しているから</strong>です。</p>
+  <p>社長の頭の中にはあります。10年やっているから、考えなくても手が動きます。でも、それは書き出されていません。だから人にも渡せないし、AIにも渡せない。</p>
+
+  <div class="box">
+    <div class="t">同じ理由で、人にも任せられない</div>
+    <p>「この仕事は、あの人しかできない」という状態は、能力の問題ではなく<strong>手順が言葉になっていない</strong>ことの結果です。AIに任せられない業務は、たいてい新しい社員にも任せられません。</p>
+    <p>逆に言えば、<strong>AIに渡せる形にすることは、人に渡せる形にすること</strong>と同じ作業です。片方をやれば、もう片方も終わります。</p>
+  </div>
+
+  <h2 class="sec" id="s4">4. 日本はまだ「試したことがある」が26.7%</h2>
+  <p class="first">総務省「令和7年版 情報通信白書」によると、2024年度調査で生成AIを利用した経験のある個人は、日本で<strong>26.7%</strong>、米国で68.8%、ドイツで59.2%でした。</p>
+
+  <figure>
+    <img src="guide/ai-usage.png" alt="生成AIの個人利用経験率の国際比較（2024年度）">
+    <figcaption>出典：<a href="https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd112210.html" style="color:var(--sub)">総務省「令和7年版 情報通信白書」</a>（確認日：2026-07-26）</figcaption>
+  </figure>
+
+  <p>これは<strong>個人の「利用経験」を比べた数字</strong>です。会社の業務改善効果や、AIへ仕事を任せている会社の割合ではありません。</p>
+  <p>それでも読み取れることがあります。日本ではまだ<strong>「試したことがある」段階で止まっている人が多い</strong>ということです。つまり、「任せる」まで進んでいる会社は、数字よりさらに少ないはずです。</p>
+  <p>ここは、まだ空いています。</p>
+
+  <h2 class="sec" id="s5">5. 今日の到達点を1つに絞る</h2>
+  <p class="first">全部やろうとすると続きません。今日の到達点は1つだけにします。</p>
+  <div class="pull">AIが、あなたのPCの練習フォルダに<br>最初の1ファイルを作り、あなたが中身を確認する</div>
+  <p>これだけです。スマートフォンからPCを操作する設定も、外部サービスとの連携も、自動化も、今日はやりません。</p>
+
+  <figure>
+    <img src="guide/local-cloud-remote.png" alt="PCローカル・クラウド・リモート操作の違いを示した図">
+    <figcaption>今日扱うのは、いちばん左の「PCローカル」だけです。同じアカウントでログインしただけで、スマートフォンからPC内のフォルダが見えるわけではありません。</figcaption>
+  </figure>
+
+  <div class="box warn">
+    <div class="t">実データは使いません</div>
+    <p>練習で扱うのは<strong>架空のデータだけ</strong>です。顧客名、実際の金額、契約内容、社内機密は入れないでください。会社のPCで行う場合は、先に情報システム部門の許可を取ってください。</p>
+  </div>
+
+  <h2 class="sec" id="s6">6. 実際にやってみる（40分）</h2>
+  <p class="first">必要なものは3つだけです。<strong>インターネットにつながるPC、メールアドレス、40分の空き時間。</strong></p>
+
+  <ol class="steps">
+    <li><b>お使いのPCの種類を確認する</b><span>Windowsか、Macか。次の手順で選ぶものが変わります。</span></li>
+    <li><b>VS Codeを入れる</b><span>マイクロソフトが無料で配布している、文章とファイルを扱うためのソフトです。公式サイトからダウンロードします。</span></li>
+    <li><b>日本語表示に切り替える</b><span>初期状態は英語です。日本語の拡張機能を入れて再起動すると、画面が日本語になります。</span></li>
+    <li><b>Claude Codeを追加する</b><span>VS Codeの拡張機能から公式のものを入れます。ここまでで下準備は終わりです。</span></li>
+    <li><b>空の「練習」フォルダを作って開く</b><span>デスクトップに新しいフォルダを1つ作り、それを開きます。<strong>この中だけを扱います。</strong>いきなり業務のフォルダを開かないでください。</span></li>
+    <li><b>架空のメモを渡して、1ファイル作らせる</b><span>下のように頼みます。</span></li>
+  </ol>
+
+  <pre>7/1  タクシー 1,200円
+7/3  サンプル文具 880円
+7/10 会議用の飲み物 500円×4
+7/15 コピー用紙 398円</pre>
+
+  <p>このメモを貼り付けて、こう頼みます。</p>
+
+  <pre>この架空メモを、<b>日付・項目・金額の表</b>に整理し、
+「経費メモ.md」というファイルへ保存してください。
+合計を計算し、<b>計算根拠も書いて</b>ください。</pre>
+
+  <p>数十秒で、フォルダの中にファイルができます。<strong>ここからが本番です。</strong></p>
+  <p>500円×4が2,000円になっているか。合計が4,478円になっているか。<em class="hl">自分の目で確認してください。</em></p>
+
+  <div class="box">
+    <div class="t">任せることと、確認を手放すことは別</div>
+    <p>AIの出力は下書きです。数字・日付・宛名・事実は、最後に必ず人が見ます。この一手間を省いた瞬間に、AI活用は事故になります。</p>
+    <p><strong>「計算根拠も書いて」と頼んでいるのは、確認を速くするためです。</strong>根拠が書いてあれば、どこを見ればいいかがすぐ分かります。</p>
+  </div>
+
+  <h2 class="sec" id="s7">7. ここで必ずつまずきます</h2>
+  <p class="first">ここまでできた方は、次の壁にぶつかります。全員がぶつかります。</p>
+  <ul class="list">
+    <li><strong>毎回、同じ説明をしている。</strong>会社の前提、書式、言い回し。新しい会話のたびに一から説明し直している</li>
+    <li><strong>出てくる品質が毎回違う。</strong>同じ頼み方をしたつもりでも、返ってくるものが揃わない</li>
+    <li><strong>前に戻せない。</strong>直させたら前のほうが良かった。でも戻せない</li>
+    <li><strong>2つ目の業務に広げられない。</strong>1つはできた。でも次に何をすればいいか分からない</li>
+  </ul>
+  <p>これらはすべて<strong>同じ原因</strong>から来ています。<em class="hl">その場の思いつきで頼んでいて、手順が形になっていない</em>ことです。</p>
+  <p>ここを越えるには、会社の説明書を1枚作り、業務の型を1つ決め、保存と復元のやり方を整える——という順番の作業が必要になります。道具の話ではなく、段取りの話です。</p>
+
+  <h2 class="sec" id="s8">8. この先に起きること</h2>
+  <p class="first">手順が形になると、渡せる相手が増えます。</p>
+  <div class="cmp">
+    <div class="a"><b>いま</b>その業務は、あなたにしかできない。あなたが休むと止まる。</div>
+    <div class="b"><b>手順を書き出したあと</b>AIに下書きさせられる。<strong>新しい社員にも渡せる。</strong>あなたが休んでも回る。</div>
+  </div>
+  <p>LEVEREXがやっているのは、この「手順を書き出して、渡せる形に組み替える」作業を、会社と一緒に30日で進めることです。AIはそのための道具の1つにすぎません。<strong>まず手順、次に道具。</strong>順番が逆になると続きません。</p>
+
+  <section class="cta">
+    <h2>まず、御社のどこが<br>止まっているかを確かめませんか。</h2>
+    <p>無料・10問・約2分。ご担当者が1週間ご不在になった場合に、どの業務が止まるかがその場でわかります。</p>
+    <a class="btn primary" href="apply.html">業務の属人化診断を受ける<span class="s">無料・10問・約2分</span></a>
+    <a class="btn sub" href="checklist.html">「回る会社チェックリスト10」で現状を確認する</a>
+    <a class="btn sub" href="manga.html">まんがで進め方をご覧いただく</a>
+  </section>
+
+  <p class="footer">
+    LEVEREX（レバレックス）｜業務改善・仕組み化の伴走支援<br>
+    本記事の手順は2026年7月時点の各サービス公式情報にもとづいています。<br>
+    画面や名称は変更される場合があります。<br>
+    <a href="index.html">LEVEREXについて</a>　<a href="menu.html">サービス内容</a>
+  </p>
+</div>
+
+<nav class="sticky">
+  <a href="apply.html">業務の属人化診断を受ける<span>無料・10問・約2分</span></a>
+</nav>
+</body>
+</html>
