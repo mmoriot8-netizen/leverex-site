@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>LEVEREX｜初回整理・診断のお申し込み</title>
+<title>〈あの人しかできない〉診断｜LEVEREX</title>
+<meta name="description" content="10問・約2分。担当者が休んだら止まる業務を洗い出し、いま手をつけるべき1つを表示します。LEVEREX（レバレックス）の無料診断です。">
 <style>
   :root {
     --teal: #a5801f; --teal-deep: #14213d; --mint: #efe0bb; --mint-soft: #faf5e6;
     --ink: #14213d; --sub: #64748b; --line: #e2e8f0; --white: #ffffff;
-    --accent: #f59e0b;
+    --danger: #c0392b; --warn: #d68910; --safe: #4b7a52;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; }
@@ -18,7 +19,7 @@
     color: var(--ink); line-height: 1.7;
     display: flex; justify-content: center; min-height: 100dvh;
   }
-  .app { width: 100%; max-width: 480px; padding: 20px 18px 32px; display: flex; flex-direction: column; }
+  .app { width: 100%; max-width: 480px; padding: 20px 18px 40px; display: flex; flex-direction: column; }
 
   .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .brand-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--teal);
@@ -30,58 +31,99 @@
   .progress > div { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), #d9b45f); border-radius: 999px; transition: width .35s ease; }
 
   .card { background: var(--white); border: 1px solid var(--line); border-radius: 18px;
-    padding: 26px 22px; box-shadow: 0 10px 30px rgba(23, 39, 60, .07); flex: 0 0 auto; }
+    padding: 26px 22px; box-shadow: 0 10px 30px rgba(23, 39, 60, .07); }
 
   .step { display: none; animation: fadein .3s ease; }
   .step.active { display: block; }
   @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
   .q-eyebrow { font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 2px; margin-bottom: 8px; }
-  h1 { font-size: 20px; line-height: 1.5; margin-bottom: 8px; }
+  h1 { font-size: 21px; line-height: 1.5; margin-bottom: 10px; text-wrap: balance; }
   h2 { font-size: 18px; line-height: 1.55; margin-bottom: 6px; }
+  h3 { font-size: 15px; margin-bottom: 8px; }
   .hint { font-size: 13px; color: var(--sub); margin-bottom: 18px; }
+  .area-tag { display: inline-block; font-size: 12px; font-weight: 700; color: var(--teal);
+    background: var(--mint-soft); border-radius: 6px; padding: 2px 9px; margin-bottom: 8px; }
 
   input[type="text"], textarea {
     width: 100%; font-size: 16px; padding: 13px 14px; border: 1.5px solid var(--line);
     border-radius: 12px; background: #fbfdfd; font-family: inherit; color: var(--ink);
   }
   input:focus, textarea:focus { outline: none; border-color: var(--teal); background: #fff; }
-  textarea { min-height: 110px; resize: vertical; }
+  textarea { min-height: 100px; resize: vertical; }
+  label.fld { display: block; font-size: 13px; font-weight: 700; margin: 14px 0 6px; }
 
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-  .chip { border: 1.5px solid var(--line); background: #fbfdfd; color: var(--ink);
-    border-radius: 999px; padding: 10px 16px; font-size: 14px; cursor: pointer; transition: all .15s; }
-  .chip.on { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 600; }
-
-  .radios { display: flex; flex-direction: column; gap: 10px; }
-  .radio { border: 1.5px solid var(--line); background: #fbfdfd; border-radius: 14px;
-    padding: 13px 15px; font-size: 14.5px; cursor: pointer; display: flex; gap: 10px; align-items: flex-start; transition: all .15s; }
+  .radios { display: flex; flex-direction: column; gap: 9px; }
+  .radio { border: 1.5px solid var(--line); background: #fbfdfd; border-radius: 14px; width: 100%;
+    padding: 13px 15px; font-size: 14.5px; text-align: left; cursor: pointer;
+    display: flex; gap: 10px; align-items: flex-start; transition: all .15s; color: var(--ink); }
   .radio.on { border-color: var(--teal); background: var(--mint-soft); }
   .radio .dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #cbd5e1; flex: 0 0 auto; margin-top: 3px; position: relative; }
   .radio.on .dot { border-color: var(--teal); }
   .radio.on .dot::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--teal); }
-  .radio small { display: block; color: var(--sub); font-size: 12px; }
+  .radio small { display: block; color: var(--sub); font-size: 12px; line-height: 1.5; }
 
-  .nav { display: flex; gap: 10px; margin-top: 22px; }
+  .nav { display: flex; gap: 10px; margin-top: 22px; align-items: center; }
   button { font-family: inherit; cursor: pointer; }
   .btn-next { flex: 1; background: var(--teal); color: #fff; border: none; border-radius: 999px;
     padding: 15px; font-size: 16px; font-weight: 700; letter-spacing: 1px; transition: transform .1s, background .15s; }
   .btn-next:active { transform: scale(.98); }
   .btn-next:disabled { background: #cbd5e1; cursor: not-allowed; }
-  .btn-back { background: none; border: none; color: var(--sub); font-size: 14px; padding: 15px 10px; }
+  .btn-back { background: none; border: none; color: var(--sub); font-size: 14px; padding: 15px 6px; }
 
-  .note { font-size: 12px; color: var(--sub); margin-top: 14px; padding: 10px 12px; background: var(--mint-soft); border-radius: 10px; }
+  .note { font-size: 12px; color: var(--sub); margin-top: 14px; padding: 10px 12px; background: var(--mint-soft); border-radius: 10px; line-height: 1.6; }
 
-  .summary { background: var(--mint-soft); border-radius: 14px; padding: 16px; font-size: 14px; margin: 14px 0 4px; }
-  .summary dt { font-size: 11.5px; font-weight: 700; color: var(--teal); letter-spacing: 1px; margin-top: 10px; }
-  .summary dt:first-child { margin-top: 0; }
-  .summary dd { margin-left: 0; }
+  /* ---- 結果 ---- */
+  .result-head { text-align: center; padding-bottom: 6px; }
+  .result-head .lead { font-size: 12.5px; color: var(--sub); letter-spacing: 1px; }
+  .result-head .big { font-size: 22px; font-weight: 800; line-height: 1.45; margin: 6px 0 2px; }
+  .result-head .big em { font-style: normal; color: var(--teal); }
 
+  .map { margin: 18px 0 4px; display: flex; flex-direction: column; gap: 10px; }
+  .map-row { border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 14px; background: #fff; }
+  .map-row .top { display: flex; align-items: center; gap: 8px; }
+  .map-row .rank { font-size: 11px; font-weight: 800; color: #fff; background: var(--sub);
+    border-radius: 5px; padding: 1px 7px; letter-spacing: 1px; }
+  .map-row.lv3 .rank { background: var(--danger); }
+  .map-row.lv2 .rank { background: var(--warn); }
+  .map-row.lv1 .rank { background: var(--safe); }
+  .map-row .top { flex-wrap: nowrap; }
+  .map-row .nm { font-size: 15px; font-weight: 700; line-height: 1.4; min-width: 0; }
+  .map-row .st { margin-left: auto; font-size: 12px; font-weight: 700; white-space: nowrap; flex: 0 0 auto; }
+  .map-row.lv3 .st { color: var(--danger); }
+  .map-row.lv2 .st { color: var(--warn); }
+  .map-row.lv1 .st { color: var(--safe); }
+  .map-row .cm { font-size: 12.5px; color: var(--sub); margin-top: 5px; line-height: 1.6; }
+
+  .teaser { background: var(--teal-deep); color: #fff; border-radius: 14px; padding: 15px 16px; margin: 16px 0 2px; }
+  .teaser .t { font-size: 14.5px; font-weight: 700; line-height: 1.6; }
+  .teaser .s { font-size: 12.5px; opacity: .82; margin-top: 6px; line-height: 1.65; }
+
+  .divider { border: none; border-top: 1px solid var(--line); margin: 22px 0 18px; }
+
+  .route-badge { font-size: 11.5px; font-weight: 700; color: var(--teal); letter-spacing: 2px; }
+  .menu-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .menu-card { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink);
+    border: 1.5px solid var(--line); border-radius: 14px; padding: 14px; background: #fff; }
+  .menu-card .nm { font-size: 15px; font-weight: 700; }
+  .menu-card .sp { font-size: 12px; color: var(--sub); }
+  .menu-card .pr { margin-left: auto; text-align: right; font-size: 15px; font-weight: 800; color: var(--teal); white-space: nowrap; }
+  .menu-card .pr span { display: block; font-size: 10.5px; font-weight: 600; color: var(--sub); }
+
+  .cta { display: block; width: 100%; text-align: center; text-decoration: none;
+    background: var(--teal); color: #fff; border: none; border-radius: 999px;
+    padding: 16px; font-size: 16px; font-weight: 800; letter-spacing: 1px; margin-top: 14px; }
+  .cta.sub { background: #fff; color: var(--ink); border: 1.5px solid var(--line); font-weight: 700; font-size: 14.5px; padding: 14px; }
   .btn-line { width: 100%; background: #06c755; color: #fff; border: none; border-radius: 999px;
     padding: 16px; font-size: 16px; font-weight: 800; letter-spacing: 1px; margin-top: 16px; }
-  .btn-line:active { transform: scale(.98); }
 
-  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 18px; }
+  .summary { background: var(--mint-soft); border-radius: 14px; padding: 16px; font-size: 13.5px; margin: 14px 0 4px; }
+  .summary dt { font-size: 11.5px; font-weight: 700; color: var(--teal); letter-spacing: 1px; margin-top: 10px; }
+  .summary dt:first-child { margin-top: 0; }
+  .summary dd { margin-left: 0; white-space: pre-wrap; }
+
+  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 18px; line-height: 1.8; }
+  .footer a { color: var(--sub); }
 </style>
 </head>
 <body>
@@ -97,182 +139,369 @@
 
   <div class="card">
 
-    <!-- STEP 0: intro -->
+    <!-- ===== STEP 0: intro ===== -->
     <section class="step active" data-step="0">
-      <div class="q-eyebrow">約1分で完了します</div>
-      <h1>初回整理・診断の<br>お申し込み🌱</h1>
-      <p class="hint">6つの質問に答えるだけ。最後に「LINEで送信」を押すと、トーク画面に回答がセットされます。あとは送信ボタンを押すだけです。</p>
+      <div class="q-eyebrow">10問・約2分・無料</div>
+      <h1>〈あの人しかできない〉<br>診断🔍</h1>
+      <p class="hint">担当の方が1週間休んだとき、どの業務が止まるか。10の質問から、いま手をつけるべき順番を表示します。<strong>会社名やお名前は、結果をご覧いただいた後にうかがいます。</strong></p>
       <div class="nav"><button class="btn-next" onclick="go(1)">はじめる</button></div>
-      <p class="note">🔒 顧客名・個人情報・パスワード・社内機密は書かないでください。会社名とご担当のお名前だけで大丈夫です。</p>
+      <p class="note">🔒 顧客名・従業員名・パスワード・社外秘の数字は入力しないでください。診断の判定はすべてお使いの端末の中だけで行われ、送信ボタンを押すまで、どこにも送られません。</p>
     </section>
 
-    <!-- STEP 1 -->
+    <!-- ===== Q1 立場 ===== -->
     <section class="step" data-step="1">
-      <div class="q-eyebrow">Q1 / 6</div>
-      <h2>会社名を教えてください🏢</h2>
-      <p class="hint">屋号・団体名でもOKです。</p>
-      <input type="text" id="company" placeholder="例: 株式会社◯◯" oninput="check(1)">
+      <div class="q-eyebrow">Q1 / 10</div>
+      <h2>お立場を教えてください</h2>
+      <p class="hint">結果の見せ方を変えるために使います。</p>
+      <div class="radios" data-q="role">
+        <button type="button" class="radio" data-v="社長・経営者"><span class="dot"></span><span>社長・経営者<small>会社全体を見ている</small></span></button>
+        <button type="button" class="radio" data-v="部門長・現場責任者"><span class="dot"></span><span>部門長・現場責任者<small>担当する部門・現場を見ている</small></span></button>
+        <button type="button" class="radio" data-v="担当者・その他"><span class="dot"></span><span>担当者・その他<small>実務を担当している</small></span></button>
+      </div>
       <div class="nav">
         <button class="btn-back" onclick="go(0)">← 戻る</button>
-        <button class="btn-next" id="next1" disabled onclick="go(2)">次へ</button>
+        <button class="btn-next" data-next="role" disabled onclick="go(2)">次へ</button>
       </div>
     </section>
 
-    <!-- STEP 2 -->
+    <!-- ===== Q2 仕事の場 ===== -->
     <section class="step" data-step="2">
-      <div class="q-eyebrow">Q2 / 6</div>
-      <h2>お名前とお立場を教えてください🙌</h2>
-      <p class="hint">例: 山田太郎(代表)、佐藤(営業部長)など。</p>
-      <input type="text" id="name" placeholder="例: 山田太郎（代表）" oninput="check(2)">
+      <div class="q-eyebrow">Q2 / 10</div>
+      <h2>仕事の中心はどちらですか</h2>
+      <p class="hint">現場の会社とオフィスの会社では、詰まる場所が違います。</p>
+      <div class="radios" data-q="field">
+        <button type="button" class="radio" data-v="現場中心"><span class="dot"></span><span>現場が中心<small>建設・清掃・製造・物流・店舗・訪問など</small></span></button>
+        <button type="button" class="radio" data-v="オフィス中心"><span class="dot"></span><span>オフィスが中心<small>営業・事務・企画・士業・IT など</small></span></button>
+        <button type="button" class="radio" data-v="両方"><span class="dot"></span><span>両方ある<small>現場部門とオフィス部門の両方を持っている</small></span></button>
+      </div>
       <div class="nav">
         <button class="btn-back" onclick="go(1)">← 戻る</button>
-        <button class="btn-next" id="next2" disabled onclick="go(3)">次へ</button>
+        <button class="btn-next" data-next="field" disabled onclick="go(3)">次へ</button>
       </div>
     </section>
 
-    <!-- STEP 3 -->
+    <!-- ===== Q3 規模 ===== -->
     <section class="step" data-step="3">
-      <div class="q-eyebrow">Q3 / 6</div>
-      <h2>どなたとのご縁ですか?🤝</h2>
-      <p class="hint">ご紹介者のお名前、または出会った場所(交流会など)を教えてください。</p>
-      <input type="text" id="referral" placeholder="例: ◯◯さんの紹介 / ◯◯交流会" oninput="check(3)">
+      <div class="q-eyebrow">Q3 / 10</div>
+      <h2>従業員数を教えてください</h2>
+      <p class="hint">パート・アルバイトを含めた、おおよその人数で結構です。</p>
+      <div class="radios" data-q="size">
+        <button type="button" class="radio" data-v="1〜5名"><span class="dot"></span><span>1〜5名</span></button>
+        <button type="button" class="radio" data-v="6〜20名"><span class="dot"></span><span>6〜20名</span></button>
+        <button type="button" class="radio" data-v="21〜50名"><span class="dot"></span><span>21〜50名</span></button>
+        <button type="button" class="radio" data-v="51名以上"><span class="dot"></span><span>51名以上</span></button>
+      </div>
       <div class="nav">
         <button class="btn-back" onclick="go(2)">← 戻る</button>
-        <button class="btn-next" id="next3" disabled onclick="go(4)">次へ</button>
+        <button class="btn-next" data-next="size" disabled onclick="go(4)">次へ</button>
       </div>
     </section>
 
-    <!-- STEP 4 -->
-    <section class="step" data-step="4">
-      <div class="q-eyebrow">Q4 / 6</div>
-      <h2>気になっている業務はどれですか?🔍</h2>
-      <p class="hint">複数選べます。ざっくりでOK。</p>
-      <div class="chips" id="chips">
-        <button type="button" class="chip">営業・顧客管理</button>
-        <button type="button" class="chip">見積・請求</button>
-        <button type="button" class="chip">現場の段取り</button>
-        <button type="button" class="chip">採用・教育</button>
-        <button type="button" class="chip">経理・事務</button>
-        <button type="button" class="chip">その他・全体</button>
+    <!-- ===== Q4〜Q8 は JS で生成 ===== -->
+    <div id="areaSteps"></div>
+
+    <!-- ===== Q9 自由記述 ===== -->
+    <section class="step" data-step="9">
+      <div class="q-eyebrow">Q9 / 10</div>
+      <h2>いちばん困っている場面は？</h2>
+      <p class="hint">任意です。ひとことでも構いません。（固有名詞・実際の金額は書かないでください）</p>
+      <textarea id="pain" placeholder="例：見積を私しか作れず、外出中は止まる"></textarea>
+      <div class="nav">
+        <button class="btn-back" onclick="go(8)">← 戻る</button>
+        <button class="btn-next" onclick="go(10)">次へ</button>
+      </div>
+    </section>
+
+    <!-- ===== Q10 希望 ===== -->
+    <section class="step" data-step="10">
+      <div class="q-eyebrow">Q10 / 10</div>
+      <h2>ご希望に近いのはどれですか</h2>
+      <p class="hint">最後の質問です。</p>
+      <div class="radios" data-q="want">
+        <button type="button" class="radio" data-v="作ってほしいものが決まっている"><span class="dot"></span><span>作ってほしいものが決まっている<small>ホームページ・LP・公式LINEなど</small></span></button>
+        <button type="button" class="radio" data-v="何から手をつけるか相談したい"><span class="dot"></span><span>何から手をつけるか相談したい<small>仕組み化・業務改善を一緒に進めたい</small></span></button>
+        <button type="button" class="radio" data-v="助成金・補助金を使いたい"><span class="dot"></span><span>助成金・補助金を使いたい<small>制度を使えるかどうかから知りたい</small></span></button>
       </div>
       <div class="nav">
-        <button class="btn-back" onclick="go(3)">← 戻る</button>
-        <button class="btn-next" id="next4" disabled onclick="go(5)">次へ</button>
+        <button class="btn-back" onclick="go(9)">← 戻る</button>
+        <button class="btn-next" data-next="want" disabled onclick="buildResult();go(11)">結果を見る</button>
       </div>
     </section>
 
-    <!-- STEP 5 -->
-    <section class="step" data-step="5">
-      <div class="q-eyebrow">Q5 / 6</div>
-      <h2>いま一番「止まっているな」と感じる場面は?💭</h2>
-      <p class="hint">任意です。ひとことでも助かります。(固有名詞・実数は不要です)</p>
-      <textarea id="pain" placeholder="例: 見積を私しか作れず、外出中に止まる など"></textarea>
+    <!-- ===== STEP 11: 結果 ===== -->
+    <section class="step" data-step="11">
+      <div class="result-head">
+        <div class="lead">診断結果</div>
+        <div class="big" id="resultTitle"></div>
+      </div>
+
+      <div class="map" id="mapBox"></div>
+
+      <div class="teaser" id="teaserBox"></div>
+
+      <hr class="divider">
+
+      <div class="route-badge">おすすめの進め方</div>
+      <div id="routeBox"></div>
+
+      <p class="note">この診断結果は、この画面を閉じると消えます。必要な方は画面を撮影して保存してください。</p>
+      <div class="nav"><button class="btn-back" onclick="go(10)">← 回答を直す</button></div>
+    </section>
+
+    <!-- ===== STEP 12: 連絡先 ===== -->
+    <section class="step" data-step="12">
+      <div class="q-eyebrow">あと2つだけ</div>
+      <h2>お名前をうかがえますか🙌</h2>
+      <p class="hint">診断結果と一緒に、LEVEREXのLINEへ送ります。折り返しのご連絡に使います。</p>
+      <label class="fld" for="company">会社名・屋号</label>
+      <input type="text" id="company" placeholder="例：株式会社レバレックス" oninput="checkContact()">
+      <label class="fld" for="pname">お名前</label>
+      <input type="text" id="pname" placeholder="例：河村" oninput="checkContact()">
       <div class="nav">
-        <button class="btn-back" onclick="go(4)">← 戻る</button>
-        <button class="btn-next" onclick="go(6)">次へ</button>
+        <button class="btn-back" onclick="go(11)">← 結果に戻る</button>
+        <button class="btn-next" id="nextContact" disabled onclick="buildSummary();go(13)">確認へ</button>
       </div>
     </section>
 
-    <!-- STEP 6 -->
-    <section class="step" data-step="6">
-      <div class="q-eyebrow">Q6 / 6</div>
-      <h2>希望の進め方を選んでください🚀</h2>
-      <div class="radios" id="radios">
-        <button type="button" class="radio"><span class="dot"></span><span>まず初回整理(30分・無料)で話したい<small>いちばん気軽。オンラインまたは対面</small></span></button>
-        <button type="button" class="radio"><span class="dot"></span><span>業務整理診断の見積が欲しい<small>2〜4週で「最初に直す1業務」を決めます</small></span></button>
-        <button type="button" class="radio"><span class="dot"></span><span>まず資料が欲しい<small>LINEで支援内容の資料をお送りします</small></span></button>
-      </div>
-      <div class="nav">
-        <button class="btn-back" onclick="go(5)">← 戻る</button>
-        <button class="btn-next" id="next6" disabled onclick="buildSummary();go(7)">確認へ</button>
-      </div>
-    </section>
-
-    <!-- STEP 7: confirm -->
-    <section class="step" data-step="7">
+    <!-- ===== STEP 13: 送信確認 ===== -->
+    <section class="step" data-step="13">
       <div class="q-eyebrow">ご確認</div>
-      <h2>この内容でLINEに送信します✅</h2>
+      <h2>この内容でLINEに送ります✅</h2>
       <dl class="summary" id="summaryBox"></dl>
       <button class="btn-line" onclick="sendToLine()">💬 LINEで送信する</button>
-      <p class="note">タップするとLEVEREXのLINEトークが開き、上の内容が入力済みになります。送信ボタンを押して完了です。通常1営業日以内にお返事します。</p>
-      <div class="nav"><button class="btn-back" onclick="go(6)">← 戻って直す</button></div>
+      <p class="note">タップするとLEVEREXのLINEトークが開き、上の内容が入力済みの状態になります。<strong>トーク画面で送信ボタンを押すと完了です。</strong>24時間以内にお返事します。</p>
+      <div class="nav"><button class="btn-back" onclick="go(12)">← 戻って直す</button></div>
     </section>
 
   </div>
-  <p class="footer">LEVEREX｜業務改善・仕組み化 — 送信内容は日程調整とご相談対応にのみ使用します</p>
+
+  <p class="footer">
+    LEVEREX｜業務改善・仕組み化<br>
+    送信内容は、ご相談対応と日程調整にのみ使用します<br>
+    <a href="index.html">‹ トップへ戻る</a>
+  </p>
 </div>
 
 <script>
 const LINE_ID = "@558bnxlh";
-let current = 0;
-const TOTAL = 7;
 
+/* ---------- Q4〜Q8：業務領域 ---------- */
+const AREAS = [
+  { key: "sales",  name: "営業・顧客対応",        q: "営業・お客様対応の担当が1週間休んだら？",
+    cm3: "問い合わせの取りこぼしと、商談の停止が同時に起きます。売上に直結するため、最優先です。",
+    cm2: "既存のお客様は守れますが、新規は止まります。",
+    cm1: "引き継ぎが効いています。" },
+  { key: "quote",  name: "見積・請求",            q: "見積・請求の担当が1週間休んだら？",
+    cm3: "請求が止まると、入金が止まります。会社の資金繰りに直接効いてきます。",
+    cm2: "遅れは出ますが、月次は締められます。",
+    cm1: "手順が共有できています。" },
+  { key: "site",   name: "現場の段取り・制作進行", q: "現場の段取り・制作進行の担当が1週間休んだら？",
+    cm3: "段取りが止まると、動ける人がいても仕事が進みません。人が余って納期が遅れる、いちばんもったいない状態です。",
+    cm2: "動きは止まりませんが、判断待ちの時間が増えます。",
+    cm1: "現場が自分で判断できています。" },
+  { key: "hire",   name: "採用・教育",            q: "採用・教育の担当が1週間休んだら？",
+    cm3: "今は困りませんが、人が辞めたときに一気に効いてきます。効果が出るまで時間がかかるため、着手が遅れがちな領域です。",
+    cm2: "選考は進みますが、新人の立ち上がりが遅くなります。",
+    cm1: "教える内容が形になっています。" },
+  { key: "admin",  name: "経理・事務",            q: "経理・事務の担当が1週間休んだら？",
+    cm3: "支払い・給与・書類が止まります。外からは見えにくいのに、止まると全社に影響します。",
+    cm2: "月末月初に集中してしわ寄せが来ます。",
+    cm1: "代われる人がいます。" }
+];
+
+const LEVELS = [
+  { v: 3, label: "完全に止まる",           sub: "その人がいないと、誰も進められない" },
+  { v: 2, label: "遅れるが、なんとか回る",  sub: "時間はかかるが、他の人でも対応できる" },
+  { v: 1, label: "止まらない",             sub: "手順が共有されていて、代われる人がいる" },
+  { v: 0, label: "その業務はない",         sub: "自社では発生しない、または外注している" }
+];
+
+const STATE = { role: "", field: "", size: "", want: "", areas: {} };
+
+/* 業務領域のステップを生成（Q4〜Q8 = data-step 4〜8） */
+(function buildAreaSteps() {
+  const host = document.getElementById("areaSteps");
+  host.innerHTML = AREAS.map(function (a, i) {
+    const step = i + 4;
+    return '<section class="step" data-step="' + step + '">' +
+      '<div class="q-eyebrow">Q' + step + ' / 10</div>' +
+      '<span class="area-tag">' + a.name + '</span>' +
+      '<h2>' + a.q + '</h2>' +
+      '<p class="hint">いちばん近いものを選んでください。</p>' +
+      '<div class="radios" data-q="area:' + a.key + '">' +
+        LEVELS.map(function (l) {
+          return '<button type="button" class="radio" data-v="' + l.v + '"><span class="dot"></span>' +
+                 '<span>' + l.label + '<small>' + l.sub + '</small></span></button>';
+        }).join("") +
+      '</div>' +
+      '<div class="nav">' +
+        '<button class="btn-back" onclick="go(' + (step - 1) + ')">← 戻る</button>' +
+        '<button class="btn-next" data-next="area:' + a.key + '" disabled onclick="go(' + (step + 1) + ')">次へ</button>' +
+      '</div>' +
+    '</section>';
+  }).join("");
+})();
+
+/* ---------- 画面遷移 ---------- */
+const TOTAL = 10;
 function go(n) {
-  document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
-  document.querySelector('[data-step="' + n + '"]').classList.add("active");
-  current = n;
-  document.getElementById("bar").style.width = Math.round(n / TOTAL * 100) + "%";
+  document.querySelectorAll(".step").forEach(function (s) { s.classList.remove("active"); });
+  const target = document.querySelector('[data-step="' + n + '"]');
+  if (!target) return;
+  target.classList.add("active");
+  const pct = n >= 11 ? 100 : Math.round(n / TOTAL * 100);
+  document.getElementById("bar").style.width = pct + "%";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function check(step) {
-  const map = { 1: "company", 2: "name", 3: "referral" };
-  document.getElementById("next" + step).disabled =
-    document.getElementById(map[step]).value.trim().length === 0;
+/* ---------- 選択肢 ---------- */
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".radio");
+  if (!btn) return;
+  const group = btn.closest(".radios");
+  const key = group.getAttribute("data-q");
+  group.querySelectorAll(".radio").forEach(function (x) { x.classList.remove("on"); });
+  btn.classList.add("on");
+
+  const val = btn.getAttribute("data-v");
+  if (key.indexOf("area:") === 0) {
+    STATE.areas[key.slice(5)] = Number(val);
+  } else {
+    STATE[key] = val;
+  }
+  const next = document.querySelector('.btn-next[data-next="' + key + '"]');
+  if (next) next.disabled = false;
+});
+
+function checkContact() {
+  const ok = document.getElementById("company").value.trim().length > 0 &&
+             document.getElementById("pname").value.trim().length > 0;
+  document.getElementById("nextContact").disabled = !ok;
 }
 
-document.querySelectorAll("#chips .chip").forEach(c => {
-  c.addEventListener("click", () => {
-    c.classList.toggle("on");
-    document.getElementById("next4").disabled =
-      document.querySelectorAll("#chips .chip.on").length === 0;
-  });
-});
+/* ---------- 結果 ---------- */
+function rankedAreas() {
+  return AREAS
+    .map(function (a) { return { a: a, v: STATE.areas[a.key] }; })
+    .filter(function (r) { return r.v > 0; })
+    .sort(function (x, y) { return y.v - x.v; });
+}
 
-document.querySelectorAll("#radios .radio").forEach(r => {
-  r.addEventListener("click", () => {
-    document.querySelectorAll("#radios .radio").forEach(x => x.classList.remove("on"));
-    r.classList.add("on");
-    document.getElementById("next6").disabled = false;
-  });
-});
+function topThree() { return rankedAreas().slice(0, 3); }
 
-function getData() {
-  return {
-    company: document.getElementById("company").value.trim(),
-    name: document.getElementById("name").value.trim(),
-    referral: document.getElementById("referral").value.trim(),
-    topics: [...document.querySelectorAll("#chips .chip.on")].map(c => c.textContent).join("、"),
-    pain: document.getElementById("pain").value.trim(),
-    plan: (document.querySelector("#radios .radio.on span:last-child") || {}).firstChild
-      ? document.querySelector("#radios .radio.on span:last-child").firstChild.textContent.trim() : ""
-  };
+function buildResult() {
+  const ranked = rankedAreas();
+  const top = ranked.slice(0, 3);
+  const stopCount = ranked.filter(function (r) { return r.v === 3; }).length;
+
+  /* 見出し */
+  const titleEl = document.getElementById("resultTitle");
+  if (stopCount === 0) {
+    titleEl.innerHTML = '止まる業務は<br><em>見つかりませんでした</em>';
+  } else {
+    titleEl.innerHTML = '〈あの人しかできない〉が<br><em>' + stopCount + 'つ</em>見つかりました';
+  }
+
+  /* マップ */
+  const mapEl = document.getElementById("mapBox");
+  if (top.length === 0) {
+    mapEl.innerHTML = '<div class="map-row"><div class="top"><span class="nm">該当なし</span></div>' +
+      '<div class="cm">5つの領域すべてで「その業務はない」を選ばれました。もう一度お答えいただくか、下のLINEから直接ご相談ください。</div></div>';
+  } else {
+    mapEl.innerHTML = top.map(function (r, i) {
+      const st = r.v === 3 ? "止まります" : (r.v === 2 ? "遅れます" : "回ります");
+      const cm = r.v === 3 ? r.a.cm3 : (r.v === 2 ? r.a.cm2 : r.a.cm1);
+      return '<div class="map-row lv' + r.v + '">' +
+        '<div class="top"><span class="rank">' + (i + 1) + '</span>' +
+        '<span class="nm">' + r.a.name + '</span>' +
+        '<span class="st">' + st + '</span></div>' +
+        '<div class="cm">' + cm + '</div>' +
+      '</div>';
+    }).join("");
+  }
+
+  /* 予告編 */
+  const roleWord = STATE.role === "社長・経営者" ? "会社" : "この部門";
+  document.getElementById("teaserBox").innerHTML =
+    '<div class="t">ここまでは、10問でわかる範囲です。</div>' +
+    '<div class="s">実際には1つの業務の中に、細かい「その人しかできない」がいくつも隠れています。' +
+    '30日の伴走では、' + roleWord + 'の業務を分解して全部を洗い出し、' +
+    '<strong>担当者が変わっても回る形</strong>まで一緒に作ります。</div>';
+
+  /* ルート */
+  const routeEl = document.getElementById("routeBox");
+  if (STATE.want === "作ってほしいものが決まっている") {
+    routeEl.innerHTML =
+      '<p class="hint" style="margin:8px 0 0;">作るものが決まっている方向けの、料金と納期を固定したメニューです。要件をご記入いただいた日から<strong>2週間で初稿</strong>をお出しします。</p>' +
+      '<div class="menu-cards">' +
+        menuCard("lp",   "LP制作",       "1ページ（8セクションまで）", "29.8万円") +
+        menuCard("hp",   "ホームページ制作", "5〜7ページ",              "59.8万円") +
+        menuCard("line", "公式LINE構築",  "リッチメニュー1式＋応答10本", "29.8万円") +
+      '</div>' +
+      '<a class="cta sub" href="menu.html">メニューの詳しい条件を見る ›</a>' +
+      '<button class="cta" onclick="go(12)">まず診断結果を送って相談する</button>';
+  } else if (STATE.want === "助成金・補助金を使いたい") {
+    routeEl.innerHTML =
+      '<p class="hint" style="margin:8px 0 14px;">補助金は<strong>交付決定の前に契約・購入したものが対象外</strong>になります。順番を間違えると使えなくなるため、先にご相談ください。制度が使えるかどうかの確認から一緒に行います。</p>' +
+      '<button class="cta" onclick="go(12)">助成金の使い方を相談する</button>' +
+      '<a class="cta sub" href="menu.html">先にメニューと金額を見る ›</a>';
+  } else {
+    routeEl.innerHTML =
+      '<p class="hint" style="margin:8px 0 14px;">何から手をつけるかを決めるところから、一緒に進めます。まずは診断結果をお送りください。内容を見たうえで、面談の日程をご案内します。</p>' +
+      '<button class="cta" onclick="go(12)">診断結果を送って面談を申し込む</button>' +
+      '<a class="cta sub" href="manga.html">まんがで進め方を見る ›</a>';
+  }
+}
+
+function menuCard(key, name, spec, price) {
+  return '<a class="menu-card" href="request.html?menu=' + key + '">' +
+    '<span><span class="nm">' + name + '</span><br><span class="sp">' + spec + '</span></span>' +
+    '<span class="pr">' + price + '<span>税込・初稿2週間</span></span>' +
+  '</a>';
+}
+
+/* ---------- 送信 ---------- */
+function resultLines() {
+  return topThree().map(function (r, i) {
+    const st = r.v === 3 ? "止まる" : (r.v === 2 ? "遅れる" : "回る");
+    return (i + 1) + ". " + r.a.name + "（" + st + "）";
+  });
 }
 
 function buildSummary() {
-  const d = getData();
+  const top = resultLines();
   const rows = [
-    ["会社名", d.company], ["お名前", d.name], ["ご縁", d.referral],
-    ["気になる業務", d.topics], ["困っている場面", d.pain || "(未記入)"], ["希望の進め方", d.plan]
+    ["会社名", document.getElementById("company").value.trim()],
+    ["お名前", document.getElementById("pname").value.trim()],
+    ["お立場", STATE.role],
+    ["仕事の場・規模", STATE.field + "／" + STATE.size],
+    ["診断結果（上位3件）", top.length ? top.join("\n") : "該当なし"],
+    ["困っている場面", document.getElementById("pain").value.trim() || "（未記入）"],
+    ["ご希望", STATE.want]
   ];
-  document.getElementById("summaryBox").innerHTML =
-    rows.map(r => "<dt>" + r[0] + "</dt><dd>" + escapeHtml(r[1]) + "</dd>").join("");
+  document.getElementById("summaryBox").innerHTML = rows.map(function (r) {
+    return "<dt>" + r[0] + "</dt><dd>" + escapeHtml(r[1]) + "</dd>";
+  }).join("");
 }
 
 function escapeHtml(s) {
-  return s.replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+  return String(s).replace(/[&<>"']/g, function (m) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m];
+  });
 }
 
 function sendToLine() {
-  const d = getData();
   const msg =
-    "【診断のお申し込み】\n" +
-    "会社名: " + d.company + "\n" +
-    "お名前: " + d.name + "\n" +
-    "ご縁: " + d.referral + "\n" +
-    "気になる業務: " + d.topics + "\n" +
-    "困っている場面: " + (d.pain || "未記入") + "\n" +
-    "希望: " + d.plan;
+    "【〈あの人しかできない〉診断の結果】\n" +
+    "会社名：" + document.getElementById("company").value.trim() + "\n" +
+    "お名前：" + document.getElementById("pname").value.trim() + "\n" +
+    "お立場：" + STATE.role + "\n" +
+    "仕事の場：" + STATE.field + "／" + STATE.size + "\n" +
+    "--- 止まる業務 ---\n" +
+    (resultLines().join("\n") || "該当なし") + "\n" +
+    "------------------\n" +
+    "困っている場面：" + (document.getElementById("pain").value.trim() || "未記入") + "\n" +
+    "ご希望：" + STATE.want;
   location.href = "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(msg);
 }
 </script>

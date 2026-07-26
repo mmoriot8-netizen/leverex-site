@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>メニューと料金｜LEVEREX</title>
+<meta name="description" content="LEVEREX（レバレックス）のメニューと料金。LP制作29.8万円、ホームページ制作59.8万円、公式LINE構築29.8万円。すべて税込・記入完了から2週間で初稿。">
+<style>
+  :root {
+    --teal: #a5801f; --teal-deep: #14213d; --mint: #efe0bb; --mint-soft: #faf5e6;
+    --ink: #14213d; --sub: #64748b; --line: #e2e8f0; --white: #ffffff; --gold: #b98a2f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: linear-gradient(170deg, #f8f6ef 0%, #f3f0e6 60%, #f9f7f1 100%);
+    color: var(--ink); line-height: 1.75;
+    display: flex; justify-content: center; min-height: 100dvh;
+  }
+  .app { width: 100%; max-width: 560px; padding: 22px 18px 44px; }
+  .back { font-size: 12.5px; color: var(--sub); text-decoration: none; }
+
+  .head { margin: 16px 0 24px; }
+  .eyebrow { font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 2.5px; }
+  h1 { font-size: 24px; line-height: 1.5; margin: 6px 0 10px; text-wrap: balance; }
+  .lead { font-size: 13.5px; color: var(--sub); }
+
+  h2 { font-size: 17px; margin: 32px 0 4px; padding-left: 11px; border-left: 4px solid var(--teal); line-height: 1.5; }
+  .h2sub { font-size: 12.5px; color: var(--sub); margin: 4px 0 14px; padding-left: 15px; }
+
+  .item { background: var(--white); border: 1.5px solid var(--line); border-radius: 18px;
+    padding: 20px; box-shadow: 0 8px 24px rgba(23,39,60,.06); margin-bottom: 14px; }
+  .item .nm { font-size: 19px; font-weight: 800; }
+  .item .sp { font-size: 12.5px; color: var(--sub); margin-top: 2px; }
+  .item .price { font-size: 27px; font-weight: 800; color: var(--teal); margin: 10px 0 2px; letter-spacing: -.5px; }
+  .item .price small { font-size: 12.5px; font-weight: 700; color: var(--sub); margin-left: 6px; letter-spacing: 0; }
+
+  .kv { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; font-size: 13px; }
+  .kv dl { display: grid; grid-template-columns: 88px 1fr; gap: 7px 10px; }
+  .kv dt { color: var(--teal); font-weight: 700; font-size: 12px; }
+  .kv dd { line-height: 1.65; }
+  .kv dd.no { color: var(--sub); }
+
+  .go { display: block; text-align: center; text-decoration: none; background: var(--teal); color: #fff;
+    border-radius: 999px; padding: 14px; font-size: 15px; font-weight: 800; letter-spacing: 1px; margin-top: 16px; }
+
+  .rule { background: var(--white); border: 1.5px solid var(--mint); border-radius: 16px; padding: 18px 20px; }
+  .rule ul { margin-left: 18px; font-size: 13.5px; line-height: 1.9; }
+  .rule strong { color: var(--teal-deep); }
+
+  .hero { background: var(--teal-deep); color: #fff; border-radius: 18px; padding: 22px 20px; }
+  .hero .tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 2px;
+    background: var(--gold); border-radius: 5px; padding: 2px 9px; }
+  .hero .nm { font-size: 21px; font-weight: 800; margin-top: 10px; }
+  .hero .price { font-size: 30px; font-weight: 800; margin: 8px 0 0; letter-spacing: -1px; }
+  .hero .price small { font-size: 13px; font-weight: 700; opacity: .8; margin-left: 6px; letter-spacing: 0; }
+  .hero ul { margin: 12px 0 0 18px; font-size: 13.5px; line-height: 1.9; opacity: .95; }
+  .hero .go { background: #fff; color: var(--teal-deep); }
+  .hero .foot { font-size: 12px; opacity: .75; margin-top: 12px; line-height: 1.7; }
+
+  table.fee { width: 100%; border-collapse: collapse; font-size: 13.5px; background: #fff;
+    border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden; }
+  table.fee th, table.fee td { padding: 11px 13px; border-bottom: 1px solid var(--line); text-align: left; }
+  table.fee tr:last-child th, table.fee tr:last-child td { border-bottom: none; }
+  table.fee th { font-weight: 700; background: var(--mint-soft); font-size: 13px; }
+  table.fee td { text-align: right; font-weight: 700; white-space: nowrap; }
+
+  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 32px; line-height: 1.9; }
+  .footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+<div class="app">
+  <a class="back" href="index.html">‹ LEVEREXトップへ</a>
+
+  <div class="head">
+    <div class="eyebrow">MENU &amp; PRICE</div>
+    <h1>メニューと料金</h1>
+    <p class="lead">表示はすべて税込です。条件を先に全部書いています。あとから増える金額がないように、追加料金の単価も公開しています。</p>
+  </div>
+
+  <h2>作るものが決まっている方へ</h2>
+  <p class="h2sub">料金と納期を固定した単発メニューです。</p>
+
+  <div class="item">
+    <div class="nm">LP制作</div>
+    <div class="sp">1ページ（8セクションまで）</div>
+    <div class="price">29.8万円<small>税込</small></div>
+    <div class="kv"><dl>
+      <dt>含むもの</dt><dd>構成設計、<strong>原稿作成</strong>、デザイン、コーディング、スマホ対応、公開設定</dd>
+      <dt>含まないもの</dt><dd class="no">撮影、イラスト、ドメイン・サーバー費用</dd>
+      <dt>納期</dt><dd>要件シートの記入完了から<strong>2週間で初稿</strong></dd>
+      <dt>修正</dt><dd>2回まで（初稿後、各回5営業日以内に反映）</dd>
+    </dl></div>
+    <a class="go" href="request.html?menu=lp">要件シートを記入する ›</a>
+  </div>
+
+  <div class="item">
+    <div class="nm">ホームページ制作</div>
+    <div class="sp">5〜7ページ</div>
+    <div class="price">59.8万円<small>税込</small></div>
+    <div class="kv"><dl>
+      <dt>含むもの</dt><dd>構成設計、<strong>原稿作成</strong>、デザイン、コーディング、スマホ対応、公開設定</dd>
+      <dt>含まないもの</dt><dd class="no">撮影、イラスト、ドメイン・サーバー費用</dd>
+      <dt>納期</dt><dd>要件シートの記入完了から<strong>2週間で初稿</strong></dd>
+      <dt>修正</dt><dd>2回まで（初稿後、各回5営業日以内に反映）</dd>
+    </dl></div>
+    <a class="go" href="request.html?menu=hp">要件シートを記入する ›</a>
+  </div>
+
+  <div class="item">
+    <div class="nm">公式LINE構築</div>
+    <div class="sp">リッチメニュー1式＋自動応答</div>
+    <div class="price">29.8万円<small>税込</small></div>
+    <div class="kv"><dl>
+      <dt>含むもの</dt><dd>リッチメニュー1式（6分割まで）、あいさつメッセージ、キーワード応答10本まで、画像制作、設定作業</dd>
+      <dt>含まないもの</dt><dd class="no">LINE公式アカウントの月額利用料、配信の代行</dd>
+      <dt>納期</dt><dd>要件シートの記入完了から<strong>2週間で初稿</strong></dd>
+      <dt>修正</dt><dd>2回まで（初稿後、各回5営業日以内に反映）</dd>
+    </dl></div>
+    <a class="go" href="request.html?menu=line">要件シートを記入する ›</a>
+  </div>
+
+  <h2>何から手をつけるか、決めるところから</h2>
+  <p class="h2sub">仕組み化・業務改善の伴走です。LEVEREXの主力はこちらです。</p>
+
+  <div class="hero">
+    <span class="tag">先行5社限定</span>
+    <div class="nm">業務改善・仕組み化の伴走</div>
+    <div class="price">月11万円<small>税込・最低3ヶ月</small></div>
+    <ul>
+      <li>オンライン面談 月2回（1回最大90分）</li>
+      <li>チャットサポート <strong>24時間以内に返答</strong>（返答は1日1項目まで）</li>
+      <li>システム制作 1社1つまで（各社SaaSまで）</li>
+      <li>貴社専用カリキュラムを3ヶ月分作成</li>
+      <li><strong>LP・ホームページ・公式LINEの制作が込み</strong></li>
+    </ul>
+    <a class="go" href="apply.html">まず診断を受ける（無料・10問）›</a>
+    <p class="foot">先行枠を過ぎた後は月33万円（税込）、別途カリキュラム設計費8.8万円（税込）となります。残り枠はLINEでご確認ください。</p>
+  </div>
+
+  <h2>共通のルール</h2>
+  <p class="h2sub">単発メニューに共通する条件です。</p>
+  <div class="rule">
+    <ul>
+      <li><strong>納期の起算日は、要件シートの全項目の記入が完了した日</strong>です。お申し込み日からではありません</li>
+      <li>記入をお待ちしている期間は、2週間に含みません</li>
+      <li>写真・ロゴはご支給ください。<strong>文章（原稿）はLEVEREXが作成します</strong></li>
+      <li>お支払いは全額前金です</li>
+      <li>コンサルの3ヶ月一括払いは割引があります（先行枠 33万円 → <strong>30万円</strong>／3万円お得）</li>
+    </ul>
+  </div>
+
+  <h2>追加料金</h2>
+  <p class="h2sub">条件を超えた場合の単価です。先に公開しています。</p>
+  <table class="fee">
+    <tr><th>修正3回目以降</th><td>3.3万円 / 回</td></tr>
+    <tr><th>ページ追加</th><td>5.5万円 / ページ</td></tr>
+    <tr><th>撮影</th><td>5.5万円〜（別途お見積り）</td></tr>
+    <tr><th>オフラインでの対応</th><td>2.2万円 / 回（交通費込み）</td></tr>
+  </table>
+
+  <p class="footer">
+    LEVEREX｜業務改善・仕組み化<br>
+    表示はすべて税込です<br>
+    <a href="apply.html">診断を受ける</a>　<a href="index.html">トップへ</a>
+  </p>
+</div>
+</body>
+</html>

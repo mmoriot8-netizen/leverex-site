@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>要件シート｜LEVEREX</title>
+<meta name="description" content="LP制作・ホームページ制作・公式LINE構築の要件シートです。全30項目。ご記入が完了した日から2週間で初稿をお出しします。">
+<style>
+  :root {
+    --teal: #a5801f; --teal-deep: #14213d; --mint: #efe0bb; --mint-soft: #faf5e6;
+    --ink: #14213d; --sub: #64748b; --line: #e2e8f0; --white: #ffffff; --req: #c0392b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: linear-gradient(170deg, #f8f6ef 0%, #f3f0e6 60%, #f9f7f1 100%);
+    color: var(--ink); line-height: 1.7;
+    display: flex; justify-content: center; min-height: 100dvh;
+  }
+  .app { width: 100%; max-width: 560px; padding: 20px 18px 44px; }
+
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .brand-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--teal);
+    color: #fff; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; }
+  .brand-name { font-weight: 700; font-size: 15px; letter-spacing: 1px; }
+  .brand-sub { font-size: 11px; color: var(--sub); }
+
+  .bar-wrap { position: sticky; top: 0; z-index: 20; background: #f6f3ea; padding: 8px 0 10px; }
+  .progress { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .progress > div { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), #d9b45f); transition: width .3s ease; }
+  .bar-label { font-size: 11.5px; color: var(--sub); margin-top: 5px; display: flex; }
+  .bar-label b { margin-left: auto; color: var(--teal); }
+
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 18px;
+    padding: 24px 20px; box-shadow: 0 10px 30px rgba(23,39,60,.07); }
+
+  .step { display: none; animation: fadein .25s ease; }
+  .step.active { display: block; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .eyebrow { font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 2px; margin-bottom: 8px; }
+  h1 { font-size: 21px; line-height: 1.5; margin-bottom: 10px; text-wrap: balance; }
+  h2 { font-size: 19px; margin-bottom: 4px; }
+  .hint { font-size: 13px; color: var(--sub); margin-bottom: 20px; line-height: 1.7; }
+
+  .q { padding: 18px 0; border-top: 1px solid var(--line); }
+  .q:first-of-type { border-top: none; padding-top: 4px; }
+  .q .qt { font-size: 14.5px; font-weight: 700; line-height: 1.55; }
+  .q .qn { display: inline-block; font-size: 11px; font-weight: 800; color: #fff; background: var(--sub);
+    border-radius: 5px; padding: 0 6px; margin-right: 7px; vertical-align: 2px; letter-spacing: .5px; }
+  .q .must { font-size: 11px; font-weight: 700; color: var(--req); margin-left: 6px; }
+  .q .qs { font-size: 12.5px; color: var(--sub); margin: 3px 0 9px; line-height: 1.6; }
+
+  input[type="text"], textarea {
+    width: 100%; font-size: 16px; padding: 12px 13px; border: 1.5px solid var(--line);
+    border-radius: 11px; background: #fbfdfd; font-family: inherit; color: var(--ink);
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--teal); background: #fff; }
+  textarea { min-height: 88px; resize: vertical; line-height: 1.65; }
+  .invalid { border-color: var(--req) !important; background: #fff5f4 !important; }
+
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt { border: 1.5px solid var(--line); background: #fbfdfd; color: var(--ink);
+    border-radius: 999px; padding: 9px 15px; font-size: 13.5px; cursor: pointer;
+    font-family: inherit; transition: all .13s; text-align: left; }
+  .opt.on { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 700; }
+
+  .nav { display: flex; gap: 10px; margin-top: 26px; align-items: center; }
+  button { font-family: inherit; cursor: pointer; }
+  .btn-next { flex: 1; background: var(--teal); color: #fff; border: none; border-radius: 999px;
+    padding: 15px; font-size: 16px; font-weight: 700; letter-spacing: 1px; }
+  .btn-next:active { transform: scale(.985); }
+  .btn-back { background: none; border: none; color: var(--sub); font-size: 14px; padding: 15px 6px; }
+
+  .note { font-size: 12px; color: var(--sub); margin-top: 16px; padding: 11px 13px;
+    background: var(--mint-soft); border-radius: 10px; line-height: 1.7; }
+  .warn { background: #fff5f4; color: var(--req); font-weight: 700; }
+
+  .deal { border: 1.5px solid var(--mint); background: var(--mint-soft); border-radius: 14px; padding: 14px 16px; margin-bottom: 18px; }
+  .deal .nm { font-size: 17px; font-weight: 800; }
+  .deal .pr { font-size: 15px; font-weight: 800; color: var(--teal); }
+  .deal ul { margin: 8px 0 0 18px; font-size: 12.5px; color: var(--sub); line-height: 1.75; }
+
+  .picker { display: flex; flex-direction: column; gap: 10px; }
+  .pick { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink);
+    border: 1.5px solid var(--line); border-radius: 14px; padding: 14px; background: #fff; }
+  .pick .nm { font-size: 15.5px; font-weight: 700; }
+  .pick .sp { font-size: 12px; color: var(--sub); }
+  .pick .pr { margin-left: auto; font-size: 15px; font-weight: 800; color: var(--teal); white-space: nowrap; }
+
+  .out { width: 100%; min-height: 240px; font-size: 12.5px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    line-height: 1.6; padding: 13px; border: 1.5px solid var(--line); border-radius: 11px; background: #fbfdfd; }
+  .btn-copy { width: 100%; background: var(--teal-deep); color: #fff; border: none; border-radius: 999px;
+    padding: 15px; font-size: 15.5px; font-weight: 800; letter-spacing: 1px; margin-top: 12px; }
+  .btn-line { width: 100%; background: #06c755; color: #fff; border: none; border-radius: 999px;
+    padding: 16px; font-size: 16px; font-weight: 800; letter-spacing: 1px; margin-top: 10px; }
+  .btn-file { width: 100%; background: #fff; color: var(--ink); border: 1.5px solid var(--line);
+    border-radius: 999px; padding: 13px; font-size: 14px; font-weight: 700; margin-top: 10px; }
+
+  .missing { background: #fff5f4; border: 1.5px solid #f3c9c4; border-radius: 12px;
+    padding: 12px 14px; font-size: 13px; color: var(--req); margin-bottom: 14px; line-height: 1.7; display: none; }
+  .missing.show { display: block; }
+
+  .footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 20px; line-height: 1.9; }
+  .footer a { color: var(--sub); }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brand">
+    <div class="brand-mark">L</div>
+    <div>
+      <div class="brand-name">LEVEREX</div>
+      <div class="brand-sub">要件シート</div>
+    </div>
+  </div>
+
+  <div class="bar-wrap">
+    <div class="progress"><div id="bar"></div></div>
+    <div class="bar-label"><span id="secName">はじめに</span><b id="secNum"></b></div>
+  </div>
+
+  <div class="card" id="card"></div>
+
+  <p class="footer">
+    LEVEREX｜業務改善・仕組み化<br>
+    ご記入内容は制作にのみ使用します<br>
+    <a href="menu.html">‹ メニュー一覧へ</a>　<a href="index.html">トップへ</a>
+  </p>
+</div>
+
+<script>
+const LINE_ID = "@558bnxlh";
+
+/* ===================== メニュー定義 ===================== */
+const MENUS = {
+  lp: {
+    name: "LP制作", price: "29.8万円（税込）",
+    spec: ["1ページ／8セクションまで",
+           "構成設計・原稿作成・デザイン・コーディング・スマホ対応・公開設定",
+           "含まないもの：撮影、イラスト、ドメイン・サーバー費用",
+           "修正2回まで／全額前金／記入完了から2週間で初稿"]
+  },
+  hp: {
+    name: "ホームページ制作", price: "59.8万円（税込）",
+    spec: ["5〜7ページ",
+           "構成設計・原稿作成・デザイン・コーディング・スマホ対応・公開設定",
+           "含まないもの：撮影、イラスト、ドメイン・サーバー費用",
+           "修正2回まで／全額前金／記入完了から2週間で初稿"]
+  },
+  line: {
+    name: "公式LINE構築", price: "29.8万円（税込）",
+    spec: ["リッチメニュー1式（6分割まで）、あいさつメッセージ、キーワード応答10本まで",
+           "画像制作・設定作業を含みます",
+           "含まないもの：LINE公式アカウントの月額利用料、配信の代行",
+           "修正2回まで／全額前金／記入完了から2週間で初稿"]
+  }
+};
+
+/* ===================== 設問（全30） ===================== */
+const SIZE   = ["1〜5名", "6〜20名", "21〜50名", "51名以上"];
+const TONE   = ["誠実・堅実", "親しみやすい", "先進的・洗練", "高級感"];
+
+const SEC_COMPANY = {
+  title: "会社のこと", sub: "まずは基本情報です。7項目。",
+  qs: [
+    { n:1, t:"会社名・屋号", type:"text", ph:"例：株式会社レバレックス", req:true },
+    { n:2, t:"ご担当者のお名前", type:"text", ph:"例：河村", req:true },
+    { n:3, t:"ご担当者の役職・立場", type:"text", ph:"例：代表取締役 / 営業部長" },
+    { n:4, t:"業種", type:"text", ph:"例：内装解体工事業", req:true },
+    { n:5, t:"従業員数", type:"radio", opts:SIZE, req:true },
+    { n:6, t:"事業内容を1〜2行で", type:"area", ph:"例：東京23区を中心に、店舗・オフィスの内装解体を請け負っています。", req:true },
+    { n:7, t:"所在地（都道府県・市区町村まで）", s:"サイトに掲載する住所です。掲載しない場合は「掲載しない」とご記入ください。", type:"text", ph:"例：東京都墨田区" }
+  ]
+};
+
+const SEC_AIM = {
+  title: "今回の目的", sub: "ここがいちばん大事です。8項目。",
+  qs: [
+    { n:8, t:"今回作るものの目的", s:"あてはまるものをすべて選んでください。", type:"multi", req:true,
+      opts:["問い合わせを増やしたい","採用に使いたい","信頼を担保したい","既存のお客様に案内したい","名刺代わりに欲しい"] },
+    { n:9, t:"いちばん来てほしいのは、どんな人ですか", s:"業種・立場・状況で書いてください。「みんな」は避けてください。", type:"area", ph:"例：店舗の閉店が決まり、原状回復の業者を1週間以内に探している店舗オーナー", req:true },
+    { n:10, t:"その人が、いま困っていることは何ですか", type:"area", ph:"例：どこに頼めばいいかわからない。相見積もりを取る時間がない。" },
+    { n:11, t:"よく比較される会社・サービス", s:"社名でも「大手◯◯」のような書き方でも構いません。", type:"text", ph:"例：地元の同業3社、大手リフォーム会社" },
+    { n:12, t:"自社が選ばれている理由を3つ", s:"お客様から実際に言われたことがあれば、それがいちばん強いです。", type:"area", ph:"例：1. 見積が早い 2. 追加請求がない 3. 近隣への挨拶までやる", req:true },
+    { n:13, t:"参考にしたいサイト（3つまで）", s:"URLと「どこが良いか」を添えてください。", type:"area", ph:"例：https://〇〇.co.jp — 写真の使い方が good" },
+    { n:14, t:"全体の印象", type:"radio", opts:TONE, req:true },
+    { n:15, t:"使ってほしい色・避けたい色", s:"コーポレートカラーがあればご記入ください。", type:"text", ph:"例：紺色を使ってほしい／赤は避けたい" }
+  ]
+};
+
+const SEC_BY_MENU = {
+  lp: { title: "LPの中身", sub: "1ページに何を載せるかを決めます。6項目。",
+    qs: [
+      { n:16, t:"このLPで売るものは1つですか", type:"radio", opts:["1つ","複数ある"], req:true },
+      { n:17, t:"商品・サービスの名前と概要", type:"area", ph:"例：内装解体パック。事前調査から廃材処分まで込み。", req:true },
+      { n:18, t:"価格の掲載", type:"radio", opts:["金額を掲載する","「要見積」と書く","掲載しない"], req:true },
+      { n:19, t:"掲載できる実績・数字", s:"公開してよいものだけをご記入ください。", type:"area", ph:"例：年間120件／創業18年／リピート率7割" },
+      { n:20, t:"お客様の声", type:"radio", opts:["ある（提供できる）","これから集める","載せない"], req:true },
+      { n:21, t:"読んだ人にしてほしい行動", s:"LPのゴールです。1つに絞ってください。", type:"radio", opts:["LINEに登録する","電話をかける","フォームから問い合わせる","そのまま購入する"], req:true }
+    ] },
+  hp: { title: "ホームページの中身", sub: "ページ構成を決めます。6項目。",
+    qs: [
+      { n:16, t:"必要なページ", s:"5〜7ページまでが料金内です。7つを超える場合は追加費用（5.5万円／ページ）になります。", type:"multi", req:true,
+        opts:["トップ","会社概要","サービス紹介","実績・事例","採用情報","お問い合わせ","代表挨拶","よくある質問","お知らせ・ブログ"] },
+      { n:17, t:"主力サービスを3つまで", type:"area", ph:"例：1. 内装解体 2. 原状回復 3. 産廃収集運搬", req:true },
+      { n:18, t:"掲載できる実績・数字", s:"公開してよいものだけをご記入ください。", type:"area", ph:"例：年間120件／創業18年／取引社数200社" },
+      { n:19, t:"採用ページを作る場合、募集職種", s:"採用ページが不要なら「なし」とご記入ください。", type:"text", ph:"例：解体スタッフ（未経験可）、現場管理" },
+      { n:20, t:"会社概要に載せる情報", s:"社名・所在地・設立・代表者・資本金・許可番号など。載せないものは省いて構いません。", type:"area", ph:"例：社名／所在地／設立年／代表者名／建設業許可番号", req:true },
+      { n:21, t:"問い合わせの受け先", type:"radio", opts:["LINE","電話","フォーム（メールへ転送）","電話とフォームの両方"], req:true }
+    ] },
+  line: { title: "公式LINEの中身", sub: "メニューと自動応答を決めます。6項目。",
+    qs: [
+      { n:16, t:"リッチメニューに入れたい項目（6つまで）", s:"1行に1つ書いてください。", type:"area", ph:"例：\n見積を依頼する\n施工事例を見る\n会社を知る\n採用情報\nよくある質問\n電話する", req:true },
+      { n:17, t:"友だち追加の直後に伝えたいこと", s:"あいさつメッセージです。", type:"area", ph:"例：友だち追加ありがとうございます。見積のご依頼はこのトークから24時間受け付けています。", req:true },
+      { n:18, t:"登録特典", s:"なければ「なし」で構いません。", type:"area", ph:"例：解体費用の相場表（PDF）を配布" },
+      { n:19, t:"自動で答えたい質問（10個まで）", s:"1行に1つ。よく聞かれることを書いてください。", type:"area", ph:"例：\n見積は無料ですか\n対応エリアはどこですか\n即日対応できますか" },
+      { n:20, t:"LINE公式アカウント", type:"radio", opts:["すでに持っている","これから作る（作成もお願いしたい）"], req:true },
+      { n:21, t:"配信の頻度イメージ", s:"構築後の運用イメージです。", type:"radio", opts:["週1回","月2回","不定期","配信はしない"], req:true }
+    ] }
+};
+
+const SEC_ASSET = {
+  title: "素材と体制", sub: "お預かりするものの確認です。5項目。",
+  qs: [
+    { n:22, t:"ロゴデータ", type:"radio", opts:["ある（データで渡せる）","紙・画像しかない","ロゴがない"], req:true },
+    { n:23, t:"写真素材", s:"自社の写真があるほど、伝わるものになります。", type:"radio", opts:["ある（10枚以上）","少しある","ない（フリー素材でよい）"], req:true },
+    { n:24, t:"既存のサイト・SNSのURL", s:"あるものをすべて。なければ「なし」。", type:"area", ph:"例：https://〇〇.co.jp / Instagram @〇〇" },
+    { n:25, t:"書いてはいけないこと・触れてほしくないこと", s:"取引先名、係争中の案件、公開できない実績など。", type:"area", ph:"例：元請の社名は出さない" },
+    { n:26, t:"社内で内容を確認・承認する方", s:"お名前と、確認にかかるおおよその日数を教えてください。", type:"text", ph:"例：代表が確認。2〜3日かかる", req:true }
+  ]
+};
+
+const SEC_GO = {
+  title: "公開について", sub: "最後の4項目です。",
+  qs: [
+    { n:27, t:"ドメイン（サイトの住所）", type:"radio", opts:["新しく取りたい","すでに持っている","わからない"], req:true },
+    { n:28, t:"サーバー", type:"radio", opts:["契約済み","未契約","わからない"], req:true },
+    { n:29, t:"公開したい時期", type:"radio", opts:["できるだけ早く","1ヶ月以内","2〜3ヶ月以内","未定"], req:true },
+    { n:30, t:"その他のご要望・気になっていること", type:"area", ph:"どんなことでも構いません。" }
+  ]
+};
+
+/* ===================== 状態 ===================== */
+const params = new URLSearchParams(location.search);
+let MENU_KEY = params.get("menu");
+if (!MENUS[MENU_KEY]) MENU_KEY = null;
+
+const ANS = {};
+let sections = [];
+let cur = 0;
+
+function buildSections() {
+  sections = [
+    { intro: true },
+    SEC_COMPANY,
+    SEC_AIM,
+    SEC_BY_MENU[MENU_KEY],
+    SEC_ASSET,
+    SEC_GO,
+    { done: true }
+  ];
+}
+
+/* ===================== 描画 ===================== */
+function render() {
+  const card = document.getElementById("card");
+
+  if (!MENU_KEY) { card.innerHTML = pickerHtml(); updateBar(); return; }
+
+  const sec = sections[cur];
+
+  if (sec.intro) {
+    const m = MENUS[MENU_KEY];
+    card.innerHTML =
+      '<div class="eyebrow">要件シート・全30項目</div>' +
+      '<h1>' + m.name + 'の<br>要件をうかがいます📝</h1>' +
+      '<div class="deal"><div class="nm">' + m.name + '</div><div class="pr">' + m.price + '</div>' +
+        '<ul>' + m.spec.map(function (s) { return "<li>" + s + "</li>"; }).join("") + '</ul></div>' +
+      '<p class="hint">15〜20分ほどかかります。<strong>途中で閉じても、この端末に自動で保存されます。</strong>あとから同じリンクを開けば続きから記入できます。</p>' +
+      '<p class="note warn">⚠️ 納期の起算日は、<strong>全項目のご記入が完了し、LEVEREXが受け取った日</strong>です。お申し込み日からではありません。記入をお待ちしている期間は、2週間に含みません。</p>' +
+      '<p class="note">🔒 パスワード・クレジットカード番号・お客様の個人情報は入力しないでください。記入内容はお使いの端末の中だけに保存され、最後にご自身が送信するまで、どこにも送られません。</p>' +
+      '<div class="nav"><button class="btn-next" onclick="next()">記入をはじめる</button></div>' +
+      '<div style="text-align:center;margin-top:14px"><a href="menu.html" style="font-size:12.5px;color:#64748b">‹ 別のメニューを選ぶ</a></div>';
+    updateBar(); return;
+  }
+
+  if (sec.done) { renderDone(card); return; }
+
+  card.innerHTML =
+    '<div class="eyebrow">' + MENUS[MENU_KEY].name + '</div>' +
+    '<h2>' + sec.title + '</h2>' +
+    '<p class="hint">' + sec.sub + '</p>' +
+    '<div class="missing" id="missing"></div>' +
+    sec.qs.map(qHtml).join("") +
+    '<div class="nav">' +
+      '<button class="btn-back" onclick="prev()">← 戻る</button>' +
+      '<button class="btn-next" onclick="next()">' + (cur === sections.length - 2 ? "記入内容を確認する" : "次へ") + '</button>' +
+    '</div>';
+
+  bindInputs();
+  updateBar();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function qHtml(q) {
+  const id = "q" + q.n;
+  const head =
+    '<div class="q" data-qn="' + q.n + '">' +
+    '<div class="qt"><span class="qn">' + q.n + '</span>' + q.t +
+      (q.req ? '<span class="must">必須</span>' : '') + '</div>' +
+    (q.s ? '<div class="qs">' + q.s + '</div>' : '');
+
+  const v = ANS[q.n];
+  let body = "";
+  if (q.type === "text") {
+    body = '<input type="text" id="' + id + '" placeholder="' + (q.ph || "") + '" value="' + escAttr(v || "") + '">';
+  } else if (q.type === "area") {
+    body = '<textarea id="' + id + '" placeholder="' + (q.ph || "") + '">' + escHtml(v || "") + '</textarea>';
+  } else if (q.type === "radio" || q.type === "multi") {
+    const chosen = q.type === "multi" ? (v || []) : (v ? [v] : []);
+    body = '<div class="opts" id="' + id + '" data-type="' + q.type + '">' +
+      q.opts.map(function (o) {
+        return '<button type="button" class="opt' + (chosen.indexOf(o) >= 0 ? " on" : "") + '" data-v="' + escAttr(o) + '">' + escHtml(o) + '</button>';
+      }).join("") + '</div>';
+  }
+  return head + body + '</div>';
+}
+
+function bindInputs() {
+  const sec = sections[cur];
+  sec.qs.forEach(function (q) {
+    const el = document.getElementById("q" + q.n);
+    if (!el) return;
+    if (q.type === "text" || q.type === "area") {
+      el.addEventListener("input", function () { ANS[q.n] = el.value; el.classList.remove("invalid"); save(); });
+    } else {
+      el.addEventListener("click", function (e) {
+        const b = e.target.closest(".opt");
+        if (!b) return;
+        const val = b.getAttribute("data-v");
+        if (q.type === "multi") {
+          b.classList.toggle("on");
+          ANS[q.n] = [].slice.call(el.querySelectorAll(".opt.on")).map(function (x) { return x.getAttribute("data-v"); });
+        } else {
+          el.querySelectorAll(".opt").forEach(function (x) { x.classList.remove("on"); });
+          b.classList.add("on");
+          ANS[q.n] = val;
+        }
+        el.classList.remove("invalid");
+        save();
+      });
+    }
+  });
+}
+
+function pickerHtml() {
+  return '<div class="eyebrow">メニューを選んでください</div>' +
+    '<h1>どれの要件シートを<br>ご記入されますか📝</h1>' +
+    '<p class="hint">それぞれ内容が違います。選ぶと、そのメニュー用の30項目が表示されます。</p>' +
+    '<div class="picker">' +
+      '<a class="pick" href="request.html?menu=lp"><span><span class="nm">LP制作</span><br><span class="sp">1ページ（8セクションまで）</span></span><span class="pr">29.8万円</span></a>' +
+      '<a class="pick" href="request.html?menu=hp"><span><span class="nm">ホームページ制作</span><br><span class="sp">5〜7ページ</span></span><span class="pr">59.8万円</span></a>' +
+      '<a class="pick" href="request.html?menu=line"><span><span class="nm">公式LINE構築</span><br><span class="sp">リッチメニュー1式＋応答10本</span></span><span class="pr">29.8万円</span></a>' +
+    '</div>' +
+    '<p class="note">いずれも税込・全額前金・修正2回まで。ご記入が完了した日から2週間で初稿をお出しします。<a href="menu.html">条件の詳細はこちら ›</a></p>';
+}
+
+/* ===================== 遷移とバリデーション ===================== */
+function allQs() {
+  return sections.filter(function (s) { return s.qs; }).reduce(function (a, s) { return a.concat(s.qs); }, []);
+}
+
+function isBlank(q) {
+  const v = ANS[q.n];
+  if (q.type === "multi") return !v || v.length === 0;
+  return !v || String(v).trim() === "";
+}
+
+function next() {
+  const sec = sections[cur];
+  if (sec.qs) {
+    const miss = sec.qs.filter(function (q) { return q.req && isBlank(q); });
+    if (miss.length) {
+      const box = document.getElementById("missing");
+      box.innerHTML = "必須項目が" + miss.length + "つ未記入です：" +
+        miss.map(function (q) { return "Q" + q.n; }).join("、");
+      box.classList.add("show");
+      miss.forEach(function (q) {
+        const el = document.getElementById("q" + q.n);
+        if (el) el.classList.add("invalid");
+      });
+      const first = document.getElementById("q" + miss[0].n);
+      if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+  }
+  cur = Math.min(cur + 1, sections.length - 1);
+  render();
+}
+
+function prev() { cur = Math.max(cur - 1, 0); render(); }
+
+function updateBar() {
+  const pct = !MENU_KEY ? 0 : Math.round(cur / (sections.length - 1) * 100);
+  document.getElementById("bar").style.width = pct + "%";
+  const sec = MENU_KEY ? sections[cur] : null;
+  document.getElementById("secName").textContent =
+    !sec ? "メニュー選択" : sec.intro ? "はじめに" : sec.done ? "記入内容の確認" : sec.title;
+  const filled = allQs().filter(function (q) { return !isBlank(q); }).length;
+  document.getElementById("secNum").textContent = MENU_KEY ? filled + " / 30 項目" : "";
+}
+
+/* ===================== 保存 ===================== */
+function storeKey() { return "leverex_request_" + MENU_KEY; }
+function save() {
+  try { localStorage.setItem(storeKey(), JSON.stringify(ANS)); } catch (e) {}
+  updateBar();
+}
+function load() {
+  try {
+    const raw = localStorage.getItem(storeKey());
+    if (raw) Object.assign(ANS, JSON.parse(raw));
+  } catch (e) {}
+}
+
+/* ===================== 完了画面 ===================== */
+function renderDone(card) {
+  const qs = allQs();
+  const blanks = qs.filter(isBlank);
+  const text = buildText();
+
+  card.innerHTML =
+    '<div class="eyebrow">記入内容の確認</div>' +
+    '<h2>おつかれさまでした✅</h2>' +
+    '<p class="hint">' + (30 - blanks.length) + ' / 30 項目にご記入いただきました。' +
+      (blanks.length ? '未記入：' + blanks.map(function (q) { return "Q" + q.n; }).join("、") : 'すべて埋まっています。') +
+    '</p>' +
+    '<p class="note warn">下の内容を<strong>コピーして、LEVEREXのLINEに貼り付けて送信</strong>してください。' +
+      '送信を確認した日が、2週間の起算日になります。</p>' +
+    '<textarea class="out" id="out" readonly>' + escHtml(text) + '</textarea>' +
+    '<button class="btn-copy" id="copyBtn" onclick="copyText()">📋 この内容をコピーする</button>' +
+    '<button class="btn-line" onclick="openLine()">💬 LINEを開いて貼り付ける</button>' +
+    '<button class="btn-file" onclick="downloadText()">⬇︎ テキストファイルとして保存する</button>' +
+    '<p class="note">項目が多いため、LINEへの自動入力は行っていません。<strong>コピー →  LINEを開く →  トーク画面で長押しして貼り付け →  送信</strong>の順にお願いします。</p>' +
+    '<div class="nav"><button class="btn-back" onclick="prev()">← 戻って直す</button></div>';
+  updateBar();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function buildText() {
+  const m = MENUS[MENU_KEY];
+  const lines = ["【要件シート】" + m.name + "　" + m.price, ""];
+  sections.forEach(function (sec) {
+    if (!sec.qs) return;
+    lines.push("■ " + sec.title);
+    sec.qs.forEach(function (q) {
+      const v = ANS[q.n];
+      const shown = q.type === "multi" ? ((v || []).join("、") || "（未記入）")
+                                       : ((v && String(v).trim()) || "（未記入）");
+      lines.push("Q" + q.n + ". " + q.t);
+      lines.push("　" + shown.replace(/\n/g, "\n　"));
+    });
+    lines.push("");
+  });
+  lines.push("※ 全額前金・修正2回まで・記入完了から2週間で初稿");
+  return lines.join("\n");
+}
+
+function copyText() {
+  const t = buildText();
+  const btn = document.getElementById("copyBtn");
+  function ok() { btn.textContent = "✅ コピーしました"; setTimeout(function () { btn.textContent = "📋 この内容をコピーする"; }, 2200); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(ok, fallback);
+  } else { fallback(); }
+  function fallback() {
+    const ta = document.getElementById("out");
+    ta.removeAttribute("readonly");
+    ta.select(); ta.setSelectionRange(0, 999999);
+    try { document.execCommand("copy"); ok(); }
+    catch (e) { btn.textContent = "手動でコピーしてください"; }
+    ta.setAttribute("readonly", "readonly");
+  }
+}
+
+function openLine() { location.href = "https://line.me/R/ti/p/" + encodeURIComponent(LINE_ID); }
+
+function downloadText() {
+  const blob = new Blob([buildText()], { type: "text/plain;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "LEVEREX_要件シート_" + MENUS[MENU_KEY].name + ".txt";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+}
+
+/* ===================== ユーティリティ ===================== */
+function escHtml(s) {
+  return String(s).replace(/[&<>"']/g, function (m) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m];
+  });
+}
+function escAttr(s) { return escHtml(s); }
+
+/* ===================== 起動 ===================== */
+if (MENU_KEY) { buildSections(); load(); }
+render();
+</script>
+</body>
+</html>
