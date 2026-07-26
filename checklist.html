@@ -57,7 +57,7 @@
 <div class="app">
   <span class="badge">LINE登録特典</span>
   <h1>社長がいなくても回る会社<br>チェックリスト10</h1>
-  <p class="lead">当てはまるものをタップしてください。あなたの会社の「仕組み度」がその場でわかります。</p>
+  <p class="lead">当てはまる項目をタップしてください。御社の「仕組み度」がその場でわかります。</p>
 
   <div class="list" id="list">
     <div class="item"><span class="box">✓</span><span><span class="n">01</span><br><span class="t">社長が3日不在でも、見積・請求が止まらない</span></span></div>
@@ -74,11 +74,11 @@
 
   <div class="score">
     <div class="num"><span id="count">0</span> / 10</div>
-    <div class="msg" id="msg">タップしてチェックしてみてください</div>
+    <div class="msg" id="msg">当てはまる項目をタップしてください</div>
     <a class="cta" href="apply.html">診断で、止まる業務を特定する</a>
   </div>
 
-  <p class="note">チェックが7個未満なら、伸びしろが大きい状態です。LEVEREXは、強みを発掘して「担当者が変わっても回る形」を30日でつくる伴走支援をしています。</p>
+  <p class="note">チェックが7個未満の場合は、改善の余地が大きい状態です。LEVEREXは、御社の強みを発掘し「担当者が変わっても回る形」を30日で構築する伴走支援を行っております。</p>
   <p class="footer">LEVEREX｜業務改善・仕組み化 — <a href="index.html">トップへ</a></p>
 </div>
 
@@ -92,9 +92,9 @@ items.forEach(i => i.addEventListener("click", () => {
   count.textContent = n;
   msg.textContent =
     n >= 8 ? "すでに仕組みで回っている状態です" :
-    n >= 5 ? "止まりやすい箇所が残っています。1つずつ直せます" :
-    n >= 1 ? "改善の余地が大きい状態です。まず1業務から着手できます" :
-    "タップしてチェックしてみてください";
+    n >= 5 ? "止まりやすい箇所が残っております。1つずつ改善できます" :
+    n >= 1 ? "改善の余地が大きい状態です。まず1業務から着手いただけます" :
+    "当てはまる項目をタップしてください";
 }));
 </script>
 </body>

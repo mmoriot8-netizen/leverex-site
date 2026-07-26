@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>要件シート｜LEVEREX</title>
-<meta name="description" content="LP制作・ホームページ制作・公式LINE構築の要件シートです。全30項目。ご記入が完了した日から2週間で初稿をお出しします。">
+<meta name="description" content="LP制作・ホームページ制作・公式LINE構築の要件シートです。全30項目。お申し込みから2週間で初稿をご提出いたします。">
 <style>
   :root {
     --teal: #a5801f; --teal-deep: #14213d; --mint: #efe0bb; --mint-soft: #faf5e6;
@@ -139,21 +139,21 @@ const MENUS = {
     spec: ["1ページ／8セクションまで",
            "構成設計・原稿作成・デザイン・コーディング・スマホ対応・公開設定",
            "含まないもの：撮影、イラスト、ドメイン・サーバー費用",
-           "修正2回まで／全額前金／記入完了から2週間で初稿"]
+           "修正2回まで／全額前金／お申し込みから2週間で初稿"]
   },
   hp: {
     name: "ホームページ制作", price: "料金はお見積りでご案内します",
     spec: ["5〜7ページ",
            "構成設計・原稿作成・デザイン・コーディング・スマホ対応・公開設定",
            "含まないもの：撮影、イラスト、ドメイン・サーバー費用",
-           "修正2回まで／全額前金／記入完了から2週間で初稿"]
+           "修正2回まで／全額前金／お申し込みから2週間で初稿"]
   },
   line: {
     name: "公式LINE構築", price: "料金はお見積りでご案内します",
     spec: ["リッチメニュー1式（6分割まで）、あいさつメッセージ、キーワード応答10本まで",
            "画像制作・設定作業を含みます",
            "含まないもの：LINE公式アカウントの月額利用料、配信の代行",
-           "修正2回まで／全額前金／記入完了から2週間で初稿"]
+           "修正2回まで／全額前金／お申し込みから2週間で初稿"]
   }
 };
 
@@ -277,9 +277,9 @@ function render() {
       '<h1>' + m.name + 'の<br>要件をご記入ください</h1>' +
       '<div class="deal"><div class="nm">' + m.name + '</div><div class="pr">' + m.price + '</div>' +
         '<ul>' + m.spec.map(function (s) { return "<li>" + s + "</li>"; }).join("") + '</ul></div>' +
-      '<p class="hint">15〜20分ほどかかります。<strong>途中で閉じても、この端末に自動で保存されます。</strong>あとから同じリンクを開けば続きから記入できます。</p>' +
-      '<p class="note warn">納期の起算日は、<strong>全項目のご記入が完了し、LEVEREXが受け取った日</strong>です。お申し込み日からではありません。記入をお待ちしている期間は、2週間に含みません。</p>' +
-      '<p class="note">パスワード・クレジットカード番号・お客様の個人情報は入力しないでください。記入内容はお使いの端末の中だけに保存され、最後にご自身が送信するまで、どこにも送られません。</p>' +
+      '<p class="hint">15〜20分ほどお時間をいただきます。<strong>途中で閉じられても、この端末に自動で保存されます。</strong>あとから同じリンクを開いていただければ、続きからご記入いただけます。</p>' +
+      '<p class="note warn">納期の起算日は<strong>お申し込み日</strong>でございます。制作に着手するには、この要件シートのご記入が必要です。<strong>お早めのご記入にご協力ください。</strong></p>' +
+      '<p class="note">パスワード・クレジットカード番号・お客様の個人情報はご入力をお控えください。ご記入内容はお使いの端末内にのみ保存され、送信いただくまで外部には一切送信されません。</p>' +
       '<div class="nav"><button class="btn-next" onclick="next()">記入をはじめる</button></div>' +
       '<div style="text-align:center;margin-top:14px"><a href="menu.html" style="font-size:12.5px;color:#64748b">‹ 別のメニューを選ぶ</a></div>';
     updateBar(); return;
@@ -357,13 +357,13 @@ function bindInputs() {
 function pickerHtml() {
   return '<div class="eyebrow">メニューを選んでください</div>' +
     '<h1>ご記入いただく<br>要件シートをお選びください</h1>' +
-    '<p class="hint">それぞれ内容が違います。選ぶと、そのメニュー用の30項目が表示されます。</p>' +
+    '<p class="hint">メニューごとに設問が異なります。お選びいただくと、そのメニュー用の30項目が表示されます。</p>' +
     '<div class="picker">' +
       '<a class="pick" href="request.html?menu=lp"><span><span class="nm">LP制作</span><br><span class="sp">1ページ（8セクションまで）</span></span><span class="pr">お見積り</span></a>' +
       '<a class="pick" href="request.html?menu=hp"><span><span class="nm">ホームページ制作</span><br><span class="sp">5〜7ページ</span></span><span class="pr">お見積り</span></a>' +
       '<a class="pick" href="request.html?menu=line"><span><span class="nm">公式LINE構築</span><br><span class="sp">リッチメニュー1式＋応答10本</span></span><span class="pr">お見積り</span></a>' +
     '</div>' +
-    '<p class="note">いずれも全額前金・修正2回まで。ご記入が完了した日から2週間で初稿をお出しします。料金は内容をうかがってからご案内します。<a href="menu.html">条件の詳細はこちら ›</a></p>';
+    '<p class="note">いずれも全額前金・修正2回まで。お申し込みから2週間で初稿をご提出いたします。料金は内容をおうかがいしたうえでご案内いたします。<a href="menu.html">条件の詳細はこちら ›</a></p>';
 }
 
 /* ===================== 遷移とバリデーション ===================== */
@@ -437,12 +437,12 @@ function renderDone(card) {
       (blanks.length ? '未記入：' + blanks.map(function (q) { return "Q" + q.n; }).join("、") : 'すべて埋まっています。') +
     '</p>' +
     '<p class="note warn">下の内容を<strong>コピーして、LEVEREXのLINEに貼り付けて送信</strong>してください。' +
-      '送信を確認した日が、2週間の起算日になります。</p>' +
+      '</p>' +
     '<textarea class="out" id="out" readonly>' + escHtml(text) + '</textarea>' +
     '<button class="btn-copy" id="copyBtn" onclick="copyText()">この内容をコピーする</button>' +
     '<button class="btn-line" onclick="openLine()">LINEを開いて貼り付ける</button>' +
     '<button class="btn-file" onclick="downloadText()">テキストファイルとして保存する</button>' +
-    '<p class="note">項目が多いため、LINEへの自動入力は行っていません。<strong>コピー →  LINEを開く →  トーク画面で長押しして貼り付け →  送信</strong>の順にお願いします。</p>' +
+    '<p class="note">項目数が多いため、LINEへの自動入力は行っておりません。<strong>コピー →  LINEを開く →  トーク画面で長押しして貼り付け →  送信</strong>の順にお願いいたします。</p>' +
     '<div class="nav"><button class="btn-back" onclick="prev()">← 戻って直す</button></div>';
   updateBar();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -463,7 +463,7 @@ function buildText() {
     });
     lines.push("");
   });
-  lines.push("※ 全額前金・修正2回まで・記入完了から2週間で初稿");
+  lines.push("※ 全額前金・修正2回まで・お申し込みから2週間で初稿");
   return lines.join("\n");
 }
 

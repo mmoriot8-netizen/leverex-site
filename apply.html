@@ -143,20 +143,20 @@
     <section class="step active" data-step="0">
       <div class="q-eyebrow">10問・約2分・無料</div>
       <h1>業務の属人化診断</h1>
-      <p class="hint">担当の方が1週間不在になったとき、どの業務が止まるか。10の質問から、着手すべき順番を表示します。<strong>会社名やお名前は、結果をご覧いただいた後にうかがいます。</strong></p>
-      <div class="nav"><button class="btn-next" onclick="go(1)">はじめる</button></div>
-      <p class="note">顧客名・従業員名・パスワード・社外秘の数字は入力しないでください。診断の判定はすべてお使いの端末の中だけで行われ、送信ボタンを押すまで、どこにも送られません。</p>
+      <p class="hint">ご担当者が1週間ご不在になった場合に、どの業務が止まるのか。10の設問から、着手すべき順番を表示いたします。<strong>会社名とお名前は、結果をご覧いただいた後におうかがいします。</strong></p>
+      <div class="nav"><button class="btn-next" onclick="go(1)">診断をはじめる</button></div>
+      <p class="note">顧客名・従業員名・パスワード・社外秘の数値はご入力をお控えください。診断の判定はすべてお使いの端末内で行われ、送信ボタンを押されるまで、外部には一切送信されません。</p>
     </section>
 
     <!-- ===== Q1 立場 ===== -->
     <section class="step" data-step="1">
       <div class="q-eyebrow">Q1 / 10</div>
-      <h2>お立場を教えてください</h2>
-      <p class="hint">結果の見せ方を変えるために使います。</p>
+      <h2>お立場をお聞かせください</h2>
+      <p class="hint">結果の表示内容を調整するために使用いたします。</p>
       <div class="radios" data-q="role">
-        <button type="button" class="radio" data-v="社長・経営者"><span class="dot"></span><span>社長・経営者<small>会社全体を見ている</small></span></button>
-        <button type="button" class="radio" data-v="部門長・現場責任者"><span class="dot"></span><span>部門長・現場責任者<small>担当する部門・現場を見ている</small></span></button>
-        <button type="button" class="radio" data-v="担当者・その他"><span class="dot"></span><span>担当者・その他<small>実務を担当している</small></span></button>
+        <button type="button" class="radio" data-v="社長・経営者"><span class="dot"></span><span>社長・経営者<small>会社全体を統括されている</small></span></button>
+        <button type="button" class="radio" data-v="部門長・現場責任者"><span class="dot"></span><span>部門長・現場責任者<small>担当部門・現場を統括されている</small></span></button>
+        <button type="button" class="radio" data-v="担当者・その他"><span class="dot"></span><span>担当者・その他<small>実務を担当されている</small></span></button>
       </div>
       <div class="nav">
         <button class="btn-back" onclick="go(0)">← 戻る</button>
@@ -167,12 +167,12 @@
     <!-- ===== Q2 仕事の場 ===== -->
     <section class="step" data-step="2">
       <div class="q-eyebrow">Q2 / 10</div>
-      <h2>仕事の中心はどちらですか</h2>
-      <p class="hint">現場の会社とオフィスの会社では、詰まる場所が違います。</p>
+      <h2>お仕事の中心はどちらでしょうか</h2>
+      <p class="hint">現場中心の会社とオフィス中心の会社では、詰まる箇所が異なります。</p>
       <div class="radios" data-q="field">
         <button type="button" class="radio" data-v="現場中心"><span class="dot"></span><span>現場が中心<small>建設・清掃・製造・物流・店舗・訪問など</small></span></button>
         <button type="button" class="radio" data-v="オフィス中心"><span class="dot"></span><span>オフィスが中心<small>営業・事務・企画・士業・IT など</small></span></button>
-        <button type="button" class="radio" data-v="両方"><span class="dot"></span><span>両方ある<small>現場部門とオフィス部門の両方を持っている</small></span></button>
+        <button type="button" class="radio" data-v="両方"><span class="dot"></span><span>両方ある<small>現場部門とオフィス部門の両方をお持ち</small></span></button>
       </div>
       <div class="nav">
         <button class="btn-back" onclick="go(1)">← 戻る</button>
@@ -183,8 +183,8 @@
     <!-- ===== Q3 規模 ===== -->
     <section class="step" data-step="3">
       <div class="q-eyebrow">Q3 / 10</div>
-      <h2>従業員数を教えてください</h2>
-      <p class="hint">パート・アルバイトを含めた、おおよその人数で結構です。</p>
+      <h2>従業員数をお聞かせください</h2>
+      <p class="hint">パート・アルバイトの方を含めた、おおよその人数で差し支えありません。</p>
       <div class="radios" data-q="size">
         <button type="button" class="radio" data-v="1〜5名"><span class="dot"></span><span>1〜5名</span></button>
         <button type="button" class="radio" data-v="6〜20名"><span class="dot"></span><span>6〜20名</span></button>
@@ -203,8 +203,8 @@
     <!-- ===== Q9 自由記述 ===== -->
     <section class="step" data-step="9">
       <div class="q-eyebrow">Q9 / 10</div>
-      <h2>いま最も課題を感じている場面をお聞かせください</h2>
-      <p class="hint">任意です。ひとことでも構いません。（固有名詞・実際の金額は書かないでください）</p>
+      <h2>いま最も課題を感じておられる場面をお聞かせください</h2>
+      <p class="hint">任意でございます。ひとことでも差し支えありません。（固有名詞・実際の金額はご記入をお控えください）</p>
       <textarea id="pain" placeholder="例：見積を私しか作れず、外出中は止まる"></textarea>
       <div class="nav">
         <button class="btn-back" onclick="go(8)">← 戻る</button>
@@ -216,15 +216,15 @@
     <section class="step" data-step="10">
       <div class="q-eyebrow">Q10 / 10</div>
       <h2>ご希望に近いものをお選びください</h2>
-      <p class="hint">最後の質問です。</p>
+      <p class="hint">最後の設問でございます。</p>
       <div class="radios" data-q="want">
         <button type="button" class="radio" data-v="作ってほしいものが決まっている"><span class="dot"></span><span>作ってほしいものが決まっている<small>ホームページ・LP・公式LINEなど</small></span></button>
-        <button type="button" class="radio" data-v="何から手をつけるか相談したい"><span class="dot"></span><span>何から手をつけるか相談したい<small>仕組み化・業務改善を一緒に進めたい</small></span></button>
-        <button type="button" class="radio" data-v="助成金・補助金を使いたい"><span class="dot"></span><span>助成金・補助金を使いたい<small>制度を使えるかどうかから知りたい</small></span></button>
+        <button type="button" class="radio" data-v="何から手をつけるか相談したい"><span class="dot"></span><span>何から手をつけるか相談したい<small>仕組み化・業務改善をご一緒に進めたい</small></span></button>
+        <button type="button" class="radio" data-v="助成金・補助金を使いたい"><span class="dot"></span><span>助成金・補助金を使いたい<small>制度が使えるかどうかから確認したい</small></span></button>
       </div>
       <div class="nav">
         <button class="btn-back" onclick="go(9)">← 戻る</button>
-        <button class="btn-next" data-next="want" disabled onclick="buildResult();go(11)">結果を見る</button>
+        <button class="btn-next" data-next="want" disabled onclick="buildResult();go(11)">結果を表示する</button>
       </div>
     </section>
 
@@ -244,22 +244,22 @@
       <div class="route-badge">おすすめの進め方</div>
       <div id="routeBox"></div>
 
-      <p class="note">この診断結果は、この画面を閉じると消えます。必要な方は画面を撮影して保存してください。</p>
-      <div class="nav"><button class="btn-back" onclick="go(10)">← 回答を直す</button></div>
+      <p class="note">診断結果は、この画面を閉じますと消去されます。必要な場合は画面を撮影して保存してください。</p>
+      <div class="nav"><button class="btn-back" onclick="go(10)">← 回答を修正する</button></div>
     </section>
 
     <!-- ===== STEP 12: 連絡先 ===== -->
     <section class="step" data-step="12">
       <div class="q-eyebrow">最後に</div>
       <h2>ご連絡先をご記入ください</h2>
-      <p class="hint">診断結果と一緒に、LEVEREXのLINEへ送ります。折り返しのご連絡に使います。</p>
+      <p class="hint">診断結果とあわせて、LEVEREXの公式LINEへ送信いたします。折り返しのご連絡に使用いたします。</p>
       <label class="fld" for="company">会社名・屋号</label>
       <input type="text" id="company" placeholder="例：株式会社レバレックス" oninput="checkContact()">
       <label class="fld" for="pname">お名前</label>
       <input type="text" id="pname" placeholder="例：河村" oninput="checkContact()">
       <div class="nav">
         <button class="btn-back" onclick="go(11)">← 結果に戻る</button>
-        <button class="btn-next" id="nextContact" disabled onclick="buildSummary();go(13)">確認へ</button>
+        <button class="btn-next" id="nextContact" disabled onclick="buildSummary();go(13)">確認画面へ</button>
       </div>
     </section>
 
@@ -269,8 +269,8 @@
       <h2>この内容でLINEに送信します</h2>
       <dl class="summary" id="summaryBox"></dl>
       <button class="btn-line" onclick="sendToLine()">LINEで送信する</button>
-      <p class="note">タップするとLEVEREXのLINEトークが開き、上の内容が入力済みの状態になります。<strong>トーク画面で送信ボタンを押すと完了です。</strong>24時間以内にお返事します。</p>
-      <div class="nav"><button class="btn-back" onclick="go(12)">← 戻って直す</button></div>
+      <p class="note">タップいただきますとLEVEREXのトーク画面が開き、上記の内容が入力された状態になります。<strong>トーク画面で送信ボタンを押していただくと完了です。</strong>24時間以内にお返事いたします。</p>
+      <div class="nav"><button class="btn-back" onclick="go(12)">← 戻って修正する</button></div>
     </section>
 
   </div>
@@ -287,33 +287,33 @@ const LINE_ID = "@558bnxlh";
 
 /* ---------- Q4〜Q8：業務領域 ---------- */
 const AREAS = [
-  { key: "sales",  name: "営業・顧客対応",        q: "営業・お客様対応の担当が1週間休んだら？",
-    cm3: "問い合わせの取りこぼしと、商談の停止が同時に起きます。売上に直結するため、最優先です。",
-    cm2: "既存のお客様は守れますが、新規は止まります。",
-    cm1: "引き継ぎが効いています。" },
-  { key: "quote",  name: "見積・請求",            q: "見積・請求の担当が1週間休んだら？",
-    cm3: "請求が止まると、入金が止まります。会社の資金繰りに直接効いてきます。",
-    cm2: "遅れは出ますが、月次は締められます。",
-    cm1: "手順が共有できています。" },
-  { key: "site",   name: "現場の段取り・制作進行", q: "現場の段取り・制作進行の担当が1週間休んだら？",
-    cm3: "段取りが止まると、動ける人がいても仕事が進みません。人が余って納期が遅れる、いちばんもったいない状態です。",
-    cm2: "動きは止まりませんが、判断待ちの時間が増えます。",
-    cm1: "現場が自分で判断できています。" },
-  { key: "hire",   name: "採用・教育",            q: "採用・教育の担当が1週間休んだら？",
-    cm3: "今は困りませんが、人が辞めたときに一気に効いてきます。効果が出るまで時間がかかるため、着手が遅れがちな領域です。",
-    cm2: "選考は進みますが、新人の立ち上がりが遅くなります。",
-    cm1: "教える内容が形になっています。" },
-  { key: "admin",  name: "経理・事務",            q: "経理・事務の担当が1週間休んだら？",
-    cm3: "支払い・給与・書類が止まります。外からは見えにくいのに、止まると全社に影響します。",
-    cm2: "月末月初に集中してしわ寄せが来ます。",
-    cm1: "代われる人がいます。" }
+  { key: "sales",  name: "営業・顧客対応",        q: "営業・お客様対応のご担当者が、1週間ご不在になった場合",
+    cm3: "お問い合わせの取りこぼしと商談の停止が同時に発生します。売上に直結するため、最優先の領域です。",
+    cm2: "既存のお客様への対応は維持できますが、新規の獲得が止まります。",
+    cm1: "引き継ぎが機能しております。" },
+  { key: "quote",  name: "見積・請求",            q: "見積・請求のご担当者が、1週間ご不在になった場合",
+    cm3: "請求が止まりますと、入金も止まります。資金繰りに直接影響する領域です。",
+    cm2: "遅れは生じますが、月次の締めは可能です。",
+    cm1: "手順が共有されております。" },
+  { key: "site",   name: "現場の段取り・制作進行", q: "現場の段取り・制作進行のご担当者が、1週間ご不在になった場合",
+    cm3: "段取りが止まりますと、動ける方がいても業務が進みません。人員に余裕があるにもかかわらず納期が遅れる、損失の大きい状態です。",
+    cm2: "業務は止まりませんが、判断待ちの時間が増加します。",
+    cm1: "現場で判断できる体制が整っております。" },
+  { key: "hire",   name: "採用・教育",            q: "採用・教育のご担当者が、1週間ご不在になった場合",
+    cm3: "当面の支障はございませんが、退職が発生した際に影響が表面化します。効果が出るまで時間を要するため、着手が後回しになりやすい領域です。",
+    cm2: "選考は進みますが、新入社員の立ち上がりが遅くなります。",
+    cm1: "教育内容が形式知になっております。" },
+  { key: "admin",  name: "経理・事務",            q: "経理・事務のご担当者が、1週間ご不在になった場合",
+    cm3: "支払い・給与・書類の処理が止まります。外部からは見えにくい一方、停止すると全社に影響が及びます。",
+    cm2: "月末月初に業務が集中し、負荷が偏ります。",
+    cm1: "代わりに対応できる方がいらっしゃいます。" }
 ];
 
 const LEVELS = [
-  { v: 3, label: "完全に止まる",           sub: "その人がいないと、誰も進められない" },
-  { v: 2, label: "遅れるが、なんとか回る",  sub: "時間はかかるが、他の人でも対応できる" },
-  { v: 1, label: "止まらない",             sub: "手順が共有されていて、代われる人がいる" },
-  { v: 0, label: "その業務はない",         sub: "自社では発生しない、または外注している" }
+  { v: 3, label: "業務が完全に止まります",       sub: "その方でなければ、誰も進められません" },
+  { v: 2, label: "遅れますが、対応はできます",   sub: "時間はかかりますが、他の方でも対応できます" },
+  { v: 1, label: "止まりません",                 sub: "手順が共有されており、代わりの方がいます" },
+  { v: 0, label: "該当する業務はありません",     sub: "自社では発生しない、または外部に委託しています" }
 ];
 
 const STATE = { role: "", field: "", size: "", want: "", areas: {} };
@@ -327,7 +327,7 @@ const STATE = { role: "", field: "", size: "", want: "", areas: {} };
       '<div class="q-eyebrow">Q' + step + ' / 10</div>' +
       '<span class="area-tag">' + a.name + '</span>' +
       '<h2>' + a.q + '</h2>' +
-      '<p class="hint">いちばん近いものを選んでください。</p>' +
+      '<p class="hint">最も近いものをお選びください。</p>' +
       '<div class="radios" data-q="area:' + a.key + '">' +
         LEVELS.map(function (l) {
           return '<button type="button" class="radio" data-v="' + l.v + '"><span class="dot"></span>' +
@@ -406,7 +406,7 @@ function buildResult() {
   const mapEl = document.getElementById("mapBox");
   if (top.length === 0) {
     mapEl.innerHTML = '<div class="map-row"><div class="top"><span class="nm">該当なし</span></div>' +
-      '<div class="cm">5つの領域すべてで「その業務はない」を選ばれました。もう一度お答えいただくか、下のLINEから直接ご相談ください。</div></div>';
+      '<div class="cm">5つの領域すべてで「該当する業務はありません」をお選びいただきました。再度お答えいただくか、LINEより直接ご相談ください。</div></div>';
   } else {
     mapEl.innerHTML = top.map(function (r, i) {
       const st = r.v === 3 ? "止まります" : (r.v === 2 ? "遅れます" : "回ります");
@@ -423,33 +423,33 @@ function buildResult() {
   /* 予告編 */
   const roleWord = STATE.role === "社長・経営者" ? "会社" : "この部門";
   document.getElementById("teaserBox").innerHTML =
-    '<div class="t">ここまでが、10問でわかる範囲です。</div>' +
-    '<div class="s">実際には1つの業務の中に、担当者しか把握していない手順が細かく積み重なっています。' +
+    '<div class="t">ここまでが、10問で把握できる範囲でございます。</div>' +
+    '<div class="s">実際には1つの業務の中に、ご担当者しか把握されていない手順が細かく積み重なっております。' +
     '30日の伴走支援では、' + roleWord + 'の業務を分解してすべて洗い出し、' +
-    '<strong>担当者が変わっても回る形</strong>まで一緒に作ります。</div>';
+    '<strong>担当者が変わっても回る形</strong>になるまでご一緒に構築いたします。</div>';
 
   /* ルート */
   const routeEl = document.getElementById("routeBox");
   if (STATE.want === "作ってほしいものが決まっている") {
     routeEl.innerHTML =
-      '<p class="hint" style="margin:8px 0 0;">作るものが決まっている方向けに、範囲と納期を固定したメニューをご用意しています。要件をご記入いただいた日から<strong>2週間で初稿</strong>をお出しします。料金は内容をうかがってからご案内します。</p>' +
+      '<p class="hint" style="margin:8px 0 0;">作るものがお決まりの方向けに、範囲と納期を固定したメニューをご用意しております。<strong>お申し込みから2週間で初稿</strong>をご提出いたします。料金は内容をおうかがいしたうえでご案内いたします。</p>' +
       '<div class="menu-cards">' +
         menuCard("lp",   "LP制作",       "1ページ（8セクションまで）") +
         menuCard("hp",   "ホームページ制作", "5〜7ページ") +
         menuCard("line", "公式LINE構築",  "リッチメニュー1式＋応答10本") +
       '</div>' +
-      '<a class="cta sub" href="menu.html">メニューの詳しい条件を見る ›</a>' +
+      '<a class="cta sub" href="menu.html">サービス内容の詳細を見る ›</a>' +
       '<button class="cta" onclick="go(12)">診断結果を送って相談する</button>';
   } else if (STATE.want === "助成金・補助金を使いたい") {
     routeEl.innerHTML =
-      '<p class="hint" style="margin:8px 0 14px;">補助金は<strong>交付決定の前に契約・購入したものが対象外</strong>になります。順番を間違えると使えなくなるため、先にご相談ください。制度が使えるかどうかの確認から一緒に行います。</p>' +
-      '<button class="cta" onclick="go(12)">助成金の使い方を相談する</button>' +
+      '<p class="hint" style="margin:8px 0 14px;">補助金は<strong>交付決定の前に契約・購入されたものが対象外</strong>となります。順序を誤ると利用できなくなるため、先にご相談ください。制度が利用可能かどうかの確認からご一緒に進めます。</p>' +
+      '<button class="cta" onclick="go(12)">助成金の活用についてご相談する</button>' +
       '<a class="cta sub" href="menu.html">先にメニューを見る ›</a>';
   } else {
     routeEl.innerHTML =
-      '<p class="hint" style="margin:8px 0 14px;">何から手をつけるかを決めるところから、一緒に進めます。まずは診断結果をお送りください。内容を見たうえで、面談の日程をご案内します。</p>' +
+      '<p class="hint" style="margin:8px 0 14px;">何から着手するかを決めるところから、ご一緒に進めます。まずは診断結果をお送りください。内容を拝見したうえで、面談の日程をご案内いたします。</p>' +
       '<button class="cta" onclick="go(12)">診断結果を送って面談を申し込む</button>' +
-      '<a class="cta sub" href="manga.html">まんがで進め方を見る ›</a>';
+      '<a class="cta sub" href="manga.html">まんがで進め方をご覧いただく ›</a>';
   }
 }
 
