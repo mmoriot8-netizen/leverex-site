@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>〈あの人しかできない〉診断｜LEVEREX</title>
-<meta name="description" content="10問・約2分。担当者が休んだら止まる業務を洗い出し、いま手をつけるべき1つを表示します。LEVEREX（レバレックス）の無料診断です。">
+<title>業務の属人化診断｜LEVEREX</title>
+<meta name="description" content="10問・約2分。担当者が不在のときに止まる業務を洗い出し、着手すべき順番を表示します。LEVEREX（レバレックス）の無料診断です。">
 <style>
   :root {
     --teal: #a5801f; --teal-deep: #14213d; --mint: #efe0bb; --mint-soft: #faf5e6;
@@ -142,10 +142,10 @@
     <!-- ===== STEP 0: intro ===== -->
     <section class="step active" data-step="0">
       <div class="q-eyebrow">10問・約2分・無料</div>
-      <h1>〈あの人しかできない〉<br>診断🔍</h1>
-      <p class="hint">担当の方が1週間休んだとき、どの業務が止まるか。10の質問から、いま手をつけるべき順番を表示します。<strong>会社名やお名前は、結果をご覧いただいた後にうかがいます。</strong></p>
+      <h1>業務の属人化診断</h1>
+      <p class="hint">担当の方が1週間不在になったとき、どの業務が止まるか。10の質問から、着手すべき順番を表示します。<strong>会社名やお名前は、結果をご覧いただいた後にうかがいます。</strong></p>
       <div class="nav"><button class="btn-next" onclick="go(1)">はじめる</button></div>
-      <p class="note">🔒 顧客名・従業員名・パスワード・社外秘の数字は入力しないでください。診断の判定はすべてお使いの端末の中だけで行われ、送信ボタンを押すまで、どこにも送られません。</p>
+      <p class="note">顧客名・従業員名・パスワード・社外秘の数字は入力しないでください。診断の判定はすべてお使いの端末の中だけで行われ、送信ボタンを押すまで、どこにも送られません。</p>
     </section>
 
     <!-- ===== Q1 立場 ===== -->
@@ -203,7 +203,7 @@
     <!-- ===== Q9 自由記述 ===== -->
     <section class="step" data-step="9">
       <div class="q-eyebrow">Q9 / 10</div>
-      <h2>いちばん困っている場面は？</h2>
+      <h2>いま最も課題を感じている場面をお聞かせください</h2>
       <p class="hint">任意です。ひとことでも構いません。（固有名詞・実際の金額は書かないでください）</p>
       <textarea id="pain" placeholder="例：見積を私しか作れず、外出中は止まる"></textarea>
       <div class="nav">
@@ -215,7 +215,7 @@
     <!-- ===== Q10 希望 ===== -->
     <section class="step" data-step="10">
       <div class="q-eyebrow">Q10 / 10</div>
-      <h2>ご希望に近いのはどれですか</h2>
+      <h2>ご希望に近いものをお選びください</h2>
       <p class="hint">最後の質問です。</p>
       <div class="radios" data-q="want">
         <button type="button" class="radio" data-v="作ってほしいものが決まっている"><span class="dot"></span><span>作ってほしいものが決まっている<small>ホームページ・LP・公式LINEなど</small></span></button>
@@ -250,8 +250,8 @@
 
     <!-- ===== STEP 12: 連絡先 ===== -->
     <section class="step" data-step="12">
-      <div class="q-eyebrow">あと2つだけ</div>
-      <h2>お名前をうかがえますか🙌</h2>
+      <div class="q-eyebrow">最後に</div>
+      <h2>ご連絡先をご記入ください</h2>
       <p class="hint">診断結果と一緒に、LEVEREXのLINEへ送ります。折り返しのご連絡に使います。</p>
       <label class="fld" for="company">会社名・屋号</label>
       <input type="text" id="company" placeholder="例：株式会社レバレックス" oninput="checkContact()">
@@ -266,9 +266,9 @@
     <!-- ===== STEP 13: 送信確認 ===== -->
     <section class="step" data-step="13">
       <div class="q-eyebrow">ご確認</div>
-      <h2>この内容でLINEに送ります✅</h2>
+      <h2>この内容でLINEに送信します</h2>
       <dl class="summary" id="summaryBox"></dl>
-      <button class="btn-line" onclick="sendToLine()">💬 LINEで送信する</button>
+      <button class="btn-line" onclick="sendToLine()">LINEで送信する</button>
       <p class="note">タップするとLEVEREXのLINEトークが開き、上の内容が入力済みの状態になります。<strong>トーク画面で送信ボタンを押すと完了です。</strong>24時間以内にお返事します。</p>
       <div class="nav"><button class="btn-back" onclick="go(12)">← 戻って直す</button></div>
     </section>
@@ -397,9 +397,9 @@ function buildResult() {
   /* 見出し */
   const titleEl = document.getElementById("resultTitle");
   if (stopCount === 0) {
-    titleEl.innerHTML = '止まる業務は<br><em>見つかりませんでした</em>';
+    titleEl.innerHTML = '停止リスクのある業務は<br><em>見つかりませんでした</em>';
   } else {
-    titleEl.innerHTML = '〈あの人しかできない〉が<br><em>' + stopCount + 'つ</em>見つかりました';
+    titleEl.innerHTML = '属人化している業務が<br><em>' + stopCount + 'つ</em>見つかりました';
   }
 
   /* マップ */
@@ -423,23 +423,23 @@ function buildResult() {
   /* 予告編 */
   const roleWord = STATE.role === "社長・経営者" ? "会社" : "この部門";
   document.getElementById("teaserBox").innerHTML =
-    '<div class="t">ここまでは、10問でわかる範囲です。</div>' +
-    '<div class="s">実際には1つの業務の中に、細かい「その人しかできない」がいくつも隠れています。' +
-    '30日の伴走では、' + roleWord + 'の業務を分解して全部を洗い出し、' +
+    '<div class="t">ここまでが、10問でわかる範囲です。</div>' +
+    '<div class="s">実際には1つの業務の中に、担当者しか把握していない手順が細かく積み重なっています。' +
+    '30日の伴走支援では、' + roleWord + 'の業務を分解してすべて洗い出し、' +
     '<strong>担当者が変わっても回る形</strong>まで一緒に作ります。</div>';
 
   /* ルート */
   const routeEl = document.getElementById("routeBox");
   if (STATE.want === "作ってほしいものが決まっている") {
     routeEl.innerHTML =
-      '<p class="hint" style="margin:8px 0 0;">作るものが決まっている方向けの、範囲と納期を固定したメニューです。要件をご記入いただいた日から<strong>2週間で初稿</strong>をお出しします。料金は内容をうかがってからご案内します。</p>' +
+      '<p class="hint" style="margin:8px 0 0;">作るものが決まっている方向けに、範囲と納期を固定したメニューをご用意しています。要件をご記入いただいた日から<strong>2週間で初稿</strong>をお出しします。料金は内容をうかがってからご案内します。</p>' +
       '<div class="menu-cards">' +
         menuCard("lp",   "LP制作",       "1ページ（8セクションまで）") +
         menuCard("hp",   "ホームページ制作", "5〜7ページ") +
         menuCard("line", "公式LINE構築",  "リッチメニュー1式＋応答10本") +
       '</div>' +
       '<a class="cta sub" href="menu.html">メニューの詳しい条件を見る ›</a>' +
-      '<button class="cta" onclick="go(12)">まず診断結果を送って相談する</button>';
+      '<button class="cta" onclick="go(12)">診断結果を送って相談する</button>';
   } else if (STATE.want === "助成金・補助金を使いたい") {
     routeEl.innerHTML =
       '<p class="hint" style="margin:8px 0 14px;">補助金は<strong>交付決定の前に契約・購入したものが対象外</strong>になります。順番を間違えると使えなくなるため、先にご相談ください。制度が使えるかどうかの確認から一緒に行います。</p>' +
@@ -492,12 +492,12 @@ function escapeHtml(s) {
 
 function sendToLine() {
   const msg =
-    "【〈あの人しかできない〉診断の結果】\n" +
+    "【業務の属人化診断 結果】\n" +
     "会社名：" + document.getElementById("company").value.trim() + "\n" +
     "お名前：" + document.getElementById("pname").value.trim() + "\n" +
     "お立場：" + STATE.role + "\n" +
     "仕事の場：" + STATE.field + "／" + STATE.size + "\n" +
-    "--- 止まる業務 ---\n" +
+    "--- 停止リスクの高い業務 ---\n" +
     (resultLines().join("\n") || "該当なし") + "\n" +
     "------------------\n" +
     "困っている場面：" + (document.getElementById("pain").value.trim() || "未記入") + "\n" +

@@ -56,7 +56,7 @@
 <body>
 <div class="app">
   <span class="badge">LINE登録特典</span>
-  <h1>社長がいなくても回る会社<br>チェックリスト10 ✅</h1>
+  <h1>社長がいなくても回る会社<br>チェックリスト10</h1>
   <p class="lead">当てはまるものをタップしてください。あなたの会社の「仕組み度」がその場でわかります。</p>
 
   <div class="list" id="list">
@@ -75,7 +75,7 @@
   <div class="score">
     <div class="num"><span id="count">0</span> / 10</div>
     <div class="msg" id="msg">タップしてチェックしてみてください</div>
-    <a class="cta" href="apply.html">🔍 診断で、止まる業務を特定する</a>
+    <a class="cta" href="apply.html">診断で、止まる業務を特定する</a>
   </div>
 
   <p class="note">チェックが7個未満なら、伸びしろが大きい状態です。LEVEREXは、強みを発掘して「担当者が変わっても回る形」を30日でつくる伴走支援をしています。</p>
@@ -91,9 +91,9 @@ items.forEach(i => i.addEventListener("click", () => {
   const n = document.querySelectorAll(".item.on").length;
   count.textContent = n;
   msg.textContent =
-    n >= 8 ? "素晴らしい!すでに回る会社です👏" :
-    n >= 5 ? "あと少し!止まりやすい所を1つ直しましょう" :
-    n >= 1 ? "伸びしろ大!まず1つの業務から回る形に" :
+    n >= 8 ? "すでに仕組みで回っている状態です" :
+    n >= 5 ? "止まりやすい箇所が残っています。1つずつ直せます" :
+    n >= 1 ? "改善の余地が大きい状態です。まず1業務から着手できます" :
     "タップしてチェックしてみてください";
 }));
 </script>
