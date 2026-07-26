@@ -220,7 +220,6 @@
       <div class="radios" data-q="want">
         <button type="button" class="radio" data-v="作ってほしいものが決まっている"><span class="dot"></span><span>作ってほしいものが決まっている<small>ホームページ・LP・公式LINEなど</small></span></button>
         <button type="button" class="radio" data-v="何から手をつけるか相談したい"><span class="dot"></span><span>何から手をつけるか相談したい<small>仕組み化・業務改善をご一緒に進めたい</small></span></button>
-        <button type="button" class="radio" data-v="助成金・補助金を使いたい"><span class="dot"></span><span>助成金・補助金を使いたい<small>制度が使えるかどうかから確認したい</small></span></button>
       </div>
       <div class="nav">
         <button class="btn-back" onclick="go(9)">← 戻る</button>
@@ -440,11 +439,6 @@ function buildResult() {
       '</div>' +
       '<a class="cta sub" href="menu.html">サービス内容の詳細を見る ›</a>' +
       '<button class="cta" onclick="go(12)">診断結果を送って相談する</button>';
-  } else if (STATE.want === "助成金・補助金を使いたい") {
-    routeEl.innerHTML =
-      '<p class="hint" style="margin:8px 0 14px;">補助金は<strong>交付決定の前に契約・購入されたものが対象外</strong>となります。順序を誤ると利用できなくなるため、先にご相談ください。制度が利用可能かどうかの確認からご一緒に進めます。</p>' +
-      '<button class="cta" onclick="go(12)">助成金の活用についてご相談する</button>' +
-      '<a class="cta sub" href="menu.html">先にメニューを見る ›</a>';
   } else {
     routeEl.innerHTML =
       '<p class="hint" style="margin:8px 0 14px;">何から着手するかを決めるところから、ご一緒に進めます。まずは診断結果をお送りください。内容を拝見したうえで、面談の日程をご案内いたします。</p>' +
