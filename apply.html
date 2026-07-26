@@ -432,11 +432,11 @@ function buildResult() {
   const routeEl = document.getElementById("routeBox");
   if (STATE.want === "作ってほしいものが決まっている") {
     routeEl.innerHTML =
-      '<p class="hint" style="margin:8px 0 0;">作るものが決まっている方向けの、料金と納期を固定したメニューです。要件をご記入いただいた日から<strong>2週間で初稿</strong>をお出しします。</p>' +
+      '<p class="hint" style="margin:8px 0 0;">作るものが決まっている方向けの、範囲と納期を固定したメニューです。要件をご記入いただいた日から<strong>2週間で初稿</strong>をお出しします。料金は内容をうかがってからご案内します。</p>' +
       '<div class="menu-cards">' +
-        menuCard("lp",   "LP制作",       "1ページ（8セクションまで）", "29.8万円") +
-        menuCard("hp",   "ホームページ制作", "5〜7ページ",              "59.8万円") +
-        menuCard("line", "公式LINE構築",  "リッチメニュー1式＋応答10本", "29.8万円") +
+        menuCard("lp",   "LP制作",       "1ページ（8セクションまで）") +
+        menuCard("hp",   "ホームページ制作", "5〜7ページ") +
+        menuCard("line", "公式LINE構築",  "リッチメニュー1式＋応答10本") +
       '</div>' +
       '<a class="cta sub" href="menu.html">メニューの詳しい条件を見る ›</a>' +
       '<button class="cta" onclick="go(12)">まず診断結果を送って相談する</button>';
@@ -444,7 +444,7 @@ function buildResult() {
     routeEl.innerHTML =
       '<p class="hint" style="margin:8px 0 14px;">補助金は<strong>交付決定の前に契約・購入したものが対象外</strong>になります。順番を間違えると使えなくなるため、先にご相談ください。制度が使えるかどうかの確認から一緒に行います。</p>' +
       '<button class="cta" onclick="go(12)">助成金の使い方を相談する</button>' +
-      '<a class="cta sub" href="menu.html">先にメニューと金額を見る ›</a>';
+      '<a class="cta sub" href="menu.html">先にメニューを見る ›</a>';
   } else {
     routeEl.innerHTML =
       '<p class="hint" style="margin:8px 0 14px;">何から手をつけるかを決めるところから、一緒に進めます。まずは診断結果をお送りください。内容を見たうえで、面談の日程をご案内します。</p>' +
@@ -453,10 +453,10 @@ function buildResult() {
   }
 }
 
-function menuCard(key, name, spec, price) {
+function menuCard(key, name, spec) {
   return '<a class="menu-card" href="request.html?menu=' + key + '">' +
     '<span><span class="nm">' + name + '</span><br><span class="sp">' + spec + '</span></span>' +
-    '<span class="pr">' + price + '<span>税込・初稿2週間</span></span>' +
+    '<span class="pr">初稿<span>2週間</span></span>' +
   '</a>';
 }
 

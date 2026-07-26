@@ -135,21 +135,21 @@ const LINE_ID = "@558bnxlh";
 /* ===================== メニュー定義 ===================== */
 const MENUS = {
   lp: {
-    name: "LP制作", price: "29.8万円（税込）",
+    name: "LP制作", price: "料金はお見積りでご案内します",
     spec: ["1ページ／8セクションまで",
            "構成設計・原稿作成・デザイン・コーディング・スマホ対応・公開設定",
            "含まないもの：撮影、イラスト、ドメイン・サーバー費用",
            "修正2回まで／全額前金／記入完了から2週間で初稿"]
   },
   hp: {
-    name: "ホームページ制作", price: "59.8万円（税込）",
+    name: "ホームページ制作", price: "料金はお見積りでご案内します",
     spec: ["5〜7ページ",
            "構成設計・原稿作成・デザイン・コーディング・スマホ対応・公開設定",
            "含まないもの：撮影、イラスト、ドメイン・サーバー費用",
            "修正2回まで／全額前金／記入完了から2週間で初稿"]
   },
   line: {
-    name: "公式LINE構築", price: "29.8万円（税込）",
+    name: "公式LINE構築", price: "料金はお見積りでご案内します",
     spec: ["リッチメニュー1式（6分割まで）、あいさつメッセージ、キーワード応答10本まで",
            "画像制作・設定作業を含みます",
            "含まないもの：LINE公式アカウントの月額利用料、配信の代行",
@@ -201,7 +201,7 @@ const SEC_BY_MENU = {
     ] },
   hp: { title: "ホームページの中身", sub: "ページ構成を決めます。6項目。",
     qs: [
-      { n:16, t:"必要なページ", s:"5〜7ページまでが料金内です。7つを超える場合は追加費用（5.5万円／ページ）になります。", type:"multi", req:true,
+      { n:16, t:"必要なページ", s:"5〜7ページまでが基本の範囲です。7つを超える場合は追加費用が発生します。", type:"multi", req:true,
         opts:["トップ","会社概要","サービス紹介","実績・事例","採用情報","お問い合わせ","代表挨拶","よくある質問","お知らせ・ブログ"] },
       { n:17, t:"主力サービスを3つまで", type:"area", ph:"例：1. 内装解体 2. 原状回復 3. 産廃収集運搬", req:true },
       { n:18, t:"掲載できる実績・数字", s:"公開してよいものだけをご記入ください。", type:"area", ph:"例：年間120件／創業18年／取引社数200社" },
@@ -359,11 +359,11 @@ function pickerHtml() {
     '<h1>どれの要件シートを<br>ご記入されますか📝</h1>' +
     '<p class="hint">それぞれ内容が違います。選ぶと、そのメニュー用の30項目が表示されます。</p>' +
     '<div class="picker">' +
-      '<a class="pick" href="request.html?menu=lp"><span><span class="nm">LP制作</span><br><span class="sp">1ページ（8セクションまで）</span></span><span class="pr">29.8万円</span></a>' +
-      '<a class="pick" href="request.html?menu=hp"><span><span class="nm">ホームページ制作</span><br><span class="sp">5〜7ページ</span></span><span class="pr">59.8万円</span></a>' +
-      '<a class="pick" href="request.html?menu=line"><span><span class="nm">公式LINE構築</span><br><span class="sp">リッチメニュー1式＋応答10本</span></span><span class="pr">29.8万円</span></a>' +
+      '<a class="pick" href="request.html?menu=lp"><span><span class="nm">LP制作</span><br><span class="sp">1ページ（8セクションまで）</span></span><span class="pr">お見積り</span></a>' +
+      '<a class="pick" href="request.html?menu=hp"><span><span class="nm">ホームページ制作</span><br><span class="sp">5〜7ページ</span></span><span class="pr">お見積り</span></a>' +
+      '<a class="pick" href="request.html?menu=line"><span><span class="nm">公式LINE構築</span><br><span class="sp">リッチメニュー1式＋応答10本</span></span><span class="pr">お見積り</span></a>' +
     '</div>' +
-    '<p class="note">いずれも税込・全額前金・修正2回まで。ご記入が完了した日から2週間で初稿をお出しします。<a href="menu.html">条件の詳細はこちら ›</a></p>';
+    '<p class="note">いずれも全額前金・修正2回まで。ご記入が完了した日から2週間で初稿をお出しします。料金は内容をうかがってからご案内します。<a href="menu.html">条件の詳細はこちら ›</a></p>';
 }
 
 /* ===================== 遷移とバリデーション ===================== */
